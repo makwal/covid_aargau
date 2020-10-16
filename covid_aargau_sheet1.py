@@ -187,7 +187,7 @@ if df_final4.iloc[4,2] == "inf%":
 
 
 #make a backup export of the current data
-df_final4.to_csv("backups/daily_data/backup_{}.csv".format(general_settings.today))
+df_final4.to_csv("/backups/daily_data/backup_{}.csv".format(general_settings.today))
 
 #export to csv
 df_final4.to_csv("daily_data.csv")
@@ -223,7 +223,7 @@ df_dailys3 = df_dailys3.replace(-1, np.nan)
 
 
 #make a backup export of the current data
-df_dailys3.to_csv("backups/daily_over_time/backup_{}.csv".format(general_settings.today))
+df_dailys3.to_csv("/backups/daily_over_time/backup_{}.csv".format(general_settings.today))
 
 #export to csv
 df_dailys3.to_csv("daily_over_time.csv", index=False)
@@ -254,7 +254,7 @@ df_hosp2.columns = ["Datum",
                      "Restkapazität Intensiv-Betten"]
 
 #make a backup export of the current data
-df_hosp2.to_csv("backups/hosp_numbers/backup_{}.csv".format(general_settings.today))
+df_hosp2.to_csv("/backups/hosp_numbers/backup_{}.csv".format(general_settings.today))
 
 #export to csv
 df_hosp2.to_csv("hosp_numbers.csv", index=False)

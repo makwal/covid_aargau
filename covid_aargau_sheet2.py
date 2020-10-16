@@ -1,25 +1,27 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[8]:
+# In[1]:
 
 
 import requests
 import pandas as pd
 import numpy as np
 import general_settings
+from time import sleep
 
 
 # # isolation and quarantine
 
-# In[9]:
+# In[2]:
 
 
 #open sheet nr. 4
+sleep(20)
 df_iso = pd.read_excel(general_settings.file_url, sheet_name=4)
 
 
-# In[10]:
+# In[3]:
 
 
 #rename and choose header
@@ -28,7 +30,7 @@ df_iso.columns = df_iso.iloc[1]
 df_iso = df_iso.drop([0,1])
 
 
-# In[11]:
+# In[4]:
 
 
 #formatting
@@ -46,7 +48,7 @@ else:
     df_iso = df_iso[df_iso["date"] < general_settings.today]
 
 
-# In[12]:
+# In[5]:
 
 
 #fill NaN values with previous value
@@ -56,7 +58,7 @@ df_iso = df_iso.fillna(method='ffill')
 df_iso_time = df_iso[["date", "total_curr_isolated", "total_curr_quar"]]
 
 
-# In[13]:
+# In[6]:
 
 
 #formatting
@@ -64,13 +66,13 @@ df_iso_time["date"] = df_iso_time["date"].dt.normalize()
 df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
 
 
-# In[14]:
+# In[7]:
 
 
 df_iso_time
 
 
-# In[15]:
+# In[8]:
 
 
 #make a backup export of the current data

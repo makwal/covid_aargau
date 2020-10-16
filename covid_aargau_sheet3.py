@@ -8,6 +8,7 @@ import requests
 import pandas as pd
 import numpy as np
 import general_settings
+from time import sleep
 
 
 # # venues of infection
@@ -16,6 +17,7 @@ import general_settings
 
 
 #open sheet nr. 3
+sleep(35)
 df_ven = pd.read_excel(general_settings.file_url, sheet_name=5)
 
 

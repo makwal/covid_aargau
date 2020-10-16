@@ -1,22 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[20]:
+# In[1]:
 
 
 import pandas as pd
 import numpy as np
 import general_settings
+from time import sleep
 
 
-# In[21]:
+# In[2]:
 
 
 #open sheet nr. 8
+sleep(50)
 df_travel = pd.read_excel(general_settings.file_url, sheet_name=8)
 
 
-# In[22]:
+# In[3]:
 
 
 #rename and choose header
@@ -29,7 +31,7 @@ df_travel["date"] = pd.to_datetime(df_travel["date"], errors="coerce").dt.normal
 df_travel.columns = ["date", "Fälle neu", "aktuell betreut", "Fälle total"]
 
 
-# In[23]:
+# In[4]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -39,7 +41,7 @@ else:
     df_travel = df_travel[df_travel["date"] < general_settings.today]
 
 
-# In[24]:
+# In[5]:
 
 
 #fill NaN values with previous value
@@ -49,7 +51,7 @@ df_travel = df_travel.fillna(method='ffill')
 df_travel = df_travel[["date", "aktuell betreut"]]
 
 
-# In[25]:
+# In[6]:
 
 
 #make a backup export of the current data

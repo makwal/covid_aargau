@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[1]:
 
 
 import requests
@@ -9,14 +9,16 @@ import pandas as pd
 import numpy as np
 from datetime import timedelta
 import general_settings
+from time import sleep
 
 
 # # latest daily numbers
 
-# In[5]:
+# In[2]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
+sleep(5)
 df = pd.read_excel(general_settings.file_url, sheet_name=1)
 
 #renaming, choosing headers
@@ -32,7 +34,7 @@ df2 = df2[df2.date != "Summe"]
 df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 
-# In[6]:
+# In[3]:
 
 
 #calculate 7 day rolling average
@@ -46,7 +48,7 @@ df2["date"] = pd.to_datetime(df2.date).dt.normalize()
 df2["3_d_rolling"] = df2["Neue Fälle"].rolling(3).sum()
 
 
-# In[7]:
+# In[4]:
 
 
 #take relevant columns to new dataframe
@@ -61,7 +63,7 @@ df_cases = df2[["date",
 df_cases = df_cases.drop(df_cases.tail(1).index)
 
 
-# In[8]:
+# In[5]:
 
 
 #formatting
@@ -70,21 +72,21 @@ df_cases[a] = df_cases[a].astype(float)
 df_cases = df_cases.round(1)
 
 
-# In[9]:
+# In[6]:
 
 
 #append weekday to calculate if it is monday
 df_cases["weekday"] = df_cases["date"].dt.weekday
 
 
-# In[10]:
+# In[7]:
 
 
 #make Series with latest numbers
 s_final = df_cases[df_cases["Neue Fälle"] >= 0].iloc[-1]
 
 
-# In[11]:
+# In[8]:
 
 
 #get numbers from same day one week earlier
@@ -109,7 +111,7 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[12]:
+# In[9]:
 
 
 #if monday: take 3_d_rolling as "Neue Fälle"
@@ -126,7 +128,7 @@ except:
     pass
 
 
-# In[13]:
+# In[10]:
 
 
 #build first df without date (daily numbers)
@@ -140,7 +142,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["Vorwoche", date_current_values]
 
 
-# In[14]:
+# In[11]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -148,7 +150,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[15]:
+# In[12]:
 
 
 #concat daily numbers and difference
@@ -159,7 +161,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[16]:
+# In[13]:
 
 
 #reorder columns
@@ -174,14 +176,14 @@ df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)
 df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
 
-# In[17]:
+# In[14]:
 
 
 if df_final4.iloc[4,2] == "inf%":
     df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan
 
 
-# In[18]:
+# In[15]:
 
 
 #make a backup export of the current data
@@ -193,7 +195,7 @@ df_final4.to_csv("daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[34]:
+# In[16]:
 
 
 df_dailys = df_cases
@@ -203,21 +205,21 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[35]:
+# In[17]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
 
-# In[36]:
+# In[18]:
 
 
 #replace -1 with NaN
 df_dailys3 = df_dailys3.replace(-1, np.nan)
 
 
-# In[37]:
+# In[19]:
 
 
 #make a backup export of the current data
@@ -229,7 +231,7 @@ df_dailys3.to_csv("daily_over_time.csv", index=False)
 
 # # hospital numbers
 
-# In[67]:
+# In[20]:
 
 
 df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS/IMC"]]
@@ -241,7 +243,7 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < general_settings.today]
 
 
-# In[68]:
+# In[21]:
 
 
 df_hosp2 = df_hosp2.replace(-1, np.nan)

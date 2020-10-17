@@ -55,13 +55,13 @@ def csv_generator(canton):
     df_pos.columns = ["Kalenderwoche", "Datum", canton, "Schweiz"]
 
     #make a backup export of the current data
-    df_tests.to_csv("backups/tests/tests_weekly_{}_{}.csv".format(canton, general_settings.today))
-    df_pos.to_csv("backups/positivity/positivity_weekly_{}_{}.csv".format(canton, general_settings.today))
+    df_tests.to_csv("/root/covid_aargau/backups/tests/tests_weekly_{}_{}.csv".format(canton, general_settings.today))
+    df_pos.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, general_settings.today))
 
 
     #export to csv
-    df_tests.to_csv("tests_weekly_{}.csv".format(canton), header=None)
-    df_pos.to_csv("positivity_weekly_{}.csv".format(canton), index=False)
+    df_tests.to_csv("/root/covid_aargau/tests_weekly_{}.csv".format(canton), header=None)
+    df_pos.to_csv("/root/covid_aargau/positivity_weekly_{}.csv".format(canton), index=False)
 
 
 # In[3]:

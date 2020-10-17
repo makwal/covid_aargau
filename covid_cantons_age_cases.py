@@ -45,10 +45,10 @@ def age_dist_cantons(canton):
     df_all.drop(df_all.tail(1).index,inplace=True)
     
     #export backup to csv
-    df_all.to_csv("backups/age/altersverteilung_{}_{}.csv".format(canton, general_settings.today), index=False)
+    df_all.to_csv("/root/covid_aargau/backups/age/altersverteilung_{}_{}.csv".format(canton, general_settings.today), index=False)
     
     #export to csv
-    df_all.to_csv("altersverteilung_{}.csv".format(canton), index=False)
+    df_all.to_csv("/root/covid_aargau/altersverteilung_{}.csv".format(canton), index=False)
 
 
 # In[6]:

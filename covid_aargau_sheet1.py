@@ -136,7 +136,7 @@ df_final2 = df_final.loc[:, df_final.columns != "date"].T
 
 #get date of latest numbers, change to string
 date_current_values = df_final["date"].loc[1].date().strftime("%d.%m.%Y")
-date_current_values = "Zahlen vom " + date_current_values
+date_current_values = "Daten vom " + date_current_values
 
 #rename columns
 df_final2.columns = ["Vorwoche", date_current_values]

@@ -58,5 +58,5 @@ df_travel = df_travel[["date", "aktuell betreut"]]
 df_travel.to_csv("/root/covid_aargau/backups/travel/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_travel.to_csv("/root/covid_aargau/travel.csv", index=False)
+df_travel.to_csv("/root/covid_aargau/data/travel.csv", index=False)
 

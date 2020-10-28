@@ -60,8 +60,8 @@ def csv_generator(canton):
 
 
     #export to csv
-    df_tests.to_csv("/root/covid_aargau/tests_weekly_{}.csv".format(canton), header=None)
-    df_pos.to_csv("/root/covid_aargau/positivity_weekly_{}.csv".format(canton), index=False)
+    df_tests.to_csv("/root/covid_aargau/data/tests_weekly_{}.csv".format(canton), header=None)
+    df_pos.to_csv("/root/covid_aargau/data/positivity_weekly_{}.csv".format(canton), index=False)
 
 
 # In[3]:

@@ -78,5 +78,5 @@ df_iso_time
 df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_iso_time.to_csv("iso_over_time.csv", index=False)
+df_iso_time.to_csv("/root/covid_aargau/data/iso_over_time.csv", index=False)
 

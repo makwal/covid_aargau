@@ -96,5 +96,5 @@ df_ven_final = df_ven_final.rename(columns={0: "Stand: {}".format(current_date)}
 df_ven_final.to_csv("/root/covid_aargau/backups/venues/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_ven_final.to_csv("/root/covid_aargau/venues_counter.csv", index=False)
+df_ven_final.to_csv("/root/covid_aargau/data/venues_counter.csv", index=False)
 

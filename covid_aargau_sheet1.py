@@ -136,7 +136,7 @@ df_final2 = df_final.loc[:, df_final.columns != "date"].T
 
 #get date of latest numbers, change to string
 date_current_values = df_final["date"].loc[1].date().strftime("%d.%m.%Y")
-date_current_values = "Daten vom " + date_current_values
+date_current_values = "Zahlen vom " + date_current_values
 
 #rename columns
 df_final2.columns = ["Vorwoche", date_current_values]
@@ -190,7 +190,7 @@ if df_final4.iloc[4,2] == "inf%":
 df_final4.to_csv("/root/covid_aargau/backups/daily_data/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_final4.to_csv("/root/covid_aargau/daily_data.csv")
+df_final4.to_csv("/root/covid_aargau/data/daily_data.csv")
 
 
 # # daily new cases as line graph
@@ -226,7 +226,7 @@ df_dailys3 = df_dailys3.replace(-1, np.nan)
 df_dailys3.to_csv("/root/covid_aargau/backups/daily_over_time/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_dailys3.to_csv("/root/covid_aargau/daily_over_time.csv", index=False)
+df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 
 
 # # hospital numbers
@@ -257,5 +257,5 @@ df_hosp2.columns = ["Datum",
 df_hosp2.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_hosp2.to_csv("/root/covid_aargau/hosp_numbers.csv", index=False)
+df_hosp2.to_csv("/root/covid_aargau/data/hosp_numbers.csv", index=False)
 

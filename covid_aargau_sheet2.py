@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[23]:
 
 
-import requests
 import pandas as pd
 import numpy as np
 import general_settings
@@ -13,15 +12,15 @@ from time import sleep
 
 # # isolation and quarantine
 
-# In[2]:
+# In[24]:
 
 
 #open sheet nr. 4
-sleep(20)
-df_iso = pd.read_excel(general_settings.file_url, sheet_name=4)
+#sleep(20)
+df_iso = pd.read_excel(general_settings.file_url, sheet_name=5)
 
 
-# In[3]:
+# In[25]:
 
 
 #rename and choose header
@@ -30,7 +29,7 @@ df_iso.columns = df_iso.iloc[1]
 df_iso = df_iso.drop([0,1])
 
 
-# In[4]:
+# In[26]:
 
 
 #formatting
@@ -48,7 +47,7 @@ else:
     df_iso = df_iso[df_iso["date"] < general_settings.today]
 
 
-# In[5]:
+# In[27]:
 
 
 #fill NaN values with previous value
@@ -58,7 +57,7 @@ df_iso = df_iso.fillna(method='ffill')
 df_iso_time = df_iso[["date", "total_curr_isolated", "total_curr_quar"]]
 
 
-# In[6]:
+# In[28]:
 
 
 #formatting
@@ -66,18 +65,18 @@ df_iso_time["date"] = df_iso_time["date"].dt.normalize()
 df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
 
 
-# In[7]:
+# In[31]:
 
 
 df_iso_time
 
 
-# In[8]:
+# In[30]:
 
 
 #make a backup export of the current data
-df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(general_settings.today))
+df_iso_time.to_csv("backups/iso_over_time/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_iso_time.to_csv("/root/covid_aargau/iso_over_time.csv", index=False)
+df_iso_time.to_csv("iso_over_time.csv", index=False)
 

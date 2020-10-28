@@ -13,9 +13,9 @@ from time import sleep
 # In[2]:
 
 
-#open sheet nr. 8
+#open sheet
 sleep(50)
-df_travel = pd.read_excel(general_settings.file_url, sheet_name=8)
+df_travel = pd.read_excel(general_settings.file_url, sheet_name="5. Quarantäne nach Einreise")
 
 
 # In[3]:

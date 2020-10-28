@@ -19,7 +19,7 @@ from time import sleep
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 sleep(5)
-df = pd.read_excel(general_settings.file_url, sheet_name=1)
+df = pd.read_excel(general_settings.file_url, sheet_name="1. Covid-19-Daten")
 
 #renaming, choosing headers
 df.iloc[1,0] = "date"

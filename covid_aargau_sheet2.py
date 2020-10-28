@@ -15,9 +15,9 @@ from time import sleep
 # In[24]:
 
 
-#open sheet nr. 4
-#sleep(20)
-df_iso = pd.read_excel(general_settings.file_url, sheet_name=5)
+#open sheet
+sleep(20)
+df_iso = pd.read_excel(general_settings.file_url, sheet_name="2. Contact Tracing")
 
 
 # In[25]:

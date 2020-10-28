@@ -18,7 +18,7 @@ from time import sleep
 
 #open sheet nr. 3
 sleep(35)
-df_ven = pd.read_excel(general_settings.file_url, sheet_name=5)
+df_ven = pd.read_excel(general_settings.file_url, sheet_name="3. Ansteckungsorte")
 
 
 # In[3]:

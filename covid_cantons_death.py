@@ -35,7 +35,7 @@ df_ag2 = df_ag.drop(["canton", "cases"], axis=1)
 #groupby age
 s = df_ag2.groupby("age_group")["fatalities"].sum()
 df_final = pd.DataFrame(s)
-df_final.index.name = "Altersgruppe"
+df_final.index.name = "Altersklasse"
 df_final.columns = ["Todesfälle"]
 
 

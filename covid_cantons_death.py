@@ -46,5 +46,5 @@ df_final.columns = ["Todesfälle"]
 df_final.to_csv("/root/covid_aargau/backups/death/todesfaelle_AG_{}.csv".format(general_settings.today))
 
 #export to csv
-df_final.to_csv("/root/covid_aargau/data/todesfaelle.csv")
+df_final.to_csv("/root/covid_aargau/data/deaths.csv")
 

@@ -24,7 +24,7 @@ def death_getter(canton):
     
     #choose canton
     if canton == "OCH":
-        df_ag = df[(df["canton"] == "SG") | (df["canton"] == "TG") | (df["canton"] == "AR") | (df["canton"] == "AI")  | (df["canton"] == "SH")]
+        df_ag = df[(df["canton"] == "SG") | (df["canton"] == "TG") | (df["canton"] == "AR") | (df["canton"] == "AI")]
     elif canton == "ZCH":
         df_ag = df[(df["canton"] == "LU") | (df["canton"] == "SZ") | (df["canton"] == "UR") | (df["canton"] == "OW")  | (df["canton"] == "NW")| (df["canton"] == "ZG")]
     

@@ -229,30 +229,32 @@ df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 
 # # hospital numbers
 
-# In[15]:
+# In[20]:
 
 
 df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS/IMC"]]
 df_hosp.set_index("date", inplace=True)
 df_hosp["2020-10":].replace(0,-1, inplace=True)
+df_hosp.reset_index(inplace=True)
 
 
-# In[17]:
+# In[22]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
 if general_settings.todays_weekday == 0:
-    df_hosp2 = df_hosp[df_hosp.index < general_settings.two_days_ago]
+    df_hosp2 = df_hosp[df_hosp["date"] < general_settings.two_days_ago]
 else:
-    df_hosp2 = df_hosp[df_hosp.index < general_settings.today]
+    df_hosp2 = df_hosp[df_hosp["date"] < general_settings.today]
 
 
-# In[18]:
+# In[23]:
 
 
 df_hosp2 = df_hosp2.replace(-1, np.nan)
 df_hosp2 = df_hosp2.fillna(method='ffill')
-df_hosp2.columns = ["Hosp. ohne Intensivpflege",
+df_hosp2.columns = ["Datum",
+                    "Hosp. ohne Intensivpflege",
                      "Hosp. mit Intensivpflege",
                      "Restkapazität Intensiv-Betten"]
 

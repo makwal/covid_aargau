@@ -266,5 +266,5 @@ df_hosp2.columns = ["Datum",
 df_hosp2.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_hosp2.to_csv("/root/covid_aargau/data/hosp_numbers.csv")
+df_hosp2.to_csv("/root/covid_aargau/data/hosp_numbers.csv", index=False)
 

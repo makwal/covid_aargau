@@ -4,7 +4,6 @@
 # In[1]:
 
 
-import requests
 import pandas as pd
 import numpy as np
 from datetime import timedelta
@@ -18,7 +17,6 @@ from time import sleep
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
-sleep(5)
 df = pd.read_excel(general_settings.file_url, sheet_name="1. Covid-19-Daten")
 
 #renaming, choosing headers
@@ -231,31 +229,40 @@ df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 
 # # hospital numbers
 
-# In[20]:
+# In[15]:
 
 
 df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS/IMC"]]
+df_hosp.set_index("date", inplace=True)
+df_hosp["2020-10":].replace(0,-1, inplace=True)
+
+
+# In[17]:
+
 
 #if Monday (weekday == 0), take Friday as latest values
 if general_settings.todays_weekday == 0:
-    df_hosp2 = df_hosp[df_hosp["date"] < general_settings.two_days_ago]
+    df_hosp2 = df_hosp[df_hosp.index < general_settings.two_days_ago]
 else:
-    df_hosp2 = df_hosp[df_hosp["date"] < general_settings.today]
+    df_hosp2 = df_hosp[df_hosp.index < general_settings.today]
+
+
+# In[18]:
+
+
+df_hosp2 = df_hosp2.replace(-1, np.nan)
+df_hosp2 = df_hosp2.fillna(method='ffill')
+df_hosp2.columns = ["Hosp. ohne Intensivpflege",
+                     "Hosp. mit Intensivpflege",
+                     "Restkapazität Intensiv-Betten"]
 
 
 # In[21]:
 
 
-df_hosp2 = df_hosp2.replace(-1, np.nan)
-df_hosp2 = df_hosp2.fillna(method='ffill')
-df_hosp2.columns = ["Datum",
-                    "Hosp. ohne Intensivpflege",
-                     "Hosp. mit Intensivpflege",
-                     "Restkapazität Intensiv-Betten"]
-
 #make a backup export of the current data
 df_hosp2.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_{}.csv".format(general_settings.today))
 
 #export to csv
-df_hosp2.to_csv("/root/covid_aargau/data/hosp_numbers.csv", index=False)
+df_hosp2.to_csv("/root/covid_aargau/data/hosp_numbers.csv")
 

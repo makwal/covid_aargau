@@ -208,7 +208,7 @@ df_final4.to_csv("/root/covid_aargau/data/daily_data.csv")
 
 df_dailys = df_cases
 df_dailys2 = df_dailys[df_dailys["Neue Fälle"] > -1]
-df_dailys3 = df_dailys2[["date", "Neue Fälle", "7_d_rolling"]]
+df_dailys3 = df_dailys2[["date", "Neue Fälle", "7_d_rolling"]].copy()
 df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 

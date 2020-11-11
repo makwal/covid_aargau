@@ -147,7 +147,7 @@ date_current_values = df_final["date"].loc[1].date().strftime("%d.%m.%Y")
 date_current_values = "Zahlen vom " + date_current_values
 
 #rename columns
-df_final2.columns = ["Vorwoche", date_current_values]
+df_final2.columns = ["vor einer Woche", date_current_values]
 
 
 # In[33]:
@@ -177,7 +177,7 @@ col_list = df_final4.columns.tolist()
 myorder = [1,0,2]
 col_list = [col_list[i] for i in myorder]
 df_final4= df_final4[col_list]
-df_final4.columns = [date_current_values, "Vorwoche", "+/- in %"]
+df_final4.columns = [date_current_values, "vor einer Woche", "+/- in %"]
 
 #fillna in diff column with 0
 df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)

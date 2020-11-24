@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[21]:
+# In[ ]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from time import sleep
 
 # # latest daily numbers
 
-# In[22]:
+# In[ ]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
@@ -32,22 +32,21 @@ df2 = df2[df2.date != "Summe"]
 df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 
-# In[23]:
+# In[ ]:
 
 
-#calculate 7 day rolling average
-df2["date_diff"] = df2.date.diff(periods=7)
-df2["7_d_mean"] = df2["Neue Fälle"].rolling(7).mean().round(1)
-df2.loc[df2["date_diff"] != "7 days", "7_d_rolling"] = -1
-df2.loc[df2["date_diff"] == "7 days", "7_d_rolling"] = df2["7_d_mean"]
+#calculate 7 day rolling average (- 3 days)
+df2["hilfs"] = df2["Neue Fälle"][df2["date"] < pd.to_datetime(general_settings.two_days_ago) - timedelta(days=1)]
+df2["7_d_rolling"] = df2["hilfs"].rolling(7).mean().shift(3).round(1)
+
 df2["date"] = pd.to_datetime(df2.date).dt.normalize()
 
-#calculate 3 day rolling average
+#calculate 3 day rolling average (only used for weekend)
 df2["3_d_rolling"] = df2["Neue Fälle"].rolling(3).sum()
 df2["3_d_rolling_deaths"] = df2["neue_todesfälle"].rolling(3).sum()
 
 
-# In[24]:
+# In[ ]:
 
 
 #take relevant columns to new dataframe
@@ -63,7 +62,7 @@ df_cases = df2[["date",
 df_cases = df_cases.drop(df_cases.tail(1).index)
 
 
-# In[25]:
+# In[ ]:
 
 
 #formatting
@@ -72,21 +71,21 @@ df_cases[a] = df_cases[a].astype(float)
 df_cases = df_cases.round(1)
 
 
-# In[26]:
+# In[ ]:
 
 
 #append weekday to calculate if it is monday
 df_cases["weekday"] = df_cases["date"].dt.weekday
 
 
-# In[27]:
+# In[ ]:
 
 
 #make Series with latest numbers
 s_final = df_cases[df_cases["Neue Fälle"] >= 0].iloc[-1]
 
 
-# In[28]:
+# In[ ]:
 
 
 #get numbers from same day one week earlier
@@ -103,7 +102,7 @@ df_final.columns = ["index",
                     "date",
                     "Fälle neu",
                     "Fälle total",
-                    "Fall-Durchschnitt letzte 7 Tage",
+                    "7-Tages-Durchschnitt",
                     "3_d_rolling",
                     "Fälle pro 100'000 EW pro 14 Tage",
                     "Todesfälle neu",
@@ -112,13 +111,7 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[29]:
-
-
-df_final
-
-
-# In[30]:
+# In[ ]:
 
 
 #if monday: take 3_d_rolling as "Neue Fälle"
@@ -136,7 +129,33 @@ except:
     pass
 
 
-# In[31]:
+# In[ ]:
+
+
+#read in yesterday's backup
+dfe = pd.read_csv("https://raw.githubusercontent.com/makwal/covid_aargau/master/backups/daily_data/backup_2020-11-{}.csv".format(general_settings.yesterday.day))
+
+#day before yesterday
+day_b_y = general_settings.two_days_ago.split("-")[-1]
+
+#calculate Nachmeldungen Fälle
+cases_total_yest = dfe["Zahlen vom {}.11.2020".format(day_b_y)].iloc[1]
+cases_total_today = df_final["Fälle total"].tail(1)
+cases_new_today = df_final["Fälle neu"].tail(1)
+nachmeldungen_cases = int(cases_total_today) - int(cases_total_yest) - int(cases_new_today)
+
+#calculate Nachmeldungen Todesfälle
+death_total_yest = dfe["Zahlen vom {}.11.2020".format(day_b_y)].tail(1)
+death_total_today = df_final["Todesfälle total"].tail(1)
+death_new_today = df_final["Todesfälle neu"].tail(1)
+nachmeldungen_tod = int(death_total_today) - int(death_total_yest) - int(death_new_today)
+
+#append to df
+df_final["Nachmeldungen Fälle"] = [np.nan, int(nachmeldungen_cases)]
+df_final["Nachmeldungen Todesfälle"] = [np.nan, int(nachmeldungen_tod)]
+
+
+# In[ ]:
 
 
 #build first df without date (daily numbers)
@@ -150,7 +169,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[33]:
+# In[ ]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -158,7 +177,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[34]:
+# In[ ]:
 
 
 #concat daily numbers and difference
@@ -169,7 +188,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[35]:
+# In[ ]:
 
 
 #reorder columns
@@ -184,14 +203,17 @@ df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)
 df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
 
-# In[36]:
+# In[ ]:
 
 
 if df_final4.iloc[4,2] == "inf%":
     df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan
+    
+df_final4.iloc[6,2] = np.nan
+df_final4.iloc[7,2] = np.nan
 
 
-# In[15]:
+# In[ ]:
 
 
 #make a backup export of the current data
@@ -203,7 +225,7 @@ df_final4.to_csv("/root/covid_aargau/data/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[16]:
+# In[ ]:
 
 
 df_dailys = df_cases
@@ -213,21 +235,21 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[17]:
+# In[ ]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
 
-# In[18]:
+# In[ ]:
 
 
 #replace -1 with NaN
 df_dailys3 = df_dailys3.replace(-1, np.nan)
 
 
-# In[19]:
+# In[ ]:
 
 
 #make a backup export of the current data
@@ -239,7 +261,7 @@ df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 
 # # hospital numbers
 
-# In[20]:
+# In[ ]:
 
 
 df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS/IMC"]]
@@ -248,7 +270,7 @@ df_hosp["2020-10":].replace(0,-1, inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
-# In[22]:
+# In[ ]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -258,7 +280,7 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < general_settings.today]
 
 
-# In[23]:
+# In[ ]:
 
 
 df_hosp2 = df_hosp2.replace(-1, np.nan)
@@ -269,7 +291,7 @@ df_hosp2.columns = ["Datum",
                      "Restkapazität Intensiv-Betten"]
 
 
-# In[21]:
+# In[ ]:
 
 
 #make a backup export of the current data

@@ -37,7 +37,7 @@ df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 #calculate 7 day rolling average (- 3 days)
 df2["hilfs"] = df2["Neue Fälle"][df2["date"] < pd.to_datetime(general_settings.two_days_ago) - timedelta(days=1)]
-df2["7_d_rolling"] = df2["hilfs"].rolling(7).mean().shift(3).round(1)
+df2["7_d_rolling"] = df2["hilfs"].rolling(7).mean().round(0)
 
 df2["date"] = pd.to_datetime(df2.date).dt.normalize()
 
@@ -68,7 +68,7 @@ df_cases = df_cases.drop(df_cases.tail(1).index)
 #formatting
 a = "14-Tage-Inzidenz\n(Anzahl laborbestätigte Fälle pro 100'000 Einwohner pro 14 Tage)"
 df_cases[a] = df_cases[a].astype(float)
-df_cases = df_cases.round(1)
+df_cases = df_cases.round(0)
 
 
 # In[ ]:
@@ -83,6 +83,10 @@ df_cases["weekday"] = df_cases["date"].dt.weekday
 
 #make Series with latest numbers
 s_final = df_cases[df_cases["Neue Fälle"] >= 0].iloc[-1]
+
+#add 7 day rolling average to Series
+rolling7 = df_cases["7_d_rolling"][df_cases["7_d_rolling"] >= 0].iloc[-1]
+s_final[3] = rolling7
 
 
 # In[ ]:
@@ -133,26 +137,27 @@ except:
 
 
 #read in yesterday's backup
-dfe = pd.read_csv("https://raw.githubusercontent.com/makwal/covid_aargau/master/backups/daily_data/backup_2020-11-{}.csv".format(general_settings.yesterday.day))
+url_yest = "https://raw.githubusercontent.com/makwal/covid_aargau/master/backups/daily_data/backup_{}.csv"
+dfe = pd.read_csv(url_yest.format(general_settings.yesterday))
 
-#day before yesterday
-day_b_y = general_settings.two_days_ago.split("-")[-1]
+#"Zahlen vom " day before yesterday
+day_b_y = dfe.columns[1]
 
 #calculate Nachmeldungen Fälle
-cases_total_yest = dfe["Zahlen vom {}.11.2020".format(day_b_y)].iloc[1]
+cases_total_yest = dfe[day_b_y].iloc[1]
 cases_total_today = df_final["Fälle total"].tail(1)
 cases_new_today = df_final["Fälle neu"].tail(1)
 nachmeldungen_cases = int(cases_total_today) - int(cases_total_yest) - int(cases_new_today)
 
 #calculate Nachmeldungen Todesfälle
-death_total_yest = dfe["Zahlen vom {}.11.2020".format(day_b_y)].tail(1)
+death_total_yest = dfe[day_b_y].tail(1)
 death_total_today = df_final["Todesfälle total"].tail(1)
 death_new_today = df_final["Todesfälle neu"].tail(1)
 nachmeldungen_tod = int(death_total_today) - int(death_total_yest) - int(death_new_today)
 
 #append to df
-df_final["Nachmeldungen Fälle"] = [np.nan, int(nachmeldungen_cases)]
-df_final["Nachmeldungen Todesfälle"] = [np.nan, int(nachmeldungen_tod)]
+df_final["Nachmeldungen Fälle"] = [np.nan, nachmeldungen_cases]
+df_final["Nachmeldungen Todesfälle"] = [np.nan, nachmeldungen_tod]
 
 
 # In[ ]:

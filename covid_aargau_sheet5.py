@@ -10,7 +10,7 @@ import general_settings
 from time import sleep
 
 
-# In[2]:
+# In[3]:
 
 
 #open sheet
@@ -18,7 +18,7 @@ sleep(50)
 df_travel = pd.read_excel(general_settings.file_url, sheet_name="5. Quarantäne nach Einreise")
 
 
-# In[3]:
+# In[4]:
 
 
 #rename and choose header
@@ -31,7 +31,7 @@ df_travel["date"] = pd.to_datetime(df_travel["date"], errors="coerce").dt.normal
 df_travel.columns = ["date", "Fälle neu", "aktuell betreut", "Fälle total"]
 
 
-# In[4]:
+# In[5]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -41,7 +41,7 @@ else:
     df_travel = df_travel[df_travel["date"] < general_settings.today]
 
 
-# In[5]:
+# In[6]:
 
 
 #fill NaN values with previous value
@@ -49,6 +49,13 @@ df_travel = df_travel.fillna(method='ffill')
 
 #choose relevant columns
 df_travel = df_travel[["date", "aktuell betreut"]]
+
+
+# In[9]:
+
+
+#replace "n.d." no data with NaN
+df_travel.loc[df_travel["aktuell betreut"] == "n.d."] = np.nan
 
 
 # In[6]:

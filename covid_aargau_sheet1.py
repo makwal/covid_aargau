@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from time import sleep
 
 # # latest daily numbers
 
-# In[ ]:
+# In[2]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
@@ -32,7 +32,7 @@ df2 = df2[df2.date != "Summe"]
 df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 
-# In[ ]:
+# In[3]:
 
 
 #calculate 7 day rolling average (- 3 days)
@@ -49,7 +49,7 @@ df2["3_d_rolling"] = df2["Neue Fälle"].rolling(3).sum()
 df2["3_d_rolling_deaths"] = df2["neue_todesfälle"].rolling(3).sum()
 
 
-# In[ ]:
+# In[4]:
 
 
 #take relevant columns to new dataframe
@@ -65,7 +65,7 @@ df_cases = df2[["date",
 df_cases = df_cases.drop(df_cases.tail(1).index)
 
 
-# In[ ]:
+# In[5]:
 
 
 #formatting
@@ -74,14 +74,14 @@ df_cases[a] = df_cases[a].astype(float)
 df_cases = df_cases.round(0)
 
 
-# In[ ]:
+# In[6]:
 
 
 #append weekday to calculate if it is monday
 df_cases["weekday"] = df_cases["date"].dt.weekday
 
 
-# In[ ]:
+# In[7]:
 
 
 #make Series with latest numbers
@@ -92,7 +92,7 @@ rolling7 = df_cases["7_d_rolling"][df_cases["7_d_rolling"] >= 0].iloc[-1]
 s_final[3] = rolling7
 
 
-# In[ ]:
+# In[8]:
 
 
 #get numbers from same day one week earlier
@@ -118,7 +118,25 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[ ]:
+# In[9]:
+
+
+#if monday: take 3_d_rolling as "Neue Fälle"
+df_final.loc[df_final["weekday"] == 6, "Fälle neu"] = df_final["3_d_rolling"]
+df_final.loc[df_final["weekday"] == 6, "Todesfälle neu"] = df_final["3_d_rolling_deaths"]
+
+#get rid of weekday and 3_d_rolling
+df_final = df_final.drop(columns=["weekday", "3_d_rolling", "3_d_rolling_deaths"])
+
+#formatting
+try:
+    df_final["Fälle neu"] = df_final["Fälle neu"].astype(int)
+    df_final["Fälle total"] = df_final["Fälle total"].astype(int)
+except:
+    pass
+
+
+# In[10]:
 
 
 url_yest = "https://raw.githubusercontent.com/makwal/covid_aargau/master/backups/daily_data/backup_{}.csv"
@@ -166,25 +184,7 @@ df_final["Nachmeldungen Fälle"] = [np.nan, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [np.nan, nachmeldungen_tod]
 
 
-# In[ ]:
-
-
-#if monday: take 3_d_rolling as "Neue Fälle"
-df_final.loc[df_final["weekday"] == 6, "Fälle neu"] = df_final["3_d_rolling"]
-df_final.loc[df_final["weekday"] == 6, "Todesfälle neu"] = df_final["3_d_rolling_deaths"]
-
-#get rid of weekday and 3_d_rolling
-df_final = df_final.drop(columns=["weekday", "3_d_rolling", "3_d_rolling_deaths"])
-
-#formatting
-try:
-    df_final["Fälle neu"] = df_final["Fälle neu"].astype(int)
-    df_final["Fälle total"] = df_final["Fälle total"].astype(int)
-except:
-    pass
-
-
-# In[ ]:
+# In[11]:
 
 
 #build first df without date (daily numbers)
@@ -198,7 +198,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[ ]:
+# In[12]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -206,7 +206,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[ ]:
+# In[13]:
 
 
 #concat daily numbers and difference
@@ -217,7 +217,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[ ]:
+# In[14]:
 
 
 #reorder columns
@@ -232,7 +232,7 @@ df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)
 df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
 
-# In[ ]:
+# In[15]:
 
 
 if df_final4.iloc[4,2] == "inf%":

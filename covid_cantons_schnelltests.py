@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
 import requests
 from time import sleep
-import general_settings
+from general_settings import backdate
 from datetime import timedelta
 
 
-# In[2]:
+# In[ ]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -27,7 +27,7 @@ url1 = files["csv"]["daily"]["testPcrAntigen"]
 df_import = pd.read_csv(url1)
 
 
-# In[5]:
+# In[ ]:
 
 
 def antigen(canton):
@@ -44,7 +44,7 @@ def antigen(canton):
     df_anti_c2 = df_anti_c[["weekday", "entries", "sumTotal", "sum7d", "nachweismethode"]]
     
     #get 7-day-value for all sundays from november onwards
-    df_anti_c2_sun = df_anti_c2[(df_anti_c2["weekday"] == 6) & (df_anti_c2.index > pd.to_datetime("2020-11"))]
+    df_anti_c2_sun = df_anti_c2[(df_anti_c2["weekday"] == 6) & (df_anti_c2.index > pd.to_datetime("2020-11")) & (df_anti_c2.index < pd.to_datetime(backdate(3)))]
     df_anti_final = df_anti_c2_sun[["nachweismethode", "sum7d"]]
     df_anti_final["nachweismethode"] = df_anti_final["nachweismethode"].str.replace("Antigen_Schnelltest", "Antigen-Schnelltest")
     df_anti_final["nachweismethode"] = df_anti_final["nachweismethode"].str.replace("PCR", "PCR (herkömmlich)")
@@ -57,13 +57,13 @@ def antigen(canton):
     df_anti_final2 = df_anti_final.pivot_table(index="nachweismethode", columns=df_anti_final.index, values="sum7d")
     
     #export backup to csv
-    df_anti_final2.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, general_settings.today))
+    df_anti_final2.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
     
     #export to csv
     df_anti_final2.to_csv("/root/covid_aargau/data/schnelltests_{}.csv".format(canton))
 
 
-# In[6]:
+# In[ ]:
 
 
 cantons = ["AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
@@ -71,10 +71,4 @@ cantons = ["AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
 for canton in cantons:
     antigen(canton)
     sleep(5)
-
-
-# In[ ]:
-
-
-
 

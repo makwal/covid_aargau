@@ -66,7 +66,7 @@ def antigen(canton):
 # In[6]:
 
 
-cantons = ["AG", "SG", "LU"]
+cantons = ["AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
 
 for canton in cantons:
     antigen(canton)

@@ -4,10 +4,9 @@
 # In[1]:
 
 
-import requests
 import pandas as pd
 import numpy as np
-import general_settings
+from general_settings import file_url, backdate
 from time import sleep
 
 
@@ -16,9 +15,9 @@ from time import sleep
 # In[2]:
 
 
-#open sheet nr. 3
+#open sheet
 sleep(35)
-df_ven = pd.read_excel(general_settings.file_url, sheet_name="3. Ansteckungsorte")
+df_ven = pd.read_excel(file_url, sheet_name="3. Ansteckungsorte")
 
 
 # In[3]:
@@ -89,11 +88,11 @@ df_ven_final = df_ven_final.reset_index()
 df_ven_final = df_ven_final.rename(columns={0: "Stand: {}".format(current_date)})
 
 
-# In[8]:
+# In[15]:
 
 
 #make a backup export of the current data
-df_ven_final.to_csv("/root/covid_aargau/backups/venues/backup_{}.csv".format(general_settings.today))
+df_ven_final.to_csv("/root/covid_aargau/backups/venues/backup_{}.csv".format(backdate(0)))
 
 #export to csv
 df_ven_final.to_csv("/root/covid_aargau/data/venues_counter.csv", index=False)

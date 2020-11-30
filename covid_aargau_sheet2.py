@@ -1,26 +1,27 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[23]:
+# In[ ]:
 
 
 import pandas as pd
 import numpy as np
-import general_settings
+from general_settings import file_url, backdate
+from datetime import date
 from time import sleep
 
 
 # # isolation and quarantine
 
-# In[24]:
+# In[ ]:
 
 
 #open sheet
 sleep(20)
-df_iso = pd.read_excel(general_settings.file_url, sheet_name="2. Contact Tracing")
+df_iso = pd.read_excel(file_url, sheet_name="2. Contact Tracing")
 
 
-# In[25]:
+# In[ ]:
 
 
 #rename and choose header
@@ -29,7 +30,7 @@ df_iso.columns = df_iso.iloc[1]
 df_iso = df_iso.drop([0,1])
 
 
-# In[26]:
+# In[ ]:
 
 
 #formatting
@@ -41,13 +42,13 @@ df_iso.columns = ["date", "new_isolated", "total_curr_isolated", "total_isolated
 df_iso.drop(df_iso.tail(1).index,inplace=True)
 
 #if Monday (weekday == 0), take Friday as latest values
-if general_settings.todays_weekday == 0:
-    df_iso = df_iso[df_iso["date"] < general_settings.two_days_ago]
+if date.today().weekday() == 0:
+    df_iso = df_iso[df_iso["date"] < backdate(2)]
 else:
-    df_iso = df_iso[df_iso["date"] < general_settings.today]
+    df_iso = df_iso[df_iso["date"] < backdate(0)]
 
 
-# In[27]:
+# In[ ]:
 
 
 #fill NaN values with previous value
@@ -57,7 +58,7 @@ df_iso = df_iso.fillna(method='ffill')
 df_iso_time = df_iso[["date", "total_curr_isolated", "total_curr_quar"]]
 
 
-# In[28]:
+# In[ ]:
 
 
 #formatting
@@ -65,17 +66,11 @@ df_iso_time["date"] = df_iso_time["date"].dt.normalize()
 df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
 
 
-# In[31]:
-
-
-df_iso_time
-
-
-# In[30]:
+# In[ ]:
 
 
 #make a backup export of the current data
-df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(general_settings.today))
+df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(backdate(0)))
 
 #export to csv
 df_iso_time.to_csv("/root/covid_aargau/data/iso_over_time.csv", index=False)

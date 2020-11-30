@@ -6,7 +6,7 @@
 
 import pandas as pd
 from datetime import datetime
-import general_settings
+from general_settings import backdate
 from time import sleep
 
 
@@ -55,8 +55,8 @@ def csv_generator(canton):
     df_pos.columns = ["Kalenderwoche", "Datum", canton, "Schweiz"]
 
     #make a backup export of the current data
-    df_tests.to_csv("/root/covid_aargau/backups/tests/tests_weekly_{}_{}.csv".format(canton, general_settings.today))
-    df_pos.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, general_settings.today))
+    df_tests.to_csv("/root/covid_aargau/backups/tests/tests_weekly_{}_{}.csv".format(canton, backdate(0)))
+    df_pos.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, backdate(0)))
 
 
     #export to csv

@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[1]:
 
 
 import pandas as pd
 from time import sleep
-import general_settings
+from general_settings import backdate
 
 
-# In[5]:
+# In[2]:
 
 
 def age_dist_cantons(canton):
@@ -45,13 +45,13 @@ def age_dist_cantons(canton):
     df_all.drop(df_all.tail(1).index,inplace=True)
     
     #export backup to csv
-    df_all.to_csv("/root/covid_aargau/backups/age/altersverteilung_{}_{}.csv".format(canton, general_settings.today), index=False)
+    df_all.to_csv("/root/covid_aargau/backups/age/altersverteilung_{}_{}.csv".format(canton, backdate(0)), index=False)
     
     #export to csv
     df_all.to_csv("/root/covid_aargau/data/altersverteilung_{}.csv".format(canton), index=False)
 
 
-# In[6]:
+# In[3]:
 
 
 cantons = ["AG", "SG", "LU", "TG"]

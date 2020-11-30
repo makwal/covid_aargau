@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 import pandas as pd
-import general_settings
+from general_settings import backdate
 from time import sleep
 
 
-# In[14]:
+# In[2]:
 
 
 def death_getter(canton):
@@ -26,7 +26,7 @@ def death_getter(canton):
     if canton == "OCH":
         df_ag = df[(df["canton"] == "SG") | (df["canton"] == "TG") | (df["canton"] == "AR") | (df["canton"] == "AI")]
     elif canton == "ZCH":
-        df_ag = df[(df["canton"] == "LU") | (df["canton"] == "SZ") | (df["canton"] == "UR") | (df["canton"] == "OW")  | (df["canton"] == "NW")| (df["canton"] == "ZG")]
+        df_ag = df[(df["canton"] == "LU") | (df["canton"] == "SZ") | (df["canton"] == "UR") | (df["canton"] == "OW")  | (df["canton"] == "NW") | (df["canton"] == "ZG")]
     
     else:
         df_ag = df[df["canton"] == canton]
@@ -38,13 +38,13 @@ def death_getter(canton):
     df_final.index.name = "Altersklasse"
     df_final.columns = ["Todesfälle"]
     #export backup to csv
-    df_final.to_csv("/root/covid_aargau/backups/death/todesfaelle_{}_{}.csv".format(canton, general_settings.today))
+    df_final.to_csv("/root/covid_aargau/backups/death/todesfaelle_{}_{}.csv".format(canton, backdate(0)))
 
     #export to csv
     df_final.to_csv("/root/covid_aargau/data/deaths_{}.csv".format(canton))
 
 
-# In[17]:
+# In[3]:
 
 
 cantons = ["AG", "OCH", "ZCH"]
@@ -52,4 +52,10 @@ cantons = ["AG", "OCH", "ZCH"]
 for canton in cantons:
     death_getter(canton)
     sleep(5)
+
+
+# In[ ]:
+
+
+
 

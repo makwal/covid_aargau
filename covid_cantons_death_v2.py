@@ -45,6 +45,8 @@ def death(canton):
     for a in age_list:
         row = df[df["altersklasse_covid19"] == a].tail(1)[["altersklasse_covid19", "sumTotal"]]
         df_final = pd.concat([df_final, row])
+
+    df_final.columns = ["Altersklasse", "Todesfälle"]
         
     #export backup to csv
     df_final.to_csv("/root/covid_aargau/backups/schnelltests/death_{}_{}.csv".format(canton, backdate(0)), index=False)

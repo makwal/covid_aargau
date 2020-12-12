@@ -68,7 +68,7 @@ def test_pos(canton):
         dfc_final.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, backdate(0)))
         
         #export to csv
-        dfc_final.to_csv("/root/covid_aargau/data/positivity_weekly_{}.csv".format(canton), index=False)
+        dfc_final.to_csv("/root/covid_aargau/data/positivity_weekly_{}.csv".format(canton))
 
 
 # In[6]:

@@ -136,10 +136,12 @@ except:
 # In[ ]:
 
 
+#get Nachmeldungen Fälle and Todesfälle
 url_yest = "https://raw.githubusercontent.com/makwal/covid_aargau/master/backups/daily_data/backup_{}.csv"
 
 #check if data is updated (updated == yesterday's date)
 date_in_df = df_final.iloc[1]["date"]
+date_in_df_prev = df_final.iloc[0]["date"]
 data_updated = date_in_df == date.today() - timedelta(days=1)
 
 #if data has been updated today...
@@ -176,9 +178,17 @@ death_total_today = df_final["Todesfälle total"].tail(1)
 death_new_today = df_final["Todesfälle neu"].tail(1)
 nachmeldungen_tod = int(death_total_today) - int(death_total_yest) - int(death_new_today)
 
+#get Nachmeldungen from one week ago
+date_in_df_prev += timedelta(days=1)
+url_prev = url_yest.format(date_in_df_prev.date())
+df_prev = pd.read_csv(url_prev)
+df_prev.columns = ["a","b","c","d"]
+nach_cases_prev = int(df_prev["b"].iloc[6])
+nach_tod_prev = int(df_prev["b"].iloc[7])
+
 #append to df
-df_final["Nachmeldungen Fälle"] = [np.nan, nachmeldungen_cases]
-df_final["Nachmeldungen Todesfälle"] = [np.nan, nachmeldungen_tod]
+df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
+df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
 # In[ ]:
@@ -228,15 +238,8 @@ df_final4.columns = [date_current_values, "vor einer Woche", "+/- in %"]
 df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)
 df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
-
-# In[ ]:
-
-
-if df_final4.iloc[4,2] == "inf%":
-    df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan
-    
-df_final4.iloc[6,2] = np.nan
-df_final4.iloc[7,2] = np.nan
+#replace "inf%" with NaN
+df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan
 
 
 # In[ ]:

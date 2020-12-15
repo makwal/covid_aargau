@@ -51,7 +51,7 @@ def antigen(canton):
     
     #date minus six days, in order to display monday
     df_anti_final.index = df_anti_final.index - timedelta(days=6)
-    df_anti_final.index = df_anti_final.index.strftime("%d.%m.%Y")
+   # df_anti_final.index = df_anti_final.index.strftime("%d.%m.%Y")
     
     #pivot to perfection
     cols = []

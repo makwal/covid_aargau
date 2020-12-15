@@ -54,13 +54,17 @@ def antigen(canton):
     df_anti_final.index = df_anti_final.index.strftime("%d.%m.%Y")
     
     #pivot to perfection
+    cols = []
+    for i in df_anti_final.index:
+        if i not in cols:
+            cols.append(i)
     df_anti_final2 = df_anti_final.pivot_table(index="nachweismethode", columns=df_anti_final.index, values="sum7d")
-    
+    df_anti_final3 = df_anti_final2[cols]
     #export backup to csv
-    df_anti_final2.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
-    
+    df_anti_final3.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
+
     #export to csv
-    df_anti_final2.to_csv("/root/covid_aargau/data/schnelltests_{}.csv".format(canton))
+    df_anti_final3.to_csv("/root/covid_aargau/data/schnelltests_{}.csv".format(canton))
 
 
 # In[ ]:

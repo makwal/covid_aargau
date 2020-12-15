@@ -44,7 +44,7 @@ def antigen(canton):
     df_anti_c2 = df_anti_c[["weekday", "entries", "sumTotal", "sum7d", "nachweismethode"]]
     
     #get 7-day-value for all sundays from november onwards
-    df_anti_c2_sun = df_anti_c2[(df_anti_c2["weekday"] == 6) & (df_anti_c2.index > pd.to_datetime("2020-11")) & (df_anti_c2.index < pd.to_datetime(backdate(3)))]
+    df_anti_c2_sun = df_anti_c2[(df_anti_c2["weekday"] == 6) & (df_anti_c2.index > pd.to_datetime("2020-11"))]
     df_anti_final = df_anti_c2_sun[["nachweismethode", "sum7d"]]
     df_anti_final["nachweismethode"] = df_anti_final["nachweismethode"].str.replace("Antigen_Schnelltest", "Antigen-Schnelltest")
     df_anti_final["nachweismethode"] = df_anti_final["nachweismethode"].str.replace("PCR", "PCR (herkömmlich)")

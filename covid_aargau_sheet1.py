@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -13,16 +13,25 @@ from time import sleep
 
 # # latest daily numbers
 
-# In[ ]:
+# In[2]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 df = pd.read_excel(file_url, sheet_name="1. Covid-19-Daten")
 
+
+# In[3]:
+
+
 #renaming, choosing headers
 df.iloc[1,0] = "date"
 df.iloc[1,15] = "neue_todesfälle"
 df.iloc[1,16] = "todesfälle_gesamt"
+
+
+# In[4]:
+
+
 df.columns = df.iloc[1]
 df = df.drop([0,1], axis=0).reset_index()
 
@@ -32,7 +41,7 @@ df2 = df2[df2.date != "Summe"]
 df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 
-# In[ ]:
+# In[5]:
 
 
 #calculate 7 day rolling average (- 3 days)
@@ -46,7 +55,7 @@ df2["3_d_rolling"] = df2["Neue Fälle"].rolling(3).sum()
 df2["3_d_rolling_deaths"] = df2["neue_todesfälle"].rolling(3).sum()
 
 
-# In[ ]:
+# In[6]:
 
 
 #take relevant columns to new dataframe
@@ -62,7 +71,7 @@ df_cases = df2[["date",
 df_cases = df_cases.drop(df_cases.tail(1).index)
 
 
-# In[ ]:
+# In[7]:
 
 
 #formatting
@@ -71,14 +80,14 @@ df_cases[a] = df_cases[a].astype(float)
 df_cases = df_cases.round(0)
 
 
-# In[ ]:
+# In[8]:
 
 
 #append weekday to calculate if it is monday
 df_cases["weekday"] = df_cases["date"].dt.weekday
 
 
-# In[ ]:
+# In[9]:
 
 
 #make Series with latest numbers
@@ -89,7 +98,7 @@ rolling7 = df_cases["7_d_rolling"][df_cases["7_d_rolling"] >= 0].iloc[-1]
 s_final[3] = rolling7
 
 
-# In[ ]:
+# In[10]:
 
 
 #get numbers from same day one week earlier
@@ -115,7 +124,7 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[ ]:
+# In[11]:
 
 
 #if monday: take 3_d_rolling as "Neue Fälle"
@@ -133,7 +142,7 @@ except:
     pass
 
 
-# In[ ]:
+# In[12]:
 
 
 #get Nachmeldungen Fälle and Todesfälle
@@ -152,7 +161,7 @@ if data_updated:
         dfe = pd.read_csv(url_yest.format(backdate(3)))
     else:
         # or from yesterday on any other day than monday
-        dfe = pd.read_csv(url_yest.format(backdate(1)))  
+        dfe = pd.read_csv(url_yest.format(backdate(1)))
 #if data hasn't been updated today...
 else:
     #... and it's monday...
@@ -191,7 +200,7 @@ df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
-# In[ ]:
+# In[13]:
 
 
 #build first df without date (daily numbers)
@@ -205,7 +214,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[ ]:
+# In[14]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -213,7 +222,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[ ]:
+# In[15]:
 
 
 #concat daily numbers and difference
@@ -224,7 +233,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[ ]:
+# In[16]:
 
 
 #reorder columns
@@ -254,7 +263,7 @@ df_final4.to_csv("/root/covid_aargau/data/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[ ]:
+# In[17]:
 
 
 df_dailys = df_cases
@@ -264,14 +273,14 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[ ]:
+# In[18]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
 
-# In[ ]:
+# In[19]:
 
 
 #replace -1 with NaN
@@ -290,16 +299,16 @@ df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 
 # # hospital numbers
 
-# In[ ]:
+# In[20]:
 
 
-df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS/IMC"]]
+df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle Intensivpflegestation (IPS)", "Restkapazität Betten IPS"]]
 df_hosp.set_index("date", inplace=True)
 df_hosp["2020-10":].replace(0,-1, inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
-# In[ ]:
+# In[21]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -309,7 +318,7 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < backdate(0)]
 
 
-# In[ ]:
+# In[22]:
 
 
 df_hosp2 = df_hosp2.replace(-1, np.nan)

@@ -302,7 +302,7 @@ df_dailys3.to_csv("/root/covid_aargau/data/daily_over_time.csv", index=False)
 # In[20]:
 
 
-df_hosp = df2[["date", "Bestätigte Fälle ohne IPS/IMC", "Bestätigte Fälle Intensivpflegestation (IPS)", "Restkapazität Betten IPS"]]
+df_hosp = df2[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle Intensivpflegestation (IPS)", "Restkapazität Betten IPS"]]
 df_hosp.set_index("date", inplace=True)
 df_hosp["2020-10":].replace(0,-1, inplace=True)
 df_hosp.reset_index(inplace=True)

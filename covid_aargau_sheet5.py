@@ -27,6 +27,9 @@ df_travel.iloc[1,0] = "date"
 df_travel.columns = df_travel.iloc[1]
 df_travel = df_travel.drop([0,1])
 
+#remove rows with NaN in col header
+df_travel = df_travel.loc[:, df_travel.columns.notnull()]
+
 #formatting
 df_travel["date"] = pd.to_datetime(df_travel["date"], errors="coerce").dt.normalize()
 df_travel.columns = ["date", "Fälle neu", "aktuell betreut", "Fälle total"]

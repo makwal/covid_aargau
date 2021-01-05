@@ -245,7 +245,7 @@ df_final4.columns = [date_current_values, "vor einer Woche", "+/- in %"]
 
 #fillna in diff column with 0
 df_final4["+/- in %"] = df_final4["+/- in %"].fillna(0)
-df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
+#df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
 #replace "inf%" with NaN
 df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan

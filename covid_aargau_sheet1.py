@@ -249,7 +249,7 @@ df_final4["+/- in %"] = df_final4["+/- in %"].astype(str) + "%"
 
 #replace "inf%" with NaN
 df_final4.loc[df_final4["+/- in %"] == "inf%", "+/- in %"] = np.nan
-
+df_final4.loc[df_final4["+/- in %"] < -100, "+/- in %"] = np.nan
 
 # In[ ]:
 

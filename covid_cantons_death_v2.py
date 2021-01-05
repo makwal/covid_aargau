@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[2]:
 
 
-#in Betrieb ab 9. 12. 2020
 import pandas as pd
 import requests
 from time import sleep
@@ -12,13 +11,13 @@ from general_settings import backdate
 from datetime import timedelta
 
 
-# In[ ]:
+# In[3]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
 
 
-# In[ ]:
+# In[4]:
 
 
 r = requests.get(base_url)
@@ -45,14 +44,14 @@ def death(canton):
     for a in age_list:
         row = df[df["altersklasse_covid19"] == a].tail(1)[["altersklasse_covid19", "sumTotal"]]
         df_final = pd.concat([df_final, row])
-
+        
     df_final.columns = ["Altersklasse", "Todesfälle"]
         
     #export backup to csv
     df_final.to_csv("/root/covid_aargau/backups/death/death_{}_{}.csv".format(canton, backdate(0)), index=False)
     
     #export to csv
-    df_final.to_csv("/root/covid_aargau/data/death_{}.csv".format(canton), index=False)
+    df_final.to_csv("/root/covid_aargau/data/death/death_{}.csv".format(canton), index=False)
 
 
 # In[ ]:

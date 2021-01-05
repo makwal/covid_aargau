@@ -74,7 +74,7 @@ def test_pos(canton):
 # In[ ]:
 
 
-cantons = ["CH", "AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
+cantons = ["CH", "AG", "SO", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
 
 for canton in cantons:
     test_pos(canton)

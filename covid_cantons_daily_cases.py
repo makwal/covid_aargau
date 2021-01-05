@@ -49,7 +49,7 @@ def daily_cases(canton):
 # In[ ]:
 
 
-cantons = ["SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
+cantons = ["SO", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
 
 for canton in cantons:
     daily_cases(canton)

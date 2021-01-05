@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from general_settings import backdate
 from datetime import timedelta
 
 
-# In[ ]:
+# In[2]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
@@ -52,7 +52,7 @@ def age_dist_cantons(canton):
     df_final.to_csv("/root/covid_aargau/backups/age/altersverteilung_{}_{}.csv".format(canton, backdate(0)), index=False)
     
     #export to csv
-    df_final.to_csv("/root/covid_aargau/data/altersverteilung_{}.csv".format(canton), index=False)
+    df_final.to_csv("/root/covid_aargau/data/age/altersverteilung_{}.csv".format(canton), index=False)
 
 
 # In[ ]:

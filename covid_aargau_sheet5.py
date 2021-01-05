@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from datetime import date
 from time import sleep
 
 
-# In[ ]:
+# In[2]:
 
 
 #open sheet
@@ -19,7 +19,7 @@ sleep(50)
 df_travel = pd.read_excel(file_url, sheet_name="5. Quarantäne nach Einreise")
 
 
-# In[ ]:
+# In[3]:
 
 
 #rename and choose header
@@ -35,7 +35,7 @@ df_travel["date"] = pd.to_datetime(df_travel["date"], errors="coerce").dt.normal
 df_travel.columns = ["date", "Fälle neu", "aktuell betreut", "Fälle total"]
 
 
-# In[ ]:
+# In[4]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -45,7 +45,7 @@ else:
     df_travel = df_travel[df_travel["date"] < backdate(0)]
 
 
-# In[ ]:
+# In[5]:
 
 
 #fill NaN values with previous value
@@ -55,7 +55,7 @@ df_travel = df_travel.fillna(method='ffill')
 df_travel = df_travel[["date", "aktuell betreut"]]
 
 
-# In[ ]:
+# In[6]:
 
 
 #replace "n.d." no data with NaN
@@ -69,5 +69,5 @@ df_travel.loc[df_travel["aktuell betreut"] == "n.d.", "aktuell betreut"] = np.na
 df_travel.to_csv("/root/covid_aargau/backups/travel/backup_{}.csv".format(backdate(0)))
 
 #export to csv
-df_travel.to_csv("/root/covid_aargau/data/travel.csv", index=False)
+df_travel.to_csv("/root/covid_aargau/data/only_AG/travel.csv", index=False)
 

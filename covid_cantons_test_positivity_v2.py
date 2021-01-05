@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -11,13 +11,13 @@ from general_settings import backdate
 from datetime import datetime, timedelta
 
 
-# In[2]:
+# In[ ]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -27,17 +27,17 @@ url1 = files["csv"]["daily"]["test"]
 df_import = pd.read_csv(url1)
 
 
-# In[4]:
+# In[ ]:
 
 
 dfch = pd.DataFrame([])
 
 
-# In[5]:
+# In[ ]:
 
 
 def test_pos(canton):
-    dfc = df_import[df_import["geoRegion"] == canton]
+    dfc = df_import[df_import["geoRegion"] == canton].copy()
     dfc["datum"] = pd.to_datetime(dfc["datum"])
     
     dfc2 = dfc[dfc["datum"] >= pd.to_datetime("2020-06-15")]
@@ -45,7 +45,7 @@ def test_pos(canton):
     
     dfc3 = dfc2.resample("W")["entries_pos", "entries_neg"].sum()
     
-    dfc4 = dfc3[dfc3.index < datetime.today()]
+    dfc4 = dfc3[dfc3.index < datetime.today()].copy()
     dfc4.index = dfc4.index - timedelta(days=6)
     dfc4.columns = ["positiv", "negativ"]
     
@@ -55,7 +55,7 @@ def test_pos(canton):
         dfc4[["positiv", "negativ"]].T.to_csv("/root/covid_aargau/backups/tests/tests_weekly_{}_{}.csv".format(canton, backdate(0)))
         
         #export to csv
-        dfc4[["positiv", "negativ"]].T.to_csv("/root/covid_aargau/data/tests_weekly_{}.csv".format(canton))
+        dfc4[["positiv", "negativ"]].T.to_csv("/root/covid_aargau/data/tests_weekly/tests_weekly_{}.csv".format(canton))
     
     if canton == "CH":
         global dfch
@@ -68,10 +68,10 @@ def test_pos(canton):
         dfc_final.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, backdate(0)))
         
         #export to csv
-        dfc_final.to_csv("/root/covid_aargau/data/positivity_weekly_{}.csv".format(canton))
+        dfc_final.to_csv("/root/covid_aargau/data/positivity_weekly/positivity_weekly_{}.csv".format(canton))
 
 
-# In[6]:
+# In[ ]:
 
 
 cantons = ["CH", "AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]
@@ -79,10 +79,4 @@ cantons = ["CH", "AG", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR
 for canton in cantons:
     test_pos(canton)
     sleep(5)
-
-
-# In[ ]:
-
-
-
 

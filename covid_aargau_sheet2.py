@@ -73,5 +73,5 @@ df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
 df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(backdate(0)))
 
 #export to csv
-df_iso_time.to_csv("/root/covid_aargau/data/iso_over_time.csv", index=False)
+df_iso_time.to_csv("/root/covid_aargau/data/only_AG/iso_over_time.csv", index=False)
 

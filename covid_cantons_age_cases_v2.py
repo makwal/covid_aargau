@@ -58,7 +58,7 @@ def age_dist_cantons(canton):
 # In[ ]:
 
 
-cantons = ["AG", "SG", "LU", "TG"]
+cantons = ["AG", "SO", "SG", "LU", "TG"]
 
 for canton in cantons:
     age_dist_cantons(canton)

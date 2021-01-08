@@ -24,6 +24,8 @@ df_import = pd.read_csv(base_url)
 df = df_import[["date", "ncumul_conf", "current_hosp", "current_icu", "ncumul_deceased"]].copy()
 df["date"] = pd.to_datetime(df["date"])
 
+#fill NaN values with previous value
+df = df.ffill()
 
 # In[4]:
 

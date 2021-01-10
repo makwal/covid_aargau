@@ -60,8 +60,8 @@ df_final.columns = ["Land ^aktualisiert^", "Impfungen pro 100 Menschen", "Impfst
 
 
 #make a backup export of the current data
-df_final.to_csv("/root/covid_aargau/backups/vacc_world/backup_{}.csv".format(backdate(0)))
+df_final.to_csv("/root/covid_aargau/backups/vacc_world/backup_{}.csv".format(backdate(0)), index=False)
 
 #export to csv
-df_final.to_csv("/root/covid_aargau/data/vaccination/vacc_world.csv")
+df_final.to_csv("/root/covid_aargau/data/vaccination/vacc_world.csv", index=False)
 

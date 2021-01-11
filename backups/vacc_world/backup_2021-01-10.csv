@@ -1,5 +1,5 @@
 Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
-:il: Israel ^10.01.2021^,20.81,Pfizer/BioNTech
+:il: Israel ^10.01.2021^,20.61,Pfizer/BioNTech
 :ae: Vereinigte Arabische Emirate ^10.01.2021^,10.99,Sinopharm
 :bh: Bahrain ^09.01.2021^,4.95,"Pfizer/BioNTech, Sinopharm"
 :us: Vereinigte Staaten ^08.01.2021^,2.02,"Moderna, Pfizer/BioNTech"
@@ -16,28 +16,29 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :de: Deutschland ^08.01.2021^,0.64,Pfizer/BioNTech
 :cn: Volksrepublik China ^09.01.2021^,0.63,"CNBG, Sinovac"
 :es: Spanien ^08.01.2021^,0.59,Pfizer/BioNTech
+:ro: Rumänien ^10.01.2021^,0.56,Pfizer/BioNTech
 :ru: Russland ^02.01.2021^,0.55,Sputnik V
 :pl: Polen ^09.01.2021^,0.53,Pfizer/BioNTech
-:ro: Rumänien ^09.01.2021^,0.53,Pfizer/BioNTech
 :cy: Zypern ^06.01.2021^,0.45,Pfizer/BioNTech
 :hu: Ungarn ^08.01.2021^,0.44,Pfizer/BioNTech
+:gr: Griechenland ^10.01.2021^,0.42,Pfizer/BioNTech
 :se: Schweden ^04.01.2021^,0.4,Pfizer/BioNTech
-:gr: Griechenland ^09.01.2021^,0.39,Pfizer/BioNTech
 :sk: Slowakei ^07.01.2021^,0.36,Pfizer/BioNTech
 :lv: Lettland ^09.01.2021^,0.35,Pfizer/BioNTech
 :at: Österreich ^08.01.2021^,0.33,Pfizer/BioNTech
-:mt: Malta ^03.01.2021^,0.32,Pfizer/BioNTech
 :no: Norwegen ^07.01.2021^,0.32,Pfizer/BioNTech
+:mt: Malta ^03.01.2021^,0.32,Pfizer/BioNTech
 :ie: Irland ^07.01.2021^,0.31,Pfizer/BioNTech
 :om: Oman ^09.01.2021^,0.29,Pfizer/BioNTech
 :sa: Saudi-Arabien ^06.01.2021^,0.29,Pfizer/BioNTech
 :ar: Argentinien ^08.01.2021^,0.24,Sputnik V
 :fi: Finnland ^08.01.2021^,0.2,Pfizer/BioNTech
 :lu: Luxemburg ^30.12.2020^,0.19,Pfizer/BioNTech
+:cz: Tschechien ^06.01.2021^,0.19,Pfizer/BioNTech
 :cr: Costa Rica ^08.01.2021^,0.19,Pfizer/BioNTech
 :bg: Bulgarien ^10.01.2021^,0.19,Pfizer/BioNTech
-:cz: Tschechien ^06.01.2021^,0.19,Pfizer/BioNTech
-:nl: Niederlande ^09.01.2021^,0.18,Pfizer/BioNTech
+:nl: Niederlande ^10.01.2021^,0.18,Pfizer/BioNTech
+:rs: Serbien ^10.01.2021^,0.14,Pfizer/BioNTech
 :fr: Frankreich ^08.01.2021^,0.12,Pfizer/BioNTech
 :be: Belgien ^07.01.2021^,0.07,Pfizer/BioNTech
 :mx: Mexiko ^09.01.2021^,0.06,Pfizer/BioNTech

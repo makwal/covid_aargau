@@ -17,7 +17,7 @@ from time import sleep
 
 
 #open sheet
-#sleep(20)
+sleep(20)
 df_iso = pd.read_excel(file_url, sheet_name="2. Contact Tracing")
 
 

@@ -13,9 +13,9 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :lt: Litauen ^14.01.2021^,1.4,Pfizer/BioNTech
 :ca: Kanada ^14.01.2021^,1.22,"Moderna, Pfizer/BioNTech"
 :ee: Estland ^14.01.2021^,1.12,Pfizer/BioNTech
+:hu: Ungarn ^14.01.2021^,1.09,Pfizer/BioNTech
+:pl: Polen ^14.01.2021^,1.08,Pfizer/BioNTech
 :de: Deutschland ^13.01.2021^,1.01,"Moderna, Pfizer/BioNTech"
-:hu: Ungarn ^13.01.2021^,0.99,Pfizer/BioNTech
-:pl: Polen ^13.01.2021^,0.98,Pfizer/BioNTech
 :at: Österreich ^15.01.2021^,0.94,Pfizer/BioNTech
 :hr: Kroatien ^14.01.2021^,0.93,Pfizer/BioNTech
 :sk: Slowakei ^15.01.2021^,0.87,Pfizer/BioNTech
@@ -23,28 +23,28 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :se: Schweden ^10.01.2021^,0.79,Pfizer/BioNTech
 :ch: Schweiz ^14.01.2021^,0.76,Pfizer/BioNTech
 :lv: Lettland ^14.01.2021^,0.7,Pfizer/BioNTech
+:ru: Russland ^13.01.2021^,0.69,Sputnik V
+:cn: Volksrepublik China ^13.01.2021^,0.69,"CNBG, Sinovac"
 :pt: Portugal ^08.01.2021^,0.69,Pfizer/BioNTech
 :cy: Zypern ^10.01.2021^,0.69,Pfizer/BioNTech
-:cn: Volksrepublik China ^13.01.2021^,0.69,"CNBG, Sinovac"
-:ru: Russland ^13.01.2021^,0.69,Sputnik V
 :gr: Griechenland ^14.01.2021^,0.68,Pfizer/BioNTech
 :cz: Tschechien ^13.01.2021^,0.66,Pfizer/BioNTech
 :no: Norwegen ^13.01.2021^,0.62,Pfizer/BioNTech
 :fi: Finnland ^14.01.2021^,0.6,Pfizer/BioNTech
-:be: Belgien ^14.01.2021^,0.6,Pfizer/BioNTech
 :tr: Türkei ^15.01.2021^,0.58,Sinovac
 :sa: Saudi-Arabien ^11.01.2021^,0.51,Pfizer/BioNTech
 :fr: Frankreich ^14.01.2021^,0.49,Pfizer/BioNTech
 :om: Oman ^14.01.2021^,0.47,Pfizer/BioNTech
 :lu: Luxemburg ^13.01.2021^,0.46,Pfizer/BioNTech
+:be: Belgien ^13.01.2021^,0.43,Pfizer/BioNTech
 :ar: Argentinien ^13.01.2021^,0.37,Sputnik V
 :mt: Malta ^03.01.2021^,0.32,Pfizer/BioNTech
 :nl: Niederlande ^13.01.2021^,0.27,Pfizer/BioNTech
+:rs: Serbien ^14.01.2021^,0.27,Pfizer/BioNTech
 :mx: Mexiko ^14.01.2021^,0.26,Pfizer/BioNTech
 :bg: Bulgarien ^14.01.2021^,0.25,Pfizer/BioNTech
 :cr: Costa Rica ^08.01.2021^,0.19,Pfizer/BioNTech
-:rs: Serbien ^10.01.2021^,0.14,Pfizer/BioNTech
 :sg: Singapur ^12.01.2021^,0.11,Pfizer/BioNTech
+:cl: Chile ^14.01.2021^,0.1,Pfizer/BioNTech
 :kw: Kuwait ^28.12.2020^,0.06,Pfizer/BioNTech
-:cl: Chile ^06.01.2021^,0.06,Pfizer/BioNTech
 :gn: Guinea ^30.12.2020^,0.0,Sputnik V

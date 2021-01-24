@@ -1,52 +1,55 @@
 Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
-:il: Israel ^22.01.2021^,38.83,Pfizer/BioNTech
-:ae: Vereinigte Arabische Emirate ^22.01.2021^,23.65,"Pfizer/BioNTech, Sinopharm"
+:il: Israel ^23.01.2021^,39.65,"Moderna, Pfizer/BioNTech"
+:ae: Vereinigte Arabische Emirate ^23.01.2021^,24.54,"Pfizer/BioNTech, Sinopharm"
 :sc: Seychellen ^20.01.2021^,13.39,Sinopharm
-:gb: Vereinigtes Königreich ^21.01.2021^,8.62,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:gb: Vereinigtes Königreich ^22.01.2021^,9.32,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :bh: Bahrain ^20.01.2021^,8.47,"Pfizer/BioNTech, Sinopharm"
 :us: Vereinigte Staaten ^22.01.2021^,5.77,"Moderna, Pfizer/BioNTech"
-:mt: Malta ^21.01.2021^,3.74,Pfizer/BioNTech
-:dk: Dänemark ^21.01.2021^,3.28,"Moderna, Pfizer/BioNTech"
+:mt: Malta ^22.01.2021^,4.02,Pfizer/BioNTech
+:dk: Dänemark ^23.01.2021^,3.39,"Moderna, Pfizer/BioNTech"
+:si: Slowenien ^22.01.2021^,2.64,Pfizer/BioNTech
 :es: Spanien ^22.01.2021^,2.49,"Moderna, Pfizer/BioNTech"
 :ie: Irland ^20.01.2021^,2.47,Pfizer/BioNTech
 :lt: Litauen ^22.01.2021^,2.46,"Moderna, Pfizer/BioNTech"
 :is: Island ^22.01.2021^,2.42,"Moderna, Pfizer/BioNTech"
-:si: Slowenien ^21.01.2021^,2.24,Pfizer/BioNTech
-:it: Italien ^22.01.2021^,2.17,Pfizer/BioNTech
-:pt: Portugal ^22.01.2021^,2.08,Pfizer/BioNTech
+:pt: Portugal ^23.01.2021^,2.28,Pfizer/BioNTech
+:it: Italien ^23.01.2021^,2.2,Pfizer/BioNTech
+:ro: Rumänien ^23.01.2021^,2.18,Pfizer/BioNTech
 :ca: Kanada ^22.01.2021^,2.06,"Moderna, Pfizer/BioNTech"
-:ro: Rumänien ^22.01.2021^,2.01,Pfizer/BioNTech
+:cy: Zypern ^22.01.2021^,1.98,Pfizer/BioNTech
 :ch: Schweiz ^21.01.2021^,1.96,Pfizer/BioNTech
+:de: Deutschland ^22.01.2021^,1.95,"Moderna, Pfizer/BioNTech"
+:ee: Estland ^23.01.2021^,1.94,Pfizer/BioNTech
 :at: Österreich ^23.01.2021^,1.88,Pfizer/BioNTech
-:ee: Estland ^22.01.2021^,1.82,Pfizer/BioNTech
-:de: Deutschland ^21.01.2021^,1.79,"Moderna, Pfizer/BioNTech"
+:pl: Polen ^22.01.2021^,1.81,Pfizer/BioNTech
+:rs: Serbien ^22.01.2021^,1.76,Pfizer/BioNTech
 :cz: Tschechien ^22.01.2021^,1.75,"Moderna, Pfizer/BioNTech"
-:pl: Polen ^21.01.2021^,1.7,Pfizer/BioNTech
 :sk: Slowakei ^21.01.2021^,1.69,Pfizer/BioNTech
 :fi: Finnland ^22.01.2021^,1.65,Pfizer/BioNTech
-:hu: Ungarn ^21.01.2021^,1.5,"Pfizer/BioNTech, Pifzer/BioNTech"
+:hr: Kroatien ^22.01.2021^,1.58,Pfizer/BioNTech
+:hu: Ungarn ^22.01.2021^,1.55,"Pfizer/BioNTech, Pifzer/BioNTech"
+:gr: Griechenland ^23.01.2021^,1.51,Pfizer/BioNTech
+:be: Belgien ^22.01.2021^,1.5,Pfizer/BioNTech
+:tr: Türkei ^23.01.2021^,1.45,Sinovac
 :se: Schweden ^17.01.2021^,1.45,Pfizer/BioNTech
-:tr: Türkei ^23.01.2021^,1.43,Sinovac
 :fr: Frankreich ^22.01.2021^,1.42,Pfizer/BioNTech
-:be: Belgien ^21.01.2021^,1.41,Pfizer/BioNTech
 :no: Norwegen ^21.01.2021^,1.36,Pfizer/BioNTech
-:gr: Griechenland ^22.01.2021^,1.35,Pfizer/BioNTech
-:hr: Kroatien ^19.01.2021^,1.32,Pfizer/BioNTech
-:rs: Serbien ^21.01.2021^,1.25,Pfizer/BioNTech
-:cy: Zypern ^15.01.2021^,1.17,Pfizer/BioNTech
 :lu: Luxemburg ^21.01.2021^,1.1,Pfizer/BioNTech
 :cn: Volksrepublik China ^20.01.2021^,1.04,"CNBG, Sinovac"
+:sg: Singapur ^22.01.2021^,1.03,Pfizer/BioNTech
 :lv: Lettland ^22.01.2021^,1.0,Pfizer/BioNTech
 :sa: Saudi-Arabien ^17.01.2021^,0.85,Pfizer/BioNTech
 :nl: Niederlande ^22.01.2021^,0.79,"Moderna, Pfizer/BioNTech"
 :ru: Russland ^13.01.2021^,0.69,Sputnik V
-:ar: Argentinien ^22.01.2021^,0.62,Sputnik V
+:ar: Argentinien ^23.01.2021^,0.64,Sputnik V
 :om: Oman ^19.01.2021^,0.58,Pfizer/BioNTech
-:cr: Costa Rica ^15.01.2021^,0.49,Pfizer/BioNTech
+:cr: Costa Rica ^18.01.2021^,0.58,Pfizer/BioNTech
 :mx: Mexiko ^22.01.2021^,0.48,Pfizer/BioNTech
 :bg: Bulgarien ^22.01.2021^,0.38,"Moderna, Pfizer/BioNTech"
 :cl: Chile ^22.01.2021^,0.33,Pfizer/BioNTech
-:br: Brasilien ^23.01.2021^,0.22,Sinovac
-:sg: Singapur ^12.01.2021^,0.11,Pfizer/BioNTech
+:br: Brasilien ^23.01.2021^,0.25,Sinovac
+:pa: Panama ^22.01.2021^,0.12,Pfizer/BioNTech
 :in: Indien ^22.01.2021^,0.1,"Covaxin, Covishield"
 :kw: Kuwait ^28.12.2020^,0.06,Pfizer/BioNTech
+:id: Indonesien ^22.01.2021^,0.05,Sinovac
+:ec: Ecuador ^22.01.2021^,0.0,Pfizer/BioNTech

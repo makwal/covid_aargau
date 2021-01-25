@@ -25,8 +25,8 @@ df = pd.read_excel(file_url, sheet_name="1. Covid-19-Daten")
 
 #renaming, choosing headers
 df.iloc[1,0] = "date"
-df.iloc[1,17] = "neue_todesfälle"
-df.iloc[1,18] = "todesfälle_gesamt"
+df.iloc[1,19] = "neue_todesfälle"
+df.iloc[1,20] = "todesfälle_gesamt"
 
 
 # In[ ]:
@@ -35,9 +35,13 @@ df.iloc[1,18] = "todesfälle_gesamt"
 df.columns = df.iloc[1]
 df = df.drop([0,1], axis=0).reset_index()
 
+
+# In[ ]:
+
+
 #choose relevant columns
-df2 = df.iloc[:, :20]
-df2 = df2[df2.date != "Summe"]
+df2 = df.iloc[:, :22]
+df2 = df2[df2.date != "Summe"].copy()
 df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 

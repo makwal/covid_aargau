@@ -1,61 +1,62 @@
 Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
-:il: Israel ^04.02.2021^,61.66,"Moderna, Pfizer/BioNTech"
+:il: Israel ^05.02.2021^,62.12,"Moderna, Pfizer/BioNTech"
 :ae: Vereinigte Arabische Emirate ^04.02.2021^,38.92,"Pfizer/BioNTech, Sinopharm"
 :sc: Seychellen ^03.02.2021^,37.72,"Oxford/AstraZeneca, Sinopharm"
-:gb: Vereinigtes Königreich ^03.02.2021^,16.19,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:us: Vereinigte Staaten ^04.02.2021^,10.53,"Moderna, Pfizer/BioNTech"
-:bh: Bahrain ^04.02.2021^,10.42,"Pfizer/BioNTech, Sinopharm"
-:rs: Serbien ^04.02.2021^,7.74,"Pfizer/BioNTech, Sinopharm, Sputnik V"
-:mt: Malta ^04.02.2021^,7.16,Pfizer/BioNTech
+:gb: Vereinigtes Königreich ^04.02.2021^,16.91,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:us: Vereinigte Staaten ^05.02.2021^,11.01,"Moderna, Pfizer/BioNTech"
+:bh: Bahrain ^05.02.2021^,10.55,"Pfizer/BioNTech, Sinopharm"
+:rs: Serbien ^05.02.2021^,7.91,"Pfizer/BioNTech, Sinopharm, Sputnik V"
+:mt: Malta ^05.02.2021^,7.58,Pfizer/BioNTech
 :mc: Monaco ^18.01.2021^,6.12,Pfizer/BioNTech
-:dk: Dänemark ^03.02.2021^,5.15,"Moderna, Pfizer/BioNTech"
+:dk: Dänemark ^04.02.2021^,5.37,"Moderna, Pfizer/BioNTech"
 :is: Island ^05.02.2021^,5.13,"Moderna, Pfizer/BioNTech"
+:si: Slowenien ^05.02.2021^,4.64,Pfizer/BioNTech
+:lt: Litauen ^05.02.2021^,4.5,"Moderna, Pfizer/BioNTech"
 :ie: Irland ^03.02.2021^,4.44,Pfizer/BioNTech
-:lt: Litauen ^04.02.2021^,4.21,"Moderna, Pfizer/BioNTech"
-:pl: Polen ^04.02.2021^,4.14,Pfizer/BioNTech
-:ro: Rumänien ^04.02.2021^,4.13,Pfizer/BioNTech
-:si: Slowenien ^03.02.2021^,4.01,Pfizer/BioNTech
-:es: Spanien ^03.02.2021^,3.99,"Moderna, Pfizer/BioNTech"
-:it: Italien ^04.02.2021^,3.86,"Moderna, Pfizer/BioNTech"
+:ro: Rumänien ^05.02.2021^,4.27,Pfizer/BioNTech
+:pl: Polen ^05.02.2021^,4.27,Pfizer/BioNTech
+:ch: Schweiz ^03.02.2021^,4.25,"Moderna, Pfizer/BioNTech"
+:es: Spanien ^04.02.2021^,4.25,"Moderna, Pfizer/BioNTech"
+:it: Italien ^05.02.2021^,4.03,"Moderna, Pfizer/BioNTech"
+:sk: Slowakei ^05.02.2021^,3.8,Pfizer/BioNTech
 :ee: Estland ^05.02.2021^,3.75,Pfizer/BioNTech
+:fi: Finnland ^05.02.2021^,3.74,Pfizer/BioNTech
+:de: Deutschland ^05.02.2021^,3.72,"Moderna, Pfizer/BioNTech"
 :hu: Ungarn ^04.02.2021^,3.7,Pfizer/BioNTech
-:ch: Schweiz ^31.01.2021^,3.64,"Moderna, Pfizer/BioNTech"
-:de: Deutschland ^04.02.2021^,3.57,"Moderna, Pfizer/BioNTech"
+:no: Norwegen ^04.02.2021^,3.66,Pfizer/BioNTech
+:gr: Griechenland ^05.02.2021^,3.65,Pfizer/BioNTech
 :pt: Portugal ^04.02.2021^,3.57,Pfizer/BioNTech
-:fi: Finnland ^04.02.2021^,3.5,Pfizer/BioNTech
-:sk: Slowakei ^04.02.2021^,3.5,Pfizer/BioNTech
-:gr: Griechenland ^04.02.2021^,3.45,Pfizer/BioNTech
-:se: Schweden ^04.02.2021^,3.17,Pfizer/BioNTech
+:be: Belgien ^05.02.2021^,3.54,"Moderna, Pfizer/BioNTech"
+:se: Schweden ^05.02.2021^,3.4,Pfizer/BioNTech
+:cz: Tschechien ^05.02.2021^,3.21,"Moderna, Pfizer/BioNTech"
 :sg: Singapur ^02.02.2021^,3.09,Pfizer/BioNTech
-:cz: Tschechien ^04.02.2021^,3.06,"Moderna, Pfizer/BioNTech"
-:no: Norwegen ^03.02.2021^,3.05,Pfizer/BioNTech
 :tr: Türkei ^05.02.2021^,3.04,Sinovac
-:be: Belgien ^03.02.2021^,3.03,"Moderna, Pfizer/BioNTech"
+:cl: Chile ^05.02.2021^,2.98,"Pfizer/BioNTech, Sinovac"
+:fr: Frankreich ^04.02.2021^,2.89,Pfizer/BioNTech
 :cy: Zypern ^29.01.2021^,2.87,Pfizer/BioNTech
-:fr: Frankreich ^03.02.2021^,2.69,Pfizer/BioNTech
-:ca: Kanada ^04.02.2021^,2.69,"Moderna, Pfizer/BioNTech"
-:at: Österreich ^04.02.2021^,2.65,Pfizer/BioNTech
-:lu: Luxemburg ^03.02.2021^,2.46,Pfizer/BioNTech
+:at: Österreich ^05.02.2021^,2.81,Pfizer/BioNTech
+:ca: Kanada ^05.02.2021^,2.76,"Moderna, Pfizer/BioNTech"
+:lu: Luxemburg ^04.02.2021^,2.62,Pfizer/BioNTech
+:hr: Kroatien ^04.02.2021^,2.33,Pfizer/BioNTech
+:li: Liechtenstein ^03.02.2021^,2.18,"Moderna, Pfizer/BioNTech"
 :cn: Volksrepublik China ^03.02.2021^,2.17,"CNBG, Sinovac"
-:hr: Kroatien ^03.02.2021^,2.14,Pfizer/BioNTech
-:nl: Niederlande ^04.02.2021^,1.93,"Moderna, Pfizer/BioNTech"
-:lv: Lettland ^04.02.2021^,1.58,Pfizer/BioNTech
-:cl: Chile ^04.02.2021^,1.53,"Pfizer/BioNTech, Sinovac"
+:nl: Niederlande ^05.02.2021^,2.08,"Moderna, Pfizer/BioNTech"
+:lv: Lettland ^05.02.2021^,1.66,Pfizer/BioNTech
 :br: Brasilien ^05.02.2021^,1.45,"Oxford/AstraZeneca, Sinovac"
 :ad: Andorra ^01.02.2021^,1.34,Pfizer/BioNTech
 :sa: Saudi-Arabien ^01.02.2021^,1.27,Pfizer/BioNTech
 :cr: Costa Rica ^01.02.2021^,1.13,Pfizer/BioNTech
+:ma: Marokko ^05.02.2021^,1.11,"Oxford/AstraZeneca, Sinopharm"
 :ar: Argentinien ^04.02.2021^,0.98,Sputnik V
-:ma: Marokko ^04.02.2021^,0.95,"Oxford/AstraZeneca, Sinopharm"
 :kw: Kuwait ^26.01.2021^,0.82,Pfizer/BioNTech
-:bg: Bulgarien ^04.02.2021^,0.78,"Moderna, Pfizer/BioNTech"
+:bg: Bulgarien ^05.02.2021^,0.82,"Moderna, Pfizer/BioNTech"
 :lk: Sri Lanka ^05.02.2021^,0.73,Oxford/AstraZeneca
 :om: Oman ^27.01.2021^,0.73,Pfizer/BioNTech
 :ru: Russland ^13.01.2021^,0.69,Sputnik V
 :mv: Malediven ^04.02.2021^,0.59,Oxford/AstraZeneca
-:mx: Mexiko ^04.02.2021^,0.54,Pfizer/BioNTech
-:np: Nepal ^01.02.2021^,0.39,Oxford/AstraZeneca
-:in: Indien ^04.02.2021^,0.36,"Covaxin, Oxford/AstraZeneca"
+:np: Nepal ^04.02.2021^,0.54,Oxford/AstraZeneca
+:mx: Mexiko ^05.02.2021^,0.54,Pfizer/BioNTech
+:in: Indien ^05.02.2021^,0.39,"Covaxin, Oxford/AstraZeneca"
 :id: Indonesien ^05.02.2021^,0.32,Sinovac
 :pa: Panama ^24.01.2021^,0.15,Pfizer/BioNTech
 :ec: Ecuador ^04.02.2021^,0.04,Pfizer/BioNTech

@@ -1,3 +1,4 @@
 gitpush.sh
 covid_aargau_vacc_progress.py
 covid_national_vacc_progress.py
+covid_cantons_vacc_progress.py

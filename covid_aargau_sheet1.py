@@ -201,8 +201,8 @@ date_in_df_prev += timedelta(days=1)
 url_prev = url_yest.format(date_in_df_prev.date())
 df_prev = pd.read_csv(url_prev)
 df_prev.columns = ["a","b","c","d"]
-nach_cases_prev = int(df_prev["b"].iloc[6])
-nach_tod_prev = int(df_prev["b"].iloc[7])
+nach_cases_prev = int(df_prev["b"].iloc[7])
+nach_tod_prev = int(df_prev["b"].iloc[8])
 
 #append to df
 df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]

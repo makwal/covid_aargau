@@ -1,99 +1,100 @@
 Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
-:il: Israel ^04.03.2021^,98.85,"Moderna, Pfizer/BioNTech"
-:sc: Seychellen ^03.03.2021^,82.23,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:ae: Vereinigte Arabische Emirate ^04.03.2021^,62.73,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V"
-:gb: Vereinigtes Königreich ^03.03.2021^,32.33,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:il: Israel ^05.03.2021^,98.94,"Moderna, Pfizer/BioNTech"
+:sc: Seychellen ^05.03.2021^,83.09,"Oxford/AstraZeneca, Sinopharm/Beijing"
+:ae: Vereinigte Arabische Emirate ^05.03.2021^,63.04,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V"
+:gb: Vereinigtes Königreich ^04.03.2021^,32.99,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:us: Vereinigte Staaten ^05.03.2021^,25.42,"Moderna, Pfizer/BioNTech"
 :mv: Malediven ^04.03.2021^,25.37,Oxford/AstraZeneca
-:us: Vereinigte Staaten ^04.03.2021^,24.69,"Moderna, Pfizer/BioNTech"
-:rs: Serbien ^04.03.2021^,23.18,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:cl: Chile ^04.03.2021^,22.34,"Pfizer/BioNTech, Sinovac"
-:mt: Malta ^03.03.2021^,19.67,Pfizer/BioNTech
-:bh: Bahrain ^04.03.2021^,17.96,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:bb: Barbados ^03.03.2021^,15.61,Oxford/AstraZeneca
-:hu: Ungarn ^04.03.2021^,11.83,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:dk: Dänemark ^03.03.2021^,11.52,"Moderna, Pfizer/BioNTech"
-:is: Island ^04.03.2021^,11.49,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:ma: Marokko ^04.03.2021^,11.47,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:tr: Türkei ^04.03.2021^,11.34,Sinovac
-:lt: Litauen ^04.03.2021^,10.31,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:no: Norwegen ^03.03.2021^,10.05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:gr: Griechenland ^04.03.2021^,9.83,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:cl: Chile ^05.03.2021^,23.89,"Pfizer/BioNTech, Sinovac"
+:rs: Serbien ^05.03.2021^,23.79,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+:mt: Malta ^04.03.2021^,20.37,Pfizer/BioNTech
+:bh: Bahrain ^05.03.2021^,18.05,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+:bb: Barbados ^04.03.2021^,16.16,Oxford/AstraZeneca
+:hu: Ungarn ^05.03.2021^,12.98,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+:ma: Marokko ^05.03.2021^,11.86,"Oxford/AstraZeneca, Sinopharm/Beijing"
+:dk: Dänemark ^04.03.2021^,11.84,"Moderna, Pfizer/BioNTech"
+:is: Island ^05.03.2021^,11.65,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:tr: Türkei ^05.03.2021^,11.57,Sinovac
+:cy: Zypern ^05.03.2021^,11.42,Pfizer/BioNTech
+:lt: Litauen ^05.03.2021^,10.82,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:no: Norwegen ^04.03.2021^,10.67,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:ch: Schweiz ^03.03.2021^,10.19,"Moderna, Pfizer/BioNTech"
+:gr: Griechenland ^05.03.2021^,10.16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:ee: Estland ^05.03.2021^,10.14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:pl: Polen ^04.03.2021^,10.02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :sg: Singapur ^04.03.2021^,9.66,Pfizer/BioNTech
-:pl: Polen ^03.03.2021^,9.56,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:ee: Estland ^04.03.2021^,9.56,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:ch: Schweiz ^28.02.2021^,9.3,"Moderna, Pfizer/BioNTech"
-:fi: Finnland ^04.03.2021^,9.19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:pt: Portugal ^04.03.2021^,9.11,"Moderna, Pfizer/BioNTech"
-:es: Spanien ^03.03.2021^,9.05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:ie: Irland ^01.03.2021^,9.04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:sk: Slowakei ^03.03.2021^,8.98,Pfizer/BioNTech
-:si: Slowenien ^03.03.2021^,8.86,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:cy: Zypern ^26.02.2021^,8.7,Pfizer/BioNTech
-:ro: Rumänien ^03.03.2021^,8.53,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:se: Schweden ^04.03.2021^,8.45,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:it: Italien ^04.03.2021^,8.18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:de: Deutschland ^03.03.2021^,8.13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:at: Österreich ^03.03.2021^,8.03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:fi: Finnland ^05.03.2021^,9.62,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:es: Spanien ^04.03.2021^,9.56,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:pt: Portugal ^05.03.2021^,9.53,"Moderna, Pfizer/BioNTech"
+:ie: Irland ^02.03.2021^,9.33,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:si: Slowenien ^04.03.2021^,9.31,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:sk: Slowakei ^04.03.2021^,9.22,Pfizer/BioNTech
+:se: Schweden ^05.03.2021^,8.82,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:ro: Rumänien ^04.03.2021^,8.76,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:it: Italien ^05.03.2021^,8.53,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:de: Deutschland ^04.03.2021^,8.45,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:at: Österreich ^04.03.2021^,8.24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :nl: Niederlande ^28.02.2021^,7.8,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:be: Belgien ^03.03.2021^,7.47,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:fr: Frankreich ^03.03.2021^,7.4,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:cz: Tschechien ^04.03.2021^,7.2,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:li: Liechtenstein ^28.02.2021^,6.81,"Moderna, Pfizer/BioNTech"
-:lu: Luxemburg ^03.03.2021^,6.73,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:be: Belgien ^04.03.2021^,7.77,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:fr: Frankreich ^04.03.2021^,7.71,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:cz: Tschechien ^05.03.2021^,7.52,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:li: Liechtenstein ^03.03.2021^,7.13,"Moderna, Pfizer/BioNTech"
+:lu: Luxemburg ^04.03.2021^,7.06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mc: Monaco ^18.01.2021^,6.12,Pfizer/BioNTech
+:ca: Kanada ^05.03.2021^,5.98,"Moderna, Pfizer/BioNTech"
 :hr: Kroatien ^04.03.2021^,5.89,Pfizer/BioNTech
-:ca: Kanada ^04.03.2021^,5.75,"Moderna, Pfizer/BioNTech"
 :qa: Katar ^18.02.2021^,4.86,Pfizer/BioNTech
-:br: Brasilien ^04.03.2021^,4.58,"Oxford/AstraZeneca, Sinovac"
-:ru: Russland ^04.03.2021^,4.12,"EpiVacCorona, Sputnik V"
+:br: Brasilien ^05.03.2021^,4.78,"Oxford/AstraZeneca, Sinovac"
+:ru: Russland ^05.03.2021^,4.32,"EpiVacCorona, Sputnik V"
+:lv: Lettland ^05.03.2021^,4.29,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :kw: Kuwait ^15.02.2021^,4.1,Pfizer/BioNTech
-:lv: Lettland ^04.03.2021^,4.03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:bg: Bulgarien ^04.03.2021^,3.86,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:bg: Bulgarien ^05.03.2021^,4.09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:sm: San Marino ^04.03.2021^,4.08,Sputnik V
 :cn: Volksrepublik China ^28.02.2021^,3.65,"Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac"
 :pa: Panama ^04.03.2021^,3.49,Pfizer/BioNTech
+:sa: Saudi-Arabien ^05.03.2021^,3.4,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :az: Aserbaidschan ^03.03.2021^,3.33,"Oxford/AstraZeneca, Sputnik V"
 :ad: Andorra ^26.02.2021^,3.27,Pfizer/BioNTech
-:sa: Saudi-Arabien ^04.03.2021^,3.14,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:ar: Argentinien ^05.03.2021^,3.0,Sputnik V
 :cr: Costa Rica ^01.03.2021^,2.94,Pfizer/BioNTech
-:ar: Argentinien ^04.03.2021^,2.77,Sputnik V
-:sm: San Marino ^03.03.2021^,2.6,Sputnik V
+:do: Dominikanische Republik ^05.03.2021^,2.8,Oxford/AstraZeneca
 :lk: Sri Lanka ^02.03.2021^,2.59,Oxford/AstraZeneca
 :bd: Bangladesch ^04.03.2021^,2.17,Oxford/AstraZeneca
-:do: Dominikanische Republik ^04.03.2021^,2.1,Oxford/AstraZeneca
-:mx: Mexiko ^04.03.2021^,2.08,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
-:uy: Uruguay ^03.03.2021^,1.56,Sinovac
+:mx: Mexiko ^05.03.2021^,2.12,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
+:uy: Uruguay ^05.03.2021^,2.03,Sinovac
 :jo: Jordanien ^25.02.2021^,1.47,"Pfizer/BioNTech, Sinopharm/Beijing"
+:in: Indien ^05.03.2021^,1.41,"Covaxin, Oxford/AstraZeneca"
 :np: Nepal ^20.02.2021^,1.38,Oxford/AstraZeneca
 :om: Oman ^23.02.2021^,1.32,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:in: Indien ^04.03.2021^,1.3,"Covaxin, Oxford/AstraZeneca"
-:id: Indonesien ^03.03.2021^,1.24,Sinovac
-:pe: Peru ^03.03.2021^,0.95,Sinopharm/Beijing
-:lb: Libanon ^04.03.2021^,0.84,Pfizer/BioNTech
+:id: Indonesien ^05.03.2021^,1.29,Sinovac
+:pe: Peru ^04.03.2021^,1.03,Sinopharm/Beijing
+:lb: Libanon ^05.03.2021^,0.89,Pfizer/BioNTech
+":kr: Korea, Süd ^05.03.2021^",0.58,Oxford/AstraZeneca
 :al: Albanien ^03.03.2021^,0.55,Pfizer/BioNTech
-":kr: Korea, Süd ^04.03.2021^",0.44,Oxford/AstraZeneca
-:co: Kolumbien ^04.03.2021^,0.41,Pfizer/BioNTech
+:co: Kolumbien ^05.03.2021^,0.47,Pfizer/BioNTech
+:ec: Ecuador ^05.03.2021^,0.4,Pfizer/BioNTech
+:my: Malaysia ^05.03.2021^,0.35,Sinovac
 :me: Montenegro ^03.03.2021^,0.31,Sputnik V
+:sn: Senegal ^04.03.2021^,0.31,Sinopharm/Beijing
 :mu: Mauritius ^17.02.2021^,0.3,Oxford/AstraZeneca
-:sn: Senegal ^03.03.2021^,0.27,Sinopharm/Beijing
-:my: Malaysia ^03.03.2021^,0.25,Sinovac
+:au: Australien ^05.03.2021^,0.28,Pfizer/BioNTech
 :sv: El Salvador ^25.02.2021^,0.25,Oxford/AstraZeneca
-:ec: Ecuador ^01.03.2021^,0.24,Pfizer/BioNTech
+:bz: Belize ^05.03.2021^,0.25,Oxford/AstraZeneca
 :kh: Kambodscha ^03.03.2021^,0.24,Sinopharm/Beijing
 :gy: Guyana ^22.02.2021^,0.24,Oxford/AstraZeneca
-:au: Australien ^04.03.2021^,0.24,Pfizer/BioNTech
 :by: Belarus ^18.02.2021^,0.22,Sputnik V
-:zw: Simbabwe ^04.03.2021^,0.21,Sinopharm/Beijing
+:zw: Simbabwe ^05.03.2021^,0.21,Sinopharm/Beijing
 :nz: Neuseeland ^03.03.2021^,0.2,Pfizer/BioNTech
 :mm: Myanmar ^02.02.2021^,0.19,Oxford/AstraZeneca
 :dz: Algerien ^19.02.2021^,0.17,Sputnik V
-:bo: Bolivien ^04.03.2021^,0.17,Sputnik V
+:bo: Bolivien ^05.03.2021^,0.17,Sputnik V
 :mn: Mongolei ^26.02.2021^,0.15,Oxford/AstraZeneca
 :za: Südafrika ^28.02.2021^,0.12,Johnson&Johnson
 :kz: Kasachstan ^24.02.2021^,0.12,Sputnik V
+:ua: Ukraine ^05.03.2021^,0.04,Oxford/AstraZeneca
+:jp: Japan ^05.03.2021^,0.04,Pfizer/BioNTech
 :tt: Trinidad und Tobago ^22.02.2021^,0.03,Oxford/AstraZeneca
 :hn: Honduras ^28.02.2021^,0.03,Moderna
-:ua: Ukraine ^04.03.2021^,0.03,Oxford/AstraZeneca
-:jp: Japan ^04.03.2021^,0.03,Pfizer/BioNTech
 :pk: Pakistan ^21.02.2021^,0.03,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :gt: Guatemala ^01.03.2021^,0.01,Sinovac
 :th: Thailand ^02.03.2021^,0.01,Sinovac

@@ -46,8 +46,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sm: San Marino ^05.03.2021^,5.54,Sputnik V
 :br: Brasilien ^06.03.2021^,4.98,"Oxford/AstraZeneca, Sinovac"
 :qa: Katar ^18.02.2021^,4.86,Pfizer/BioNTech
-:pa: Panama ^06.03.2021^,4.51,Pfizer/BioNTech
 :ru: Russland ^06.03.2021^,4.51,"EpiVacCorona, Sputnik V"
+:pa: Panama ^06.03.2021^,4.51,Pfizer/BioNTech
 :lv: Lettland ^06.03.2021^,4.35,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bg: Bulgarien ^06.03.2021^,4.13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :kw: Kuwait ^15.02.2021^,4.1,Pfizer/BioNTech
@@ -67,6 +67,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :np: Nepal ^20.02.2021^,1.38,Oxford/AstraZeneca
 :om: Oman ^23.02.2021^,1.32,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :id: Indonesien ^05.03.2021^,1.29,Sinovac
+:rw: Ruanda ^06.03.2021^,1.23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :pe: Peru ^05.03.2021^,1.11,Sinopharm/Beijing
 :bo: Bolivien ^06.03.2021^,0.91,Sputnik V
 :lb: Libanon ^06.03.2021^,0.89,Pfizer/BioNTech

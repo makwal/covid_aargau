@@ -32,8 +32,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :at: Österreich ^14.03.2021^,11.7,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :sk: Slowakei ^14.03.2021^,11.61,Pfizer/BioNTech
 :pt: Portugal ^15.03.2021^,11.46,"Moderna, Pfizer/BioNTech"
-:it: Italien ^15.03.2021^,11.33,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :cy: Zypern ^07.03.2021^,11.33,Pfizer/BioNTech
+:it: Italien ^15.03.2021^,11.33,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ro: Rumänien ^14.03.2021^,11.23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :de: Deutschland ^14.03.2021^,11.22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :fr: Frankreich ^14.03.2021^,10.85,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -61,11 +61,11 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :cr: Costa Rica ^15.03.2021^,4.87,Pfizer/BioNTech
 :cn: Volksrepublik China ^14.03.2021^,4.51,"Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac"
 :az: Aserbaidschan ^14.03.2021^,4.47,Sinovac
-:mn: Mongolei ^15.03.2021^,3.61,Oxford/AstraZeneca
 :lk: Sri Lanka ^14.03.2021^,3.61,Oxford/AstraZeneca
+:mn: Mongolei ^15.03.2021^,3.61,Oxford/AstraZeneca
 :mx: Mexiko ^15.03.2021^,3.42,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
-:gd: Grenada ^26.02.2021^,2.67,Oxford/AstraZeneca
 :bd: Bangladesch ^14.03.2021^,2.67,Oxford/AstraZeneca
+:gd: Grenada ^26.02.2021^,2.67,Oxford/AstraZeneca
 :in: Indien ^15.03.2021^,2.39,"Covaxin, Oxford/AstraZeneca"
 :id: Indonesien ^15.03.2021^,2.1,Sinovac
 :om: Oman ^15.03.2021^,2.06,"Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -106,13 +106,13 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :th: Thailand ^13.03.2021^,0.06,"Oxford/AstraZeneca, Sinovac"
 :ci: Elfenbeinküste ^15.03.2021^,0.06,Oxford/AstraZeneca
 :ve: Venezuela ^04.03.2021^,0.04,Sputnik V
-:tt: Trinidad und Tobago ^22.02.2021^,0.03,Oxford/AstraZeneca
-:hn: Honduras ^28.02.2021^,0.03,Moderna
 :pk: Pakistan ^21.02.2021^,0.03,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
-:tn: Tunesien ^14.03.2021^,0.02,Sputnik V
-:ke: Kenia ^14.03.2021^,0.02,Oxford/AstraZeneca
+:hn: Honduras ^28.02.2021^,0.03,Moderna
+:tt: Trinidad und Tobago ^22.02.2021^,0.03,Oxford/AstraZeneca
 :ao: Angola ^08.03.2021^,0.02,Oxford/AstraZeneca
 :vn: Vietnam ^15.03.2021^,0.02,Oxford/AstraZeneca
+:ke: Kenia ^14.03.2021^,0.02,Oxford/AstraZeneca
+:tn: Tunesien ^14.03.2021^,0.02,Sputnik V
 :ir: Iran ^17.02.2021^,0.01,Sputnik V
 :ug: Uganda ^14.03.2021^,0.0,Oxford/AstraZeneca
 :eg: Ägypten ^30.01.2021^,0.0,Sinopharm/Beijing

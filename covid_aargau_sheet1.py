@@ -336,7 +336,7 @@ else:
 df_hosp2 = df_hosp2.fillna(method='ffill')
 df_hosp2.columns = ["Datum",
                     "Patienten ohne Intensivpflege",
-                     "Patienten mit Intensivpflege",
+                     "Patienten auf Intensiv- oder Überwachungsstation",
                      "freie Beatmungsplätze"]
 
 

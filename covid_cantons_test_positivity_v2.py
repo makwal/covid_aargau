@@ -40,7 +40,7 @@ def test_pos(canton):
     dfc = df_import[df_import["geoRegion"] == canton].copy()
     dfc["datum"] = pd.to_datetime(dfc["datum"])
     
-    dfc2 = dfc[dfc["datum"] >= pd.to_datetime("2020-06-15")]
+    dfc2 = dfc[dfc["datum"] >= pd.to_datetime("2020-08-31")]
     dfc2.set_index("datum", inplace=True)
     
     dfc3 = dfc2.resample("W")["entries_pos", "entries_neg"].sum()

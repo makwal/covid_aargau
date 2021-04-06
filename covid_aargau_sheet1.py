@@ -316,9 +316,8 @@ df_dailys3.to_csv("/root/covid_aargau/data/only_AG/daily_over_time.csv", index=F
 # In[ ]:
 
 
-df_hosp = df2[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle Intensivpflegestation (IPS)", "Restkapazität Betten IPS"]].copy()
+df_hosp = df2[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
 df_hosp.set_index("date", inplace=True)
-df_hosp["2020-10":].replace(0,-1, inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
@@ -334,13 +333,11 @@ else:
 
 # In[ ]:
 
-
-df_hosp2 = df_hosp2.replace(-1, np.nan)
 df_hosp2 = df_hosp2.fillna(method='ffill')
 df_hosp2.columns = ["Datum",
                     "Patienten ohne Intensivpflege",
                      "Patienten mit Intensivpflege",
-                     "freie Intensiv-Betten"]
+                     "freie Beatmungsplätze"]
 
 
 # In[ ]:

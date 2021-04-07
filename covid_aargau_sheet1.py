@@ -261,9 +261,6 @@ df_final4.loc[df_final4["+/- in %"] < -100, "+/- in %"] = np.nan
 df_final4.loc[df_final4[date_current_values] < 0, "+/- in %"] = np.nan
 df_final4.loc[df_final4["vor einer Woche"] < 0, "+/- in %"] = np.nan
 
-df_final4.loc[df_final4["Zahlen vom 05.04.2021"] == 468, "Zahlen vom 05.04.2021"] = np.nan
-df_final4.loc[df_final4["+/- in %"] == 46700.0, "+/- in %"] = np.nan
-
 
 # In[ ]:
 
@@ -277,7 +274,7 @@ df_final4.to_csv("/root/covid_aargau/data/only_AG/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[ ]:
+# In[18]:
 
 
 df_dailys = df_cases
@@ -287,14 +284,14 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[ ]:
+# In[19]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
 
-# In[ ]:
+# In[20]:
 
 
 #replace -1 with NaN
@@ -313,7 +310,7 @@ df_dailys3.to_csv("/root/covid_aargau/data/only_AG/daily_over_time.csv", index=F
 
 # # hospital numbers
 
-# In[ ]:
+# In[22]:
 
 
 df_hosp = df2[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
@@ -321,7 +318,7 @@ df_hosp.set_index("date", inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
-# In[ ]:
+# In[23]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -331,7 +328,8 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < backdate(0)]
 
 
-# In[ ]:
+# In[24]:
+
 
 df_hosp2 = df_hosp2.fillna(method='ffill')
 df_hosp2.columns = ["Datum",

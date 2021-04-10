@@ -105,7 +105,7 @@ s_final[3] = rolling7
 s_final[4] = rolling7_variants
 
 
-# In[12]:
+# In[11]:
 
 
 #get numbers from same day one week earlier
@@ -131,7 +131,7 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[14]:
+# In[12]:
 
 
 #if monday: take 3_d_rolling as "Neue Fälle"
@@ -149,7 +149,7 @@ except:
     pass
 
 
-# In[15]:
+# In[13]:
 
 
 #get Nachmeldungen Fälle and Todesfälle
@@ -208,7 +208,7 @@ df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
-# In[16]:
+# In[14]:
 
 
 #build first df without date (daily numbers)
@@ -222,7 +222,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[17]:
+# In[15]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -230,7 +230,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[18]:
+# In[16]:
 
 
 #concat daily numbers and difference
@@ -241,7 +241,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[19]:
+# In[17]:
 
 
 #reorder columns
@@ -273,28 +273,21 @@ df_final4.to_csv("/root/covid_aargau/data/only_AG/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[25]:
+# In[20]:
 
 
 df_dailys = df_cases.copy()
-df_dailys2 = df_dailys[df_dailys["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"] > 0].copy()
+df_dailys2 = df_dailys[df_dailys["Neue Fälle"] > 0].copy()
 df_dailys3 = df_dailys2[["date", "Neue Fälle", "7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"]].copy()
 df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[26]:
+# In[22]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
-
-
-# In[27]:
-
-
-#replace -1 with NaN
-df_dailys3 = df_dailys3.replace(-1, np.nan)
 
 
 # In[ ]:

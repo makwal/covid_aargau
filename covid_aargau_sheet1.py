@@ -103,6 +103,9 @@ rolling7 = df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"][df_cases["7
 rolling7_variants = df_cases["7_d_rolling_variants"][df_cases["7_d_rolling_variants"] >= 0].iloc[-1]
 s_final[3] = rolling7
 s_final[4] = rolling7_variants
+s_final[7] = df_cases['neue_todesfälle'][df_cases['neue_todesfälle'].notna()].iloc[-1]
+s_final[8] = df_cases['todesfälle_gesamt'][df_cases['todesfälle_gesamt'].notna()].iloc[-1]
+s_final[9] = df_cases['3_d_rolling_deaths'][df_cases['3_d_rolling_deaths'].notna()].iloc[-1]
 
 
 # In[11]:
@@ -260,6 +263,14 @@ df_final4.loc[df_final4["+/- in %"] < -100, "+/- in %"] = np.nan
 df_final4.loc[df_final4[date_current_values] < 0, "+/- in %"] = np.nan
 df_final4.loc[df_final4["vor einer Woche"] < 0, "+/- in %"] = np.nan
 
+df_final4.loc[df_final4['vor einer Woche'] == -146, 'vor einer Woche'] = np.nan
+
+
+# In[18]:
+
+
+df_final4
+
 
 # In[ ]:
 
@@ -273,7 +284,7 @@ df_final4.to_csv("/root/covid_aargau/data/only_AG/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[20]:
+# In[ ]:
 
 
 df_dailys = df_cases.copy()
@@ -283,7 +294,7 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[22]:
+# In[ ]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)

@@ -50,7 +50,6 @@ df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
 
 #calculate 7 day rolling average (- 3 days)
 df_help = df2[df2["date"] < pd.to_datetime(backdate(3))].copy()
-df2["7_d_rolling_variants"] = df_help["Anzahl Variants of Concern (laborbestätigt)"].rolling(7).mean()
 
 df2["date"] = pd.to_datetime(df2.date).dt.normalize()
 
@@ -67,7 +66,6 @@ df_cases = df2[["date",
                 "Neue Fälle",
                "Gesamtzahl",
                "7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)",
-                "7_d_rolling_variants",
                 "3_d_rolling",
                "14-Tage-Inzidenz\n(Anzahl laborbestätigte Fälle pro 100'000 Einwohner pro 14 Tage)",
               "neue_todesfälle",
@@ -100,12 +98,10 @@ s_final = df_cases[df_cases["Neue Fälle"] >= 0].iloc[-1]
 
 #add 7 day rolling average to Series
 rolling7 = df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"][df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"] >= 0].iloc[-1]
-rolling7_variants = df_cases["7_d_rolling_variants"][df_cases["7_d_rolling_variants"] >= 0].iloc[-1]
 s_final[3] = rolling7
-s_final[4] = rolling7_variants
-s_final[7] = df_cases['neue_todesfälle'][df_cases['neue_todesfälle'].notna()].iloc[-1]
-s_final[8] = df_cases['todesfälle_gesamt'][df_cases['todesfälle_gesamt'].notna()].iloc[-1]
-s_final[9] = df_cases['3_d_rolling_deaths'][df_cases['3_d_rolling_deaths'].notna()].iloc[-1]
+s_final[6] = df_cases['neue_todesfälle'][df_cases['neue_todesfälle'].notna()].iloc[-1]
+s_final[7] = df_cases['todesfälle_gesamt'][df_cases['todesfälle_gesamt'].notna()].iloc[-1]
+s_final[8] = df_cases['3_d_rolling_deaths'][df_cases['3_d_rolling_deaths'].notna()].iloc[-1]
 
 
 # In[11]:
@@ -125,7 +121,6 @@ df_final.columns = ["index",
                     "Fälle neu",
                     "Fälle total",
                     "7-Tages-Durchschnitt",
-                    "Mutationen 7-Tage-Schnitt",
                     "3_d_rolling",
                     "Fälle pro 100'000 EW pro 14 Tage",
                     "Todesfälle neu",
@@ -152,7 +147,7 @@ except:
     pass
 
 
-# In[13]:
+# In[17]:
 
 
 #get Nachmeldungen Fälle and Todesfälle
@@ -203,7 +198,10 @@ date_in_df_prev += timedelta(days=1)
 url_prev = url_yest.format(date_in_df_prev.date())
 df_prev = pd.read_csv(url_prev)
 df_prev.columns = ["a","b","c","d"]
-nach_cases_prev = int(df_prev["b"].iloc[7])
+try:
+    nach_cases_prev = int(df_prev["b"].iloc[7])
+except:
+    nach_cases_prev = 0
 nach_tod_prev = int(df_prev["b"].iloc[8])
 
 #append to df
@@ -211,7 +209,7 @@ df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
-# In[14]:
+# In[18]:
 
 
 #build first df without date (daily numbers)
@@ -225,7 +223,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[15]:
+# In[19]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -233,7 +231,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[16]:
+# In[20]:
 
 
 #concat daily numbers and difference
@@ -244,7 +242,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[17]:
+# In[21]:
 
 
 #reorder columns
@@ -262,14 +260,6 @@ df_final4.loc[df_final4["+/- in %"] == np.inf, "+/- in %"] = np.nan
 df_final4.loc[df_final4["+/- in %"] < -100, "+/- in %"] = np.nan
 df_final4.loc[df_final4[date_current_values] < 0, "+/- in %"] = np.nan
 df_final4.loc[df_final4["vor einer Woche"] < 0, "+/- in %"] = np.nan
-
-df_final4.loc[df_final4['vor einer Woche'] == -146, 'vor einer Woche'] = np.nan
-
-
-# In[18]:
-
-
-df_final4
 
 
 # In[ ]:

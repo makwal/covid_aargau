@@ -188,7 +188,7 @@ cases_new_today = df_final["Fälle neu"].tail(1)
 nachmeldungen_cases = int(cases_total_today) - int(cases_total_yest) - int(cases_new_today)
 
 #calculate Nachmeldungen Todesfälle
-death_total_yest = dfe[day_b_y].iloc[6]
+death_total_yest = dfe[day_b_y].iloc[5]
 death_total_today = df_final["Todesfälle total"].tail(1)
 death_new_today = df_final["Todesfälle neu"].tail(1)
 nachmeldungen_tod = int(death_total_today) - int(death_total_yest) - int(death_new_today)

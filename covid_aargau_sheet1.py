@@ -40,29 +40,26 @@ df = df.drop([0,1], axis=0).reset_index()
 
 
 #choose relevant columns
-df2 = df.iloc[:, :23]
-df2 = df2[df2.date != "Summe"].copy()
-df2["date"] = pd.to_datetime(df2["date"], errors="coerce")
+df = df.iloc[:, :23].copy()
+df = df[df.date != "Summe"].copy()
+df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
 
 # In[6]:
 
 
-#calculate 7 day rolling average (- 3 days)
-df_help = df2[df2["date"] < pd.to_datetime(backdate(3))].copy()
-
-df2["date"] = pd.to_datetime(df2.date).dt.normalize()
+df["date"] = pd.to_datetime(df.date).dt.normalize()
 
 #calculate 3 day rolling average (only used for weekend)
-df2["3_d_rolling"] = df2["Neue Fälle"].rolling(3).sum()
-df2["3_d_rolling_deaths"] = df2["neue_todesfälle"].rolling(3).sum()
+df["3_d_rolling"] = df["Neue Fälle"].rolling(3).sum()
+df["3_d_rolling_deaths"] = df["neue_todesfälle"].rolling(3).sum()
 
 
 # In[7]:
 
 
 #take relevant columns to new dataframe
-df_cases = df2[["date",
+df_cases = df[["date",
                 "Neue Fälle",
                "Gesamtzahl",
                "7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)",
@@ -80,7 +77,6 @@ df_cases = df_cases.drop(df_cases.tail(1).index)
 #formatting
 a = "14-Tage-Inzidenz\n(Anzahl laborbestätigte Fälle pro 100'000 Einwohner pro 14 Tage)"
 df_cases[a] = df_cases[a].astype(float)
-df_cases = df_cases.round(0)
 
 
 # In[9]:
@@ -98,10 +94,7 @@ s_final = df_cases[df_cases["Neue Fälle"] >= 0].iloc[-1]
 
 #add 7 day rolling average to Series
 rolling7 = df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"][df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"] >= 0].iloc[-1]
-s_final[3] = rolling7
-s_final[6] = df_cases['neue_todesfälle'][df_cases['neue_todesfälle'].notna()].iloc[-1]
-s_final[7] = df_cases['todesfälle_gesamt'][df_cases['todesfälle_gesamt'].notna()].iloc[-1]
-s_final[8] = df_cases['3_d_rolling_deaths'][df_cases['3_d_rolling_deaths'].notna()].iloc[-1]
+s_final['7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)'] = rolling7
 
 
 # In[11]:
@@ -140,14 +133,11 @@ df_final.loc[df_final["weekday"] == 6, "Todesfälle neu"] = df_final["3_d_rollin
 df_final = df_final.drop(columns=["weekday", "3_d_rolling", "3_d_rolling_deaths"])
 
 #formatting
-try:
-    df_final["Fälle neu"] = df_final["Fälle neu"].astype(int)
-    df_final["Fälle total"] = df_final["Fälle total"].astype(int)
-except:
-    pass
+#df_final["Fälle neu"] = df_final["Fälle neu"].astype(int)
+#df_final["Fälle total"] = df_final["Fälle total"].astype(int)
 
 
-# In[17]:
+# In[13]:
 
 
 #get Nachmeldungen Fälle and Todesfälle
@@ -173,7 +163,7 @@ else:
     #... and it's monday...
     if date.today().weekday() == 0:
         #get dfe(arly) from 4 days ago
-        dfe = pd.read_csv(url_yest.format(backdate(4)))    
+        dfe = pd.read_csv(url_yest.format(backdate(4)))
     else:
         #get dfe(arly) from 2 days ago
         dfe = pd.read_csv(url_yest.format(backdate(2)))
@@ -182,13 +172,14 @@ else:
 day_b_y = dfe.columns[1]
 
 #calculate Nachmeldungen Fälle
-cases_total_yest = dfe[day_b_y].iloc[1]
+dfe.set_index('Unnamed: 0', inplace=True)
+cases_total_yest = dfe[day_b_y].loc['Fälle total']
 cases_total_today = df_final["Fälle total"].tail(1)
 cases_new_today = df_final["Fälle neu"].tail(1)
 nachmeldungen_cases = int(cases_total_today) - int(cases_total_yest) - int(cases_new_today)
 
 #calculate Nachmeldungen Todesfälle
-death_total_yest = dfe[day_b_y].iloc[5]
+death_total_yest = dfe[day_b_y].loc['Todesfälle total']
 death_total_today = df_final["Todesfälle total"].tail(1)
 death_new_today = df_final["Todesfälle neu"].tail(1)
 nachmeldungen_tod = int(death_total_today) - int(death_total_yest) - int(death_new_today)
@@ -198,18 +189,16 @@ date_in_df_prev += timedelta(days=1)
 url_prev = url_yest.format(date_in_df_prev.date())
 df_prev = pd.read_csv(url_prev)
 df_prev.columns = ["a","b","c","d"]
-try:
-    nach_cases_prev = int(df_prev["b"].iloc[7])
-except:
-    nach_cases_prev = 0
-nach_tod_prev = int(df_prev["b"].iloc[8])
+df_prev.set_index('a', inplace=True)
+nach_cases_prev = int(df_prev["b"].loc['Nachmeldungen Fälle'])
+nach_tod_prev = int(df_prev["b"].loc['Nachmeldungen Todesfälle'])
 
 #append to df
 df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
-# In[18]:
+# In[14]:
 
 
 #build first df without date (daily numbers)
@@ -223,7 +212,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[19]:
+# In[15]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -231,7 +220,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[20]:
+# In[16]:
 
 
 #concat daily numbers and difference
@@ -242,7 +231,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[21]:
+# In[17]:
 
 
 #reorder columns
@@ -306,7 +295,7 @@ df_dailys3.to_csv("/root/covid_aargau/data/only_AG/daily_over_time.csv", index=F
 # In[ ]:
 
 
-df_hosp = df2[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
+df_hosp = df[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
 df_hosp.set_index("date", inplace=True)
 df_hosp.reset_index(inplace=True)
 

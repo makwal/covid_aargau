@@ -85,6 +85,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sr: Suriname ^24.04.2021^,6.22,Oxford/AstraZeneca
 :lb: Libanon ^25.04.2021^,6.09,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :bo: Bolivien ^24.04.2021^,5.63,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
+:bs: Bahamas ^21.04.2021^,5.57,Oxford/AstraZeneca
 :kz: Kasachstan ^24.04.2021^,5.34,Sputnik V
 :bd: Bangladesch ^24.04.2021^,4.83,Oxford/AstraZeneca
 :om: Oman ^21.04.2021^,4.79,"Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -96,7 +97,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ec: Ecuador ^24.04.2021^,4.15,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :my: Malaysia ^25.04.2021^,4.03,"Pfizer/BioNTech, Sinovac"
 :gq: Äquatorialguinea ^22.04.2021^,3.98,Sinopharm/Beijing
-:bs: Bahamas ^12.04.2021^,3.81,Oxford/AstraZeneca
 :nz: Neuseeland ^20.04.2021^,3.8,Pfizer/BioNTech
 :by: Belarus ^23.04.2021^,3.48,Sputnik V
 :tn: Tunesien ^24.04.2021^,3.12,"Pfizer/BioNTech, Sinovac, Sputnik V"
@@ -109,30 +109,30 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mk: Nordmazedonien ^25.04.2021^,2.49,Pfizer/BioNTech
 :sn: Senegal ^25.04.2021^,2.38,Sinopharm/Beijing
 :jp: Japan ^25.04.2021^,2.15,Pfizer/BioNTech
+:tt: Trinidad und Tobago ^23.04.2021^,1.98,Oxford/AstraZeneca
 :tg: Togo ^17.04.2021^,1.93,Oxford/AstraZeneca
 :mm: Myanmar ^31.03.2021^,1.91,Oxford/AstraZeneca
 :bw: Botswana ^19.04.2021^,1.77,Oxford/AstraZeneca
 :th: Thailand ^25.04.2021^,1.65,"Oxford/AstraZeneca, Sinovac"
+:uz: Usbekistan ^25.04.2021^,1.63,Oxford/AstraZeneca
 :ph: Philippinen ^24.04.2021^,1.6,"Oxford/AstraZeneca, Sinovac"
 :nr: Nauru ^09.04.2021^,1.55,Oxford/AstraZeneca
-:ke: Kenia ^21.04.2021^,1.4,"Oxford/AstraZeneca, Sputnik V"
 :mw: Malawi ^22.04.2021^,1.4,Oxford/AstraZeneca
+:ke: Kenia ^21.04.2021^,1.4,"Oxford/AstraZeneca, Sputnik V"
+:ao: Angola ^23.04.2021^,1.39,Oxford/AstraZeneca
 :py: Paraguay ^22.04.2021^,1.38,Sputnik V
-:uz: Usbekistan ^20.04.2021^,1.37,Oxford/AstraZeneca
 :ua: Ukraine ^25.04.2021^,1.21,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:ao: Angola ^19.04.2021^,1.2,Oxford/AstraZeneca
-:tt: Trinidad und Tobago ^18.04.2021^,1.18,Oxford/AstraZeneca
 :dj: Dschibuti ^17.04.2021^,1.04,Oxford/AstraZeneca
 :gn: Guinea ^24.04.2021^,0.98,Sputnik V
 :ni: Nicaragua ^14.04.2021^,0.93,"Oxford/AstraZeneca, Sputnik V"
 :gt: Guatemala ^23.04.2021^,0.92,"Moderna, Oxford/AstraZeneca"
 :ge: Georgien ^24.04.2021^,0.9,Oxford/AstraZeneca
 :ve: Venezuela ^12.04.2021^,0.88,Sputnik V
+:gm: Gambia ^24.04.2021^,0.87,Oxford/AstraZeneca
 :ir: Iran ^22.04.2021^,0.79,"Oxford/AstraZeneca, Sputnik V"
 :ls: Lesotho ^17.04.2021^,0.75,Oxford/AstraZeneca
 :so: Somalia ^17.04.2021^,0.74,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :iq: Irak ^23.04.2021^,0.74,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:gm: Gambia ^09.04.2021^,0.69,Oxford/AstraZeneca
 :eg: Ägypten ^18.04.2021^,0.64,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :af: Afghanistan ^22.04.2021^,0.62,Oxford/AstraZeneca
 :pk: Pakistan ^13.04.2021^,0.59,"CanSino, Sinopharm/Beijing, Sinovac, Sputnik V"
@@ -157,13 +157,13 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :tl: Osttimor ^14.04.2021^,0.2,Oxford/AstraZeneca
 :mz: Mosambik ^23.03.2021^,0.18,Sinopharm/Beijing
 :dz: Algerien ^19.02.2021^,0.17,Sputnik V
+:mr: Mauretanien ^18.04.2021^,0.15,Sinopharm/Beijing
 :zm: Sambia ^25.04.2021^,0.08,Oxford/AstraZeneca
-:mr: Mauretanien ^08.04.2021^,0.06,Sinopharm/Beijing
 :kg: Kirgisistan ^12.04.2021^,0.03,Sinopharm/Beijing
 :am: Armenien ^31.03.2021^,0.02,Sputnik V
 :ss: Südsudan ^15.04.2021^,0.01,Oxford/AstraZeneca
 :ly: Libyen ^17.04.2021^,0.01,"Oxford/AstraZeneca, Sinovac, Sputnik V"
+:sy: Syrien ^08.04.2021^,0.01,Sputnik V
 :pg: Papua-Neuguinea ^11.04.2021^,0.01,Oxford/AstraZeneca
 :ne: Niger ^17.04.2021^,0.01,Sinopharm/Beijing
-:sy: Syrien ^08.04.2021^,0.01,Sputnik V
 :cm: Kamerun ^12.04.2021^,0.0,Sinopharm/Beijing

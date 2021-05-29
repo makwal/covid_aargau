@@ -38,20 +38,20 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :fr: Frankreich ^27.05.2021^,51.71,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :nl: Niederlande ^28.05.2021^,51.6,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :pl: Polen ^28.05.2021^,51.59,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:dm: Dominica ^26.05.2021^,50.63,Oxford/AstraZeneca
 :si: Slowenien ^28.05.2021^,49.78,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :se: Schweden ^28.05.2021^,49.48,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :cz: Tschechien ^28.05.2021^,47.98,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :no: Norwegen ^27.05.2021^,47.93,"Moderna, Pfizer/BioNTech"
+:kn: St. Kitts und Nevis ^27.05.2021^,47.65,Oxford/AstraZeneca
 :ie: Irland ^23.05.2021^,47.58,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:dm: Dominica ^18.05.2021^,47.53,Oxford/AstraZeneca
 :bb: Barbados ^26.05.2021^,47.01,Oxford/AstraZeneca
 :sk: Slowakei ^28.05.2021^,45.23,Pfizer/BioNTech
+:ag: Antigua und Barbuda ^26.05.2021^,45.17,Oxford/AstraZeneca
 :kw: Kuwait ^16.05.2021^,42.62,Pfizer/BioNTech
+:cn: Volksrepublik China ^28.05.2021^,41.89,"CanSino, Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac"
 :ad: Andorra ^17.05.2021^,41.83,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :hr: Kroatien ^27.05.2021^,41.08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:cn: Volksrepublik China ^27.05.2021^,40.6,"Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac"
-:ag: Antigua und Barbuda ^21.05.2021^,40.36,Oxford/AstraZeneca
-:kn: St. Kitts und Nevis ^22.05.2021^,40.34,Oxford/AstraZeneca
 :ro: Rumänien ^28.05.2021^,39.84,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :sa: Saudi-Arabien ^28.05.2021^,39.42,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :ma: Marokko ^28.05.2021^,38.07,"Oxford/AstraZeneca, Sinopharm/Beijing"
@@ -69,17 +69,17 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :lc: St. Lucia ^27.05.2021^,25.04,Oxford/AstraZeneca
 :to: Tonga ^25.05.2021^,24.57,Oxford/AstraZeneca
 :pa: Panama ^27.05.2021^,23.22,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:mx: Mexiko ^25.05.2021^,21.49,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
+:mx: Mexiko ^27.05.2021^,22.68,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :az: Aserbaidschan ^28.05.2021^,21.39,"Oxford/AstraZeneca, Sinovac, Sputnik V"
+:gd: Grenada ^21.05.2021^,20.93,Oxford/AstraZeneca
 :tv: Tuvalu ^27.04.2021^,20.35,Oxford/AstraZeneca
 :bg: Bulgarien ^28.05.2021^,19.3,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ru: Russland ^28.05.2021^,19.26,"EpiVacCorona, Sputnik V"
 :bz: Belize ^27.05.2021^,18.61,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :jo: Jordanien ^27.05.2021^,18.42,"Pfizer/BioNTech, Sinopharm/Beijing"
+:vc: St. Vincent und die Grenadinen ^26.05.2021^,17.54,Oxford/AstraZeneca
 :co: Kolumbien ^26.05.2021^,17.38,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:gd: Grenada ^11.05.2021^,17.35,Oxford/AstraZeneca
 :mu: Mauritius ^12.05.2021^,17.35,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
-:vc: St. Vincent und die Grenadinen ^19.05.2021^,16.6,Oxford/AstraZeneca
 :kz: Kasachstan ^27.05.2021^,16.5,"QazVac, Sinopharm/HayatVax, Sputnik V"
 :au: Australien ^28.05.2021^,15.81,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :gq: Äquatorialguinea ^28.05.2021^,15.66,Sinopharm/Beijing
@@ -127,7 +127,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sn: Senegal ^26.05.2021^,3.07,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :bw: Botswana ^14.05.2021^,3.04,Oxford/AstraZeneca
 :sz: Eswatini ^13.05.2021^,3.04,Oxford/AstraZeneca
-:na: Namibia ^27.05.2021^,2.85,"Oxford/AstraZeneca, Sinopharm/Beijing"
+:na: Namibia ^27.05.2021^,2.94,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :pk: Pakistan ^27.05.2021^,2.78,"CanSino, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :gh: Ghana ^24.05.2021^,2.73,"Oxford/AstraZeneca, Sputnik V"
 :ao: Angola ^26.05.2021^,2.62,Oxford/AstraZeneca
@@ -154,26 +154,26 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :lr: Liberia ^26.05.2021^,1.1,Oxford/AstraZeneca
 :vn: Vietnam ^26.05.2021^,1.06,Oxford/AstraZeneca
 :ng: Nigeria ^28.05.2021^,0.96,Oxford/AstraZeneca
+:am: Armenien ^23.05.2021^,0.9,"Oxford/AstraZeneca, Sinovac, Sputnik V"
 :kg: Kirgisistan ^18.05.2021^,0.83,"Sinopharm/Beijing, Sputnik V"
 :sl: Sierra Leone ^08.05.2021^,0.81,Oxford/AstraZeneca
-:zm: Sambia ^27.05.2021^,0.79,"Oxford/AstraZeneca, Sinopharm/Beijing"
+:zm: Sambia ^28.05.2021^,0.8,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :so: Somalia ^25.05.2021^,0.79,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :tj: Tadschikistan ^23.05.2021^,0.78,Oxford/AstraZeneca
 :ga: Gabun ^17.05.2021^,0.78,Sinopharm/Beijing
 :tm: Turkmenistan ^04.04.2021^,0.7,"EpiVacCorona, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 ":cg: Kongo, Republik ^18.05.2021^",0.69,"Moderna, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
-:ne: Niger ^26.05.2021^,0.66,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :sd: Sudan ^09.05.2021^,0.66,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
-:am: Armenien ^16.05.2021^,0.65,"Oxford/AstraZeneca, Sinovac, Sputnik V"
+:ne: Niger ^26.05.2021^,0.66,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :mr: Mauretanien ^23.05.2021^,0.61,Sinopharm/Beijing
-:ml: Mali ^21.05.2021^,0.43,Oxford/AstraZeneca
+:ml: Mali ^26.05.2021^,0.54,Oxford/AstraZeneca
 :gw: Guinea-Bissau ^12.05.2021^,0.3,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :cm: Kamerun ^26.05.2021^,0.24,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :dz: Algerien ^19.02.2021^,0.17,Sputnik V
 :pg: Papua-Neuguinea ^14.05.2021^,0.13,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :bj: Benin ^21.05.2021^,0.11,"Oxford/AstraZeneca, Sinovac"
-:mg: Madagaskar ^26.05.2021^,0.08,Oxford/AstraZeneca
 :ss: Südsudan ^26.05.2021^,0.08,Oxford/AstraZeneca
+:mg: Madagaskar ^26.05.2021^,0.08,Oxford/AstraZeneca
 :ye: Jemen ^09.05.2021^,0.06,Oxford/AstraZeneca
 ":cd: Kongo, Demokratische Republik ^26.05.2021^",0.02,Oxford/AstraZeneca
 :cf: Zentral­afrikanische Republik ^12.05.2021^,0.01,"Covaxin, Oxford/AstraZeneca"

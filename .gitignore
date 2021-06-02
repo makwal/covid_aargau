@@ -6,3 +6,4 @@ covid_national_richtwerte.py
 covid_national_vacc_table.py
 covid_national_vacc_weekly.py
 covid_national_death_waves.py
+covid_national_vacc_age.py

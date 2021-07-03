@@ -62,9 +62,9 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ar: Argentinien ^02.07.2021^,47.15,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :ro: Rumänien ^01.07.2021^,46.66,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :me: Montenegro ^02.07.2021^,46.43,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+:kh: Kambodscha ^02.07.2021^,45.21,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :sv: El Salvador ^02.07.2021^,44.56,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:kh: Kambodscha ^02.07.2021^,44.31,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
-:gy: Guyana ^29.06.2021^,43.23,"Oxford/AstraZeneca, Sputnik V"
+:gy: Guyana ^02.07.2021^,44.07,"Oxford/AstraZeneca, Sputnik V"
 :tv: Tuvalu ^15.06.2021^,40.47,Oxford/AstraZeneca
 :jo: Jordanien ^02.07.2021^,38.38,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 ":kr: Korea, Süd ^02.07.2021^",38.01,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -96,24 +96,24 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :vc: St. Vincent und die Grenadinen ^28.06.2021^,22.3,Oxford/AstraZeneca
 :om: Oman ^28.06.2021^,20.85,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :lb: Libanon ^02.07.2021^,20.17,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+:bn: Brunei ^01.07.2021^,19.98,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :la: Laos ^28.06.2021^,19.47,"Sinopharm/Beijing, Sputnik V"
 :gq: Äquatorialguinea ^30.06.2021^,18.9,Sinopharm/Beijing
 :lk: Sri Lanka ^02.07.2021^,18.85,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :md: Moldau ^02.07.2021^,18.24,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:bn: Brunei ^28.06.2021^,18.18,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :tl: Osttimor ^29.06.2021^,17.35,"Oxford/AstraZeneca, Sinovac"
 :id: Indonesien ^02.07.2021^,16.33,"Oxford/AstraZeneca, Sinovac"
 :tn: Tunesien ^30.06.2021^,15.61,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :cv: Kap Verde ^28.06.2021^,14.83,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:th: Thailand ^01.07.2021^,14.65,"Oxford/AstraZeneca, Sinovac"
 :ba: Bosnien und Herzegowina ^25.06.2021^,13.91,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
-:th: Thailand ^29.06.2021^,13.86,"Oxford/AstraZeneca, Sinovac"
 :st: São Tomé und Príncipe ^28.06.2021^,12.77,Oxford/AstraZeneca
 :np: Nepal ^01.07.2021^,11.54,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :by: Belarus ^13.06.2021^,11.31,"BBIBP-CorV, Sputnik V"
+:bw: Botswana ^28.06.2021^,10.65,Oxford/AstraZeneca
 :uz: Usbekistan ^29.06.2021^,10.58,"Oxford/AstraZeneca, RBD-Dimer, Sputnik V"
 :ph: Philippinen ^01.07.2021^,9.77,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :km: Komoren ^08.06.2021^,9.7,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
-:bw: Botswana ^21.06.2021^,9.33,Oxford/AstraZeneca
 :py: Paraguay ^30.06.2021^,9.26,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ge: Georgien ^01.07.2021^,9.24,Oxford/AstraZeneca
 :zw: Simbabwe ^30.06.2021^,8.96,Sinopharm/Beijing
@@ -138,7 +138,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sz: Eswatini ^26.06.2021^,4.1,Oxford/AstraZeneca
 :sn: Senegal ^28.06.2021^,3.97,"BBIBP-CorV, Oxford/AstraZeneca"
 :gh: Ghana ^20.06.2021^,3.97,"Oxford/AstraZeneca, Sputnik V"
-:vn: Vietnam ^01.07.2021^,3.92,Oxford/AstraZeneca
+:vn: Vietnam ^02.07.2021^,3.95,Oxford/AstraZeneca
 :mr: Mauretanien ^30.06.2021^,3.46,"BBIBP-CorV, Oxford/AstraZeneca"
 :sb: Salomonen ^29.06.2021^,3.17,Oxford/AstraZeneca
 :ci: Elfenbeinküste ^01.07.2021^,2.91,Oxford/AstraZeneca
@@ -156,7 +156,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :iq: Irak ^20.06.2021^,2.0,"BBIBP-CorV, Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
 :ug: Uganda ^29.06.2021^,1.88,Oxford/AstraZeneca
 :gm: Gambia ^30.06.2021^,1.78,"BBIBP-CorV, Oxford/AstraZeneca"
-:et: Äthiopien ^01.07.2021^,1.76,Oxford/AstraZeneca
+:et: Äthiopien ^02.07.2021^,1.77,Oxford/AstraZeneca
 :ls: Lesotho ^21.05.2021^,1.72,Oxford/AstraZeneca
 :ng: Nigeria ^28.06.2021^,1.65,Oxford/AstraZeneca
 :lr: Liberia ^28.06.2021^,1.63,Oxford/AstraZeneca

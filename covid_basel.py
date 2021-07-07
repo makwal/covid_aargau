@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[1]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ from time import sleep
 import requests
 
 
-# In[6]:
+# In[2]:
 
 
 cantons = ['BS', 'BL']
@@ -24,8 +24,6 @@ def covid_basel(canton):
     df = df_import[["date", "ncumul_conf", "current_hosp", "current_icu", "ncumul_deceased"]].copy()
     df["date"] = pd.to_datetime(df["date"])
 
-    df = df.ffill()
-
     #calculate daily data
     df["cases"] = df["ncumul_conf"].diff()
     df["new_hosp"] = df["current_hosp"].diff()
@@ -33,12 +31,12 @@ def covid_basel(canton):
     df["new_dec"] = df["ncumul_deceased"].diff()
 
     #get last row and same day from the previous week
-    today = df.tail(1)
+    today = df[df['cases'].notnull()].tail(1)
     last_week = df[df["date"] == today.iloc[-1]["date"] - timedelta(days=7)]
 
     #unite both rows in df, rename columns
     df2 = pd.concat([today, last_week])
-    df2.columns = ["Datum", "Fälle gesamt", "hospitalisierte Patienten", "davon auf der Intensiv-Station", "Todesfälle gesamt", "Neue Fälle", "Veränderung Spital-Belegung", "Veränderung Intensiv-Belegung", "Todesfälle neu"]
+    df2.columns = ["Datum", "Fälle gesamt", "Infizierte im Spital", "davon auf der Intensiv-Station", "Todesfälle gesamt", "Neue Fälle", "Veränderung Spital-Belegung", "Veränderung Intensiv-Belegung", "Todesfälle neu"]
 
     #reorder columns
     col_list = df2.columns.tolist()
@@ -57,7 +55,7 @@ def covid_basel(canton):
     df3 = df3.astype(int)
 
     #transpose
-    df_final = df3[["Neue Fälle", "Fälle gesamt", "Todesfälle neu", "Todesfälle gesamt", "hospitalisierte Patienten", "davon auf der Intensiv-Station"]].T
+    df_final = df3[["Neue Fälle", "Fälle gesamt", "Todesfälle neu", "Todesfälle gesamt", "Infizierte im Spital", "davon auf der Intensiv-Station"]].T
     df_final.columns = [date_current_values, "vor einer Woche"]
 
     #make a backup export of the current data
@@ -67,7 +65,7 @@ def covid_basel(canton):
     df_final.to_csv("/root/covid_aargau/data/only_AG/daily_data_{}.csv".format(canton))
 
 
-# In[ ]:
+# In[3]:
 
 
 for canton in cantons:

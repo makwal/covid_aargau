@@ -8,7 +8,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :nr: Nauru ^27.07.2021^,136.46,Oxford/AstraZeneca
 :qa: Katar ^05.08.2021^,135.95,"Moderna, Pfizer/BioNTech"
 :sm: San Marino ^04.08.2021^,135.34,"Pfizer/BioNTech, Sputnik V"
-:cr: Costa Rica ^02.08.2021^,134.42,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :cl: Chile ^02.08.2021^,134.38,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :sg: Singapur ^04.08.2021^,133.86,"Moderna, Pfizer/BioNTech"
 :il: Israel ^05.08.2021^,133.35,"Moderna, Pfizer/BioNTech"
@@ -64,6 +63,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :br: Brasilien ^04.08.2021^,69.26,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :ma: Marokko ^05.08.2021^,69.2,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :ec: Ecuador ^04.08.2021^,68.8,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
+:cr: Costa Rica ^26.07.2021^,67.22,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :pa: Panama ^04.08.2021^,65.92,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :lk: Sri Lanka ^05.08.2021^,61.94,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :bb: Barbados ^03.08.2021^,61.48,Oxford/AstraZeneca
@@ -133,8 +133,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :bd: Bangladesch ^05.08.2021^,8.81,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :na: Namibia ^04.08.2021^,8.69,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :tj: Tadschikistan ^01.08.2021^,8.46,"Moderna, Oxford/AstraZeneca, Sinovac"
+:vn: Vietnam ^05.08.2021^,8.28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :vu: Vanuatu ^27.07.2021^,7.81,Oxford/AstraZeneca
-:vn: Vietnam ^04.08.2021^,7.76,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :sn: Senegal ^03.08.2021^,7.19,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :gn: Guinea ^01.08.2021^,6.89,Sputnik V
 :rw: Ruanda ^03.08.2021^,6.59,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"

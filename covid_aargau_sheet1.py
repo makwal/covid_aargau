@@ -71,7 +71,7 @@ df_cases = df[["date",
 df_cases = df_cases.drop(df_cases.tail(1).index)
 
 
-# In[8]:
+# In[ ]:
 
 
 #formatting
@@ -79,14 +79,14 @@ a = "14-Tage-Inzidenz\n(Anzahl laborbestätigte Fälle pro 100'000 Einwohner pro
 df_cases[a] = df_cases[a].astype(float)
 
 
-# In[9]:
+# In[ ]:
 
 
 #append weekday to calculate if it is monday
 df_cases["weekday"] = df_cases["date"].dt.weekday
 
 
-# In[10]:
+# In[ ]:
 
 
 #make Series with latest numbers
@@ -97,7 +97,7 @@ rolling7 = df_cases["7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)"][df_cases["7
 s_final['7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)'] = rolling7
 
 
-# In[11]:
+# In[ ]:
 
 
 #get numbers from same day one week earlier
@@ -122,7 +122,7 @@ df_final.columns = ["index",
                     "weekday"]
 
 
-# In[12]:
+# In[ ]:
 
 
 #if monday: take 3_d_rolling as "Neue Fälle"
@@ -137,7 +137,7 @@ df_final = df_final.drop(columns=["weekday", "3_d_rolling", "3_d_rolling_deaths"
 #df_final["Fälle total"] = df_final["Fälle total"].astype(int)
 
 
-# In[13]:
+# In[ ]:
 
 
 #get Nachmeldungen Fälle and Todesfälle
@@ -198,7 +198,7 @@ df_final["Nachmeldungen Fälle"] = [nach_cases_prev, nachmeldungen_cases]
 df_final["Nachmeldungen Todesfälle"] = [nach_tod_prev, nachmeldungen_tod]
 
 
-# In[14]:
+# In[ ]:
 
 
 #build first df without date (daily numbers)
@@ -212,7 +212,7 @@ date_current_values = "Zahlen vom " + date_current_values
 df_final2.columns = ["vor einer Woche", date_current_values]
 
 
-# In[15]:
+# In[ ]:
 
 
 #build second df without date and calculate pct_change over one week (diff between daily numbers)
@@ -220,7 +220,7 @@ df_final3 = df_final.loc[:, df_final.columns != "date"].pct_change().multiply(10
 df_final3 = df_final3.T
 
 
-# In[16]:
+# In[ ]:
 
 
 #concat daily numbers and difference
@@ -231,7 +231,7 @@ df_final4 = df_final4.drop(["index"])
 df_final4 = df_final4.drop(columns=[0])
 
 
-# In[17]:
+# In[ ]:
 
 
 #reorder columns
@@ -249,6 +249,12 @@ df_final4.loc[df_final4["+/- in %"] == np.inf, "+/- in %"] = np.nan
 df_final4.loc[df_final4["+/- in %"] < -100, "+/- in %"] = np.nan
 df_final4.loc[df_final4[date_current_values] < 0, "+/- in %"] = np.nan
 df_final4.loc[df_final4["vor einer Woche"] < 0, "+/- in %"] = np.nan
+
+
+# In[ ]:
+
+
+df_final4
 
 
 # In[ ]:
@@ -292,7 +298,7 @@ df_dailys3.to_csv("/root/covid_aargau/data/only_AG/daily_over_time.csv", index=F
 
 # # hospital numbers
 
-# In[ ]:
+# In[45]:
 
 
 df_hosp = df[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
@@ -300,7 +306,7 @@ df_hosp.set_index("date", inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
-# In[ ]:
+# In[46]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -310,7 +316,7 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < backdate(0)]
 
 
-# In[ ]:
+# In[47]:
 
 
 df_hosp2 = df_hosp2.fillna(method='ffill')
@@ -318,6 +324,18 @@ df_hosp2.columns = ["Datum",
                     "Patienten ohne Intensivpflege",
                      "Patienten auf Intensiv- oder Überwachungsstation",
                      "freie Beatmungsplätze"]
+
+
+# In[48]:
+
+
+#Letzte acht Wochen
+df_hosp_short = df_hosp2.copy()
+df_hosp_short.set_index('Datum', inplace=True)
+
+end_date = df_hosp_short.index[-1]
+start_date = end_date - timedelta(weeks=8)
+df_hosp_short = df_hosp_short[start_date:end_date].copy()
 
 
 # In[ ]:
@@ -328,4 +346,14 @@ df_hosp2.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_{}.csv".format(b
 
 #export to csv
 df_hosp2.to_csv("/root/covid_aargau/data/only_AG/hosp_numbers.csv", index=False)
+
+
+# In[ ]:
+
+
+#make a backup export of the current data
+df_hosp_short.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_short_{}.csv".format(backdate(0)))
+
+#export to csv
+df_hosp_short.to_csv("/root/covid_aargau/data/only_AG/hosp_numbers_short.csv")
 

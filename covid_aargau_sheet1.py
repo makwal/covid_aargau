@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[49]:
 
 
 import pandas as pd
@@ -13,14 +13,14 @@ from time import sleep
 
 # # latest daily numbers
 
-# In[2]:
+# In[50]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 df = pd.read_excel(file_url, sheet_name="1. Covid-19-Daten")
 
 
-# In[3]:
+# In[51]:
 
 
 #renaming, choosing headers
@@ -29,14 +29,14 @@ df.iloc[1,20] = "neue_todesfälle"
 df.iloc[1,21] = "todesfälle_gesamt"
 
 
-# In[4]:
+# In[52]:
 
 
 df.columns = df.iloc[1]
 df = df.drop([0,1], axis=0).reset_index()
 
 
-# In[5]:
+# In[53]:
 
 
 #choose relevant columns
@@ -45,7 +45,7 @@ df = df[df.date != "Summe"].copy()
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
 
-# In[6]:
+# In[54]:
 
 
 df["date"] = pd.to_datetime(df.date).dt.normalize()
@@ -55,7 +55,7 @@ df["3_d_rolling"] = df["Neue Fälle"].rolling(3).sum()
 df["3_d_rolling_deaths"] = df["neue_todesfälle"].rolling(3).sum()
 
 
-# In[7]:
+# In[55]:
 
 
 #take relevant columns to new dataframe
@@ -269,7 +269,7 @@ df_final4.to_csv("/root/covid_aargau/data/only_AG/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[ ]:
+# In[68]:
 
 
 df_dailys = df_cases.copy()
@@ -279,12 +279,27 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[ ]:
+# In[57]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
+
+# In[69]:
+
+
+#Letzte acht Wochen
+df_dailys_short = df_dailys3.copy()
+df_dailys_short.set_index('date', inplace=True)
+
+end_date = df_dailys_short.index[-1]
+start_date = end_date - timedelta(weeks=8)
+
+df_dailys_short = df_dailys_short[start_date:end_date].copy()
+
+
+# **Export dailys full**
 
 # In[ ]:
 
@@ -294,6 +309,18 @@ df_dailys3.to_csv("/root/covid_aargau/backups/daily_over_time/backup_{}.csv".for
 
 #export to csv
 df_dailys3.to_csv("/root/covid_aargau/data/only_AG/daily_over_time.csv", index=False)
+
+
+# **Export dailys short**
+
+# In[ ]:
+
+
+#make a backup export of the current data
+df_dailys_short.to_csv("/root/covid_aargau/backups/daily_over_time/backup_short_{}.csv".format(backdate(0)))
+
+#export to csv
+df_dailys_short.to_csv("/root/covid_aargau/data/only_AG/daily_over_time_short.csv")
 
 
 # # hospital numbers
@@ -332,11 +359,10 @@ df_hosp2.columns = ["Datum",
 #Letzte acht Wochen
 df_hosp_short = df_hosp2.copy()
 df_hosp_short.set_index('Datum', inplace=True)
-
-end_date = df_hosp_short.index[-1]
-start_date = end_date - timedelta(weeks=8)
 df_hosp_short = df_hosp_short[start_date:end_date].copy()
 
+
+# **Export hosp full**
 
 # In[ ]:
 
@@ -347,6 +373,8 @@ df_hosp2.to_csv("/root/covid_aargau/backups/hosp_numbers/backup_{}.csv".format(b
 #export to csv
 df_hosp2.to_csv("/root/covid_aargau/data/only_AG/hosp_numbers.csv", index=False)
 
+
+# **Export hosp short**
 
 # In[ ]:
 

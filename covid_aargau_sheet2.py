@@ -36,7 +36,7 @@ df_iso = df_iso.drop([0,1])
 #formatting
 df_iso["date"] = pd.to_datetime(df_iso["date"], errors="coerce")
 df_iso.columns = ["date", "new_isolated", "total_curr_isolated", "total_isolated",
-                 "new_quar", "total_curr_quar", "total_quar", "NaN"]
+                 "new_quar", "total_curr_quar", "total_quar"]
 
 #get rid of last row
 df_iso.drop(df_iso.tail(1).index,inplace=True)

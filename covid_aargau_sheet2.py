@@ -60,7 +60,7 @@ df_iso_time = df_iso[["date", "total_curr_isolated", "total_curr_quar"]].copy()
 #formatting
 df_iso_time["date"] = df_iso_time["date"].dt.normalize()
 df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
-df_iso_time["Quarantäne"] = df_iso_time["Quarantäne"].replace("n.d.", np.nan)
+df_iso_time = df_iso_time.replace("n.d.", np.nan)
 
 
 # In[ ]:

@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[37]:
 
 
 import pandas as pd
 import numpy as np
 from general_settings import file_url, backdate
-from datetime import date
+from datetime import date, timedelta
 from time import sleep
 
 
 # # isolation and quarantine
 
-# In[2]:
+# In[38]:
 
 
 #open sheet
@@ -21,7 +21,7 @@ sleep(20)
 df_iso = pd.read_excel(file_url, sheet_name="2. Contact Tracing")
 
 
-# In[3]:
+# In[39]:
 
 
 #rename and choose header
@@ -30,7 +30,7 @@ df_iso.columns = df_iso.iloc[1]
 df_iso = df_iso.drop([0,1])
 
 
-# In[4]:
+# In[40]:
 
 
 #formatting
@@ -48,7 +48,7 @@ else:
     df_iso = df_iso[df_iso["date"] < backdate(0)]
 
 
-# In[5]:
+# In[41]:
 
 
 #fill NaN values with previous value
@@ -63,6 +63,18 @@ df_iso_time.columns = ["Datum", "Isolation", "Quarantäne"]
 df_iso_time = df_iso_time.replace("n.d.", np.nan)
 
 
+# In[42]:
+
+
+#Create short df
+df_iso_time.set_index("Datum", inplace=True)
+
+end_date = df_iso_time.index[-1]
+start_date = end_date - timedelta(weeks=8)
+
+df_iso_time_short = df_iso_time[start_date:end_date].copy()
+
+
 # In[ ]:
 
 
@@ -70,5 +82,15 @@ df_iso_time = df_iso_time.replace("n.d.", np.nan)
 df_iso_time.to_csv("/root/covid_aargau/backups/iso_over_time/backup_{}.csv".format(backdate(0)))
 
 #export to csv
-df_iso_time.to_csv("/root/covid_aargau/data/only_AG/iso_over_time.csv", index=False)
+df_iso_time.to_csv("/root/covid_aargau/data/only_AG/iso_over_time.csv")
+
+
+# In[ ]:
+
+
+#short: make a backup export of the current data
+df_iso_time_short.to_csv("/root/covid_aargau/backups/iso_over_time/backup_short_{}.csv".format(backdate(0)))
+
+#export to csv
+df_iso_time_short.to_csv("/root/covid_aargau/data/only_AG/iso_over_time_short.csv")
 

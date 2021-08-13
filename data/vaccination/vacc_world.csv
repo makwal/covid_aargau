@@ -77,20 +77,20 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :jo: Jordanien ^11.08.2021^,55.71,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :kw: Kuwait ^03.07.2021^,55.62,Pfizer/BioNTech
 :az: Aserbaidschan ^12.08.2021^,55.31,"Oxford/AstraZeneca, Sinovac, Sputnik V"
-:gy: Guyana ^10.08.2021^,52.9,"Oxford/AstraZeneca, Sputnik V"
+:gy: Guyana ^12.08.2021^,54.11,"Oxford/AstraZeneca, Sputnik V"
 :om: Oman ^09.08.2021^,52.02,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :bz: Belize ^11.08.2021^,51.0,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :tt: Trinidad und Tobago ^12.08.2021^,50.73,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :ws: Samoa ^09.08.2021^,50.71,Oxford/AstraZeneca
 :ro: Rumänien ^11.08.2021^,49.62,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:mk: Nordmazedonien ^12.08.2021^,49.61,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :nz: Neuseeland ^10.08.2021^,47.56,Pfizer/BioNTech
-:mk: Nordmazedonien ^09.08.2021^,47.17,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
-:pe: Peru ^11.08.2021^,47.04,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :ru: Russland ^12.08.2021^,47.04,"EpiVacCorona, Sputnik V"
+:pe: Peru ^11.08.2021^,47.04,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
+:bn: Brunei ^11.08.2021^,46.05,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :sr: Suriname ^12.08.2021^,45.68,Oxford/AstraZeneca
 :to: Tonga ^02.08.2021^,44.99,Oxford/AstraZeneca
 :al: Albanien ^10.08.2021^,44.49,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
-:bn: Brunei ^08.08.2021^,43.41,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :bo: Bolivien ^11.08.2021^,41.8,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :tv: Tuvalu ^15.06.2021^,40.47,Oxford/AstraZeneca
 :in: Indien ^11.08.2021^,37.95,"Covaxin, Oxford/AstraZeneca, Sputnik V"
@@ -109,7 +109,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :bs: Bahamas ^09.08.2021^,28.08,Oxford/AstraZeneca
 :md: Moldau ^10.08.2021^,27.56,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :by: Belarus ^10.08.2021^,26.9,"Sinopharm/Beijing, Sputnik V"
-:ba: Bosnien und Herzegowina ^10.08.2021^,26.67,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
+:ba: Bosnien und Herzegowina ^11.08.2021^,26.37,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :np: Nepal ^12.08.2021^,25.79,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :uz: Usbekistan ^04.08.2021^,24.8,"Oxford/AstraZeneca, RBD-Dimer, Sputnik V"
 :ph: Philippinen ^11.08.2021^,23.84,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
@@ -122,8 +122,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :pk: Pakistan ^12.08.2021^,18.77,"CanSino, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ge: Georgien ^12.08.2021^,18.58,Oxford/AstraZeneca
 :tj: Tadschikistan ^11.08.2021^,17.53,"Moderna, Oxford/AstraZeneca, Sinovac"
+:bw: Botswana ^10.08.2021^,16.64,Oxford/AstraZeneca
 :ua: Ukraine ^12.08.2021^,16.4,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:bw: Botswana ^06.08.2021^,16.0,Oxford/AstraZeneca
 :gt: Guatemala ^10.08.2021^,16.0,"Moderna, Oxford/AstraZeneca"
 :sz: Eswatini ^12.08.2021^,15.63,Oxford/AstraZeneca
 :za: Südafrika ^12.08.2021^,15.49,"Johnson&Johnson, Pfizer/BioNTech"
@@ -135,8 +135,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :bd: Bangladesch ^12.08.2021^,12.26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :ki: Kiribati ^09.08.2021^,11.7,Oxford/AstraZeneca
 :ly: Libyen ^09.08.2021^,11.12,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
+:na: Namibia ^11.08.2021^,9.64,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :dz: Algerien ^29.07.2021^,9.45,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
-:na: Namibia ^10.08.2021^,9.25,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :sb: Salomonen ^09.08.2021^,8.24,Oxford/AstraZeneca
 :sn: Senegal ^09.08.2021^,8.12,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :vu: Vanuatu ^27.07.2021^,7.81,Oxford/AstraZeneca
@@ -163,7 +163,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :zm: Sambia ^12.08.2021^,2.8,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :ug: Uganda ^10.08.2021^,2.53,Oxford/AstraZeneca
 :sy: Syrien ^09.08.2021^,2.03,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
-:et: Äthiopien ^10.08.2021^,1.99,Oxford/AstraZeneca
+:et: Äthiopien ^12.08.2021^,2.0,Oxford/AstraZeneca
 :cf: Zentral­afrikanische Republik ^05.08.2021^,1.97,"Covaxin, Oxford/AstraZeneca"
 :ng: Nigeria ^09.08.2021^,1.92,Oxford/AstraZeneca
 :lr: Liberia ^12.07.2021^,1.89,Oxford/AstraZeneca

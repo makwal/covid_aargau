@@ -1,7 +1,4 @@
 Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsstation,freie Beatmungsplätze
-2021-06-17,5,4.0,13.0
-2021-06-18,8,9.0,13.0
-2021-06-19,8,9.0,13.0
 2021-06-20,8,9.0,13.0
 2021-06-21,3,7.0,14.0
 2021-06-22,3,9.0,10.0
@@ -56,3 +53,4 @@ Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsst
 2021-08-10,17,7.0,17.0
 2021-08-11,15,6.0,16.0
 2021-08-12,25,7.0,17.0
+2021-08-13,25,7.0,23.0

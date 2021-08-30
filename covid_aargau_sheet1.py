@@ -328,7 +328,7 @@ df_dailys_short.to_csv("/root/covid_aargau/data/only_AG/daily_over_time_short.cs
 # In[45]:
 
 
-df_hosp = df[["date", "Bestätigte Fälle auf Abteilung (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
+df_hosp = df[["date", "Bestätigte Fälle Bettenstation (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität für Beatmung"]].copy()
 df_hosp.set_index("date", inplace=True)
 df_hosp.reset_index(inplace=True)
 

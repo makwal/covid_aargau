@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,13 +11,13 @@ from general_settings import backdate
 from datetime import timedelta
 
 
-# In[ ]:
+# In[2]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
 
 
-# In[ ]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -27,7 +27,7 @@ url1 = files["csv"]["daily"]["testPcrAntigen"]
 df_import = pd.read_csv(url1)
 
 
-# In[ ]:
+# In[23]:
 
 
 def antigen(canton):
@@ -52,22 +52,16 @@ def antigen(canton):
     #date minus six days, in order to display monday
     df_anti_final.index = df_anti_final.index - timedelta(days=6)
     df_anti_final.index = df_anti_final.index.strftime("%d.%m.%Y")
-    
-    #pivot to perfection
-    cols = []
-    for i in df_anti_final.index:
-        if i not in cols:
-            cols.append(i)
-    df_anti_final2 = df_anti_final.pivot_table(index="nachweismethode", columns=df_anti_final.index, values="sum7d")
-    df_anti_final3 = df_anti_final2[cols]
+    df_anti_final2 = df_anti_final.reset_index().pivot(index='datum_neu', columns='nachweismethode', values='sum7d')
+
     #export backup to csv
-    df_anti_final3.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
+    df_anti_final2.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
   
     #export to csv
-    df_anti_final3.to_csv("/root/covid_aargau/data/schnelltests/schnelltests_{}.csv".format(canton))
+    df_anti_final2.to_csv("/root/covid_aargau/data/schnelltests/schnelltests_{}.csv".format(canton))
 
 
-# In[ ]:
+# In[24]:
 
 
 cantons = ["AG", "SO", "SG", "AI", "AR", "TG", "LU", "ZG", "SZ", "OW", "NW", "UR"]

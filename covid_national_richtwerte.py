@@ -119,10 +119,6 @@ df = pd.DataFrame(data=data)
 
 # In[ ]:
 
-
-#make a backup export of the current data
-df.to_csv("/root/covid_aargau/backups/richtwerte/verschärfungen_{}.csv".format(backdate(0)), index=False)
-
 #export to csv
 df.to_csv("/root/covid_aargau/data/richtwerte/verschärfungen.csv", index=False)
 
@@ -200,9 +196,6 @@ df_l = pd.DataFrame(data=data_l)
 
 # In[ ]:
 
-
-#make a backup export of the current data
-df_l.to_csv("/root/covid_aargau/backups/richtwerte/lockerungen_{}.csv".format(backdate(0)), index=False)
 
 #export to csv
 df_l.to_csv("/root/covid_aargau/data/richtwerte/lockerungen.csv", index=False)

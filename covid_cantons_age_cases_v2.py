@@ -48,9 +48,6 @@ def age_dist_cantons(canton):
     #formatting
     df_final.columns = ["Altersklasse", "Covid-Fälle"]
         
-    #export backup to csv
-    df_final.to_csv("/root/covid_aargau/backups/age/altersverteilung_{}_{}.csv".format(canton, backdate(0)), index=False)
-    
     #export to csv
     df_final.to_csv("/root/covid_aargau/data/age/altersverteilung_{}.csv".format(canton), index=False)
 

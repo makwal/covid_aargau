@@ -67,8 +67,6 @@ df.reset_index(inplace=True, drop=True)
 
 def geoRegion(canton):
     dfc = df[df['geoRegion'] == canton][['altersklasse_covid19', 'per100PersonsTotal']].copy()
-    #make a backup export of the current data
-    dfc.to_csv(f'/root/covid_aargau/backups/vaccination_age/backup_{backdate(0)}_{canton}.csv', index=False)
     #export to csv
     dfc.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}.csv', index=False)
 

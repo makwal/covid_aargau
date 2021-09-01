@@ -54,9 +54,6 @@ def antigen(canton):
     df_anti_final.index = df_anti_final.index.strftime("%d.%m.%Y")
     df_anti_final2 = df_anti_final.reset_index().pivot(index='datum_neu', columns='nachweismethode', values='sum7d')
 
-    #export backup to csv
-    df_anti_final2.to_csv("/root/covid_aargau/backups/schnelltests/schnelltests_{}_{}.csv".format(canton, backdate(0)))
-  
     #export to csv
     df_anti_final2.to_csv("/root/covid_aargau/data/schnelltests/schnelltests_{}.csv".format(canton))
 

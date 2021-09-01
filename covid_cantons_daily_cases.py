@@ -39,9 +39,6 @@ def daily_cases(canton):
     #add a baseline (for visualization purposes in Datawrapper)
     df["baseline"] = 0
 
-    #export backup to csv
-    df.to_csv("/root/covid_aargau/backups/daily_cases/daily_cases_{}_{}.csv".format(canton, backdate(0)), index=False)
-    
     #export to csv
     df.to_csv("/root/covid_aargau/data/daily_cases/daily_cases_{}.csv".format(canton), index=False)
 

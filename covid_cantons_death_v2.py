@@ -47,9 +47,6 @@ def death(canton):
         
     df_final.columns = ["Altersklasse", "Todesfälle"]
         
-    #export backup to csv
-    df_final.to_csv("/root/covid_aargau/backups/death/death_{}_{}.csv".format(canton, backdate(0)), index=False)
-    
     #export to csv
     df_final.to_csv("/root/covid_aargau/data/death/death_{}.csv".format(canton), index=False)
 

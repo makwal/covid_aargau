@@ -51,9 +51,6 @@ def test_pos(canton):
     
     dfc4["Positivitätsrate_{}".format(canton)] = ((dfc4["positiv"] / (dfc4["positiv"] + dfc4["negativ"])) * 100).round(1)
     if canton != "CH":
-        #make a backup export of the current data
-        dfc4[["positiv", "negativ"]].to_csv("/root/covid_aargau/backups/tests/tests_weekly_{}_{}.csv".format(canton, backdate(0)))
-        
         #export to csv
         dfc4[["positiv", "negativ"]].to_csv("/root/covid_aargau/data/tests_weekly/tests_weekly_{}.csv".format(canton))
     
@@ -63,9 +60,6 @@ def test_pos(canton):
     else:
         dfc_final = dfc4[["Positivitätsrate_{}".format(canton)]].merge(dfch, left_index=True, right_index=True)
         dfc_final.columns = [canton, "Schweiz"]
-        
-        #make a backup export of the current data
-        dfc_final.to_csv("/root/covid_aargau/backups/positivity/positivity_weekly_{}_{}.csv".format(canton, backdate(0)))
         
         #export to csv
         dfc_final.to_csv("/root/covid_aargau/data/positivity_weekly/positivity_weekly_{}.csv".format(canton))

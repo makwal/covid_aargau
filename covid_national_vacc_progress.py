@@ -80,6 +80,7 @@ for p in populations:
     df_temp.reset_index(inplace=True)
     df_temp['Impf-Fortschritt'] = 'Impf-Fortschritt'
     df_temp.set_index('Impf-Fortschritt', inplace=True)
+    del df_temp['date']
 
     #make a backup export of the current data
     df_temp.to_csv('/root/covid_aargau/backups/vacc_ch/backup_CH_{}_{}.csv'.format(p, backdate(0)))

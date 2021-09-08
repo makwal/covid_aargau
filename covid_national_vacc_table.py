@@ -115,8 +115,7 @@ cantons = {'SO': 'BPReI',
           'SG': 'c5q2b',
           'TG': 'SluZ7',
           'AR': '6vyiL',
-          'AI': '6Mdpd',
-          'AG': 'zpi9A'}
+          'AI': '6Mdpd'}
 
 
 # In[29]:

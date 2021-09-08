@@ -77,7 +77,10 @@ for p in populations:
     df_temp.columns = ['vollständig geimpft', 'einfach geimpft']
     df_temp['ungeimpft'] = 100 - df_temp['vollständig geimpft'] - df_temp['einfach geimpft']
     df_temp = df_temp.round(1)
-    
+    df_temp.reset_index(inplace=True)
+    df_temp['Impf-Fortschritt'] = 'Impf-Fortschritt'
+    df_temp.set_index('Impf-Fortschritt', inplace=True)
+
     #make a backup export of the current data
     df_temp.to_csv('/root/covid_aargau/backups/vacc_ch/backup_CH_{}_{}.csv'.format(p, backdate(0)))
                    

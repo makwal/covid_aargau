@@ -18,7 +18,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sm: San Marino ^08.09.2021^,136.91,"Pfizer/BioNTech, Sputnik V"
 :nr: Nauru ^20.08.2021^,136.03,Oxford/AstraZeneca
 :gb: Vereinigtes Königreich ^08.09.2021^,134.96,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:cu: Kuba ^05.09.2021^,134.68,"Abdala, Soberana02"
+:cu: Kuba ^07.09.2021^,134.68,"Abdala, Soberana02"
 :no: Norwegen ^08.09.2021^,134.18,"Moderna, Pfizer/BioNTech"
 :fr: Frankreich ^08.09.2021^,134.07,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bt: Bhutan ^30.08.2021^,134.0,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
@@ -32,7 +32,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mu: Mauritius ^09.09.2021^,124.97,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
 :de: Deutschland ^09.09.2021^,123.74,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mc: Monaco ^02.09.2021^,123.21,Pfizer/BioNTech
-:hu: Ungarn ^09.09.2021^,123.14,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :lu: Luxemburg ^09.09.2021^,121.37,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :lt: Litauen ^09.09.2021^,120.97,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ad: Andorra ^29.08.2021^,120.78,"Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -183,6 +182,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :td: Tschad ^09.09.2021^,0.45,Sinopharm/Beijing
 :ht: Haiti ^07.09.2021^,0.4,"Johnson&Johnson, Oxford/AstraZeneca"
 ":cd: Kongo, Demokratische Republik ^05.09.2021^",0.12,Oxford/AstraZeneca
+:hu: Ungarn ^09.09.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :kw: Kuwait ^14.08.2021^,,Pfizer/BioNTech
 :mt: Malta ^08.09.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :uz: Usbekistan ^09.09.2021^,,"Oxford/AstraZeneca, Sputnik V, ZF2001"

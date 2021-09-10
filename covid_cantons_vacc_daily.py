@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[33]:
+# In[81]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 
-# In[34]:
+# In[82]:
 
 
 #url BAG
@@ -22,7 +22,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[35]:
+# In[83]:
 
 
 r = requests.get(base_url)
@@ -32,7 +32,7 @@ url = files['csv']['vaccPersonsV2']
 df_import = pd.read_csv(url)
 
 
-# In[30]:
+# In[84]:
 
 
 def vacc_daily_cantons(canton):
@@ -55,22 +55,23 @@ def vacc_daily_cantons(canton):
     df_short.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_short_{}.csv'.format(canton))
     df.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_{}.csv'.format(canton))
     
-    return end_date.strftime('%d.%m.%Y')
+    return start_date, end_date
 
 
-# In[31]:
+# In[85]:
 
 
 cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR']
-date = ''
+start_date = ''
+end_date = ''
 
 for canton in cantons:
-    date = vacc_daily_cantons(canton)
+    start_date, end_date = vacc_daily_cantons(canton)
 
 
 # **Datawrapper update**
 
-# In[44]:
+# In[86]:
 
 
 cantons_dict = {
@@ -87,20 +88,41 @@ cantons_dict = {
 }
 
 
-# In[45]:
+# Create Ticks for Datawrapper
+
+# In[87]:
 
 
-note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen  pro Tag. An Sonntagen wird weniger oder nicht geimpft
-'''
+ticks = []
+ticks.append(start_date.strftime('%Y-%m-%d'))
 
-def chart_updater(chart_id, date):
+between_date = start_date
+
+for i in range(7):
+    between_date = between_date + timedelta(days=7)
+    ticks.append(between_date.strftime('%Y-%m-%d'))
+
+ticks.append(end_date.strftime('%Y-%m-%d'))
+tick_string = ', '.join(ticks)
+
+
+# In[94]:
+
+
+note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft. Die Zahlen können von den Angaben des Kantons abweichen'''
+
+def chart_updater(chart_id, end_date, tick_string):
 
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
+    
+    date = end_date.strftime('%d.%m.%Y')
 
     payload = {
 
-    'metadata': {'annotate': {'notes': f'{note}. Letzter Datenstand: {date}'}}
+    'metadata': {'annotate': {'notes': f'{note}. Letzter Datenstand: {date}'},
+                 'visualize': {'custom-ticks-x': tick_string}
+                }
 
     }
 
@@ -111,9 +133,11 @@ def chart_updater(chart_id, date):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[46]:
+# In[95]:
 
 
 for canton, chart_id in cantons_dict.items():
-    chart_updater(chart_id, date)
+    if canton == 'AG_long' or canton == 'SO_long':
+        tick_string = ''
+    chart_updater(chart_id, end_date, tick_string)
 

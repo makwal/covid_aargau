@@ -90,7 +90,7 @@ cantons_dict = {
 # In[45]:
 
 
-note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Fälle (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Fälle pro Tag. An Sonntagen wird weniger oder nicht geimpft
+note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen  pro Tag. An Sonntagen wird weniger oder nicht geimpft
 '''
 
 def chart_updater(chart_id, date):

@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[33]:
+
+
+import pandas as pd
+import requests
+from general_settings import backdate, datawrapper_api_key
+from time import sleep
+from datetime import datetime, timedelta
+
+
+# In[34]:
+
+
+#url BAG
+base_url = 'https://www.covid19.admin.ch/api/data/context'
+
+#url + credentials Datawrapper
+datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
+headers = {'Authorization': datawrapper_api_key}
+
+
+# In[35]:
+
+
+r = requests.get(base_url)
+response = r.json()
+files = response['sources']['individual']
+url = files['csv']['vaccPersonsV2']
+df_import = pd.read_csv(url)
+
+
+# In[30]:
+
+
+def vacc_daily_cantons(canton):
+    #choose only canton and necessary columns
+    df = df_import[(df_import['geoRegion'] == canton) & (df_import['type'] == 'COVID19AtLeastOneDosePersons')].copy()
+    df = df[['date', 'entries', 'mean7d']].copy()
+
+    #formatting
+    df['date'] = pd.to_datetime(df['date'])
+    df.set_index('date', inplace=True)
+    df.rename(columns={'mean7d': 'Erstimpfungen 7-Tages-Schnitt'}, inplace=True)
+    
+    #only last eight weeks
+    end_date = df.index[-1]
+    start_date = end_date - timedelta(weeks=8)
+
+    df_short = df[start_date:end_date].copy()
+
+    #export to csv
+    df_short.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_short_{}.csv'.format(canton))
+    df.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_{}.csv'.format(canton))
+    
+    return end_date.strftime('%d.%m.%Y')
+
+
+# In[31]:
+
+
+cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR']
+date = ''
+
+for canton in cantons:
+    date = vacc_daily_cantons(canton)
+
+
+# **Datawrapper update**
+
+# In[44]:
+
+
+cantons_dict = {
+    'AG': '7FzKa',
+    'AG_long': 'Sin8g',
+    'LU': 'nQAgJ',
+    'ZG': 'w7E33',
+    'SZ': 'CMDd4',
+    'NW': 'kBCF9',
+    'OW': '0pDI5',
+    'UR': 'YDWRO',
+    'SO': '5x9Kp',
+    'SO_long': 'ag74O'
+}
+
+
+# In[45]:
+
+
+note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Fälle (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Fälle pro Tag. An Sonntagen wird weniger oder nicht geimpft
+'''
+
+def chart_updater(chart_id, date):
+
+    url_update = datawrapper_url + chart_id
+    url_publish = url_update + '/publish'
+
+    payload = {
+
+    'metadata': {'annotate': {'notes': f'{note}. Letzter Datenstand: {date}'}}
+
+    }
+
+    res_update = requests.patch(url_update, json=payload, headers=headers)
+
+    sleep(3)
+
+    res_publish = requests.post(url_publish, headers=headers)
+
+
+# In[46]:
+
+
+for canton, chart_id in cantons_dict.items():
+    chart_updater(chart_id, date)
+

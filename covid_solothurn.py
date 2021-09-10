@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[44]:
+# In[10]:
 
 
 import pandas as pd
@@ -12,24 +12,21 @@ from time import sleep
 import requests
 
 
-# In[45]:
+# In[11]:
 
 
 base_url = "https://raw.githubusercontent.com/openZH/covid_19/master/fallzahlen_kanton_total_csv_v2/COVID19_Fallzahlen_Kanton_SO_total.csv"
 df_import = pd.read_csv(base_url)
 
 
-# In[46]:
+# In[12]:
 
 
 df = df_import[["date", "ncumul_conf", "current_hosp", "current_icu", "ncumul_deceased"]].copy()
 df["date"] = pd.to_datetime(df["date"])
 
-#fill NaN values with previous value
-df = df.ffill()
 
-
-# In[47]:
+# In[13]:
 
 
 #calculate daily data
@@ -39,7 +36,7 @@ df["new_icu"] = df["current_icu"].diff()
 df["new_dec"] = df["ncumul_deceased"].diff()
 
 
-# In[48]:
+# In[14]:
 
 
 #get last row and same day from the previous week
@@ -47,7 +44,7 @@ today = df.tail(1)
 last_week = df[df["date"] == today.iloc[-1]["date"] - timedelta(days=7)]
 
 
-# In[49]:
+# In[15]:
 
 
 #unite both rows in df, rename columns
@@ -55,7 +52,7 @@ df2 = pd.concat([today, last_week])
 df2.columns = ["Datum", "Fälle gesamt", "hospitalisierte Patienten", "davon auf der Intensiv-Station", "Todesfälle gesamt", "Neue Fälle", "Veränderung Spital-Belegung", "Veränderung Intensiv-Belegung", "Todesfälle neu"]
 
 
-# In[50]:
+# In[17]:
 
 
 #reorder columns
@@ -71,31 +68,17 @@ date_current_values = "Zahlen vom " + date_current_values
 #set date as index
 df3.set_index("Datum", inplace=True)
 
-#all cols to int
-df3 = df3.astype(int)
 
-
-# In[51]:
-
-
-#hospital changes in ^^ (for datawrapper styling reasons)
-df3.loc[df3["Veränderung Spital-Belegung"] > 0, "Veränderung Spital-Belegung"] = "+" + df3["Veränderung Spital-Belegung"].astype(str)
-df3.loc[df3["Veränderung Intensiv-Belegung"] > 0, "Veränderung Intensiv-Belegung"] = "+" + df3["Veränderung Intensiv-Belegung"].astype(str)
-
-df3["hospitalisierte Patienten"] = df3["hospitalisierte Patienten"].astype(str) + "^" + df3["Veränderung Spital-Belegung"].astype(str) + "^"
-df3["davon auf der Intensiv-Station"] = df3["davon auf der Intensiv-Station"].astype(str) + "^" + df3["Veränderung Intensiv-Belegung"].astype(str) + "^"
-
-
-# In[53]:
+# In[19]:
 
 
 df3.rename(columns={
-    "hospitalisierte Patienten": "hospitalisierte Patienten ^seit Vortag^",
-    "davon auf der Intensiv-Station": "davon auf der Intensiv-Station ^seit Vortag^"
+    "hospitalisierte Patienten": "hospitalisierte Patienten",
+    "davon auf der Intensiv-Station": "davon auf der Intensiv-Station"
 }, inplace=True)
 
 #transpose
-df_final = df3[["Neue Fälle", "Fälle gesamt", "Todesfälle neu", "Todesfälle gesamt", "hospitalisierte Patienten ^seit Vortag^", "davon auf der Intensiv-Station ^seit Vortag^"]].T
+df_final = df3[["Neue Fälle", "Fälle gesamt", "Todesfälle neu", "Todesfälle gesamt", "hospitalisierte Patienten", "davon auf der Intensiv-Station"]].T.copy()
 df_final.columns = [date_current_values, "vor einer Woche"]
 
 

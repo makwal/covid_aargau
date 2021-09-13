@@ -149,8 +149,8 @@ year = date.isocalendar()[0]
 calendar_week = date.isocalendar()[1] - 1
 
 #Montag und Sonntag berechnen und in str umwandeln
-monday = datetime.strptime(f'{year}-{calendar_week}-1', '%G-%V-%u')
-sunday = monday + timedelta(days=6)
+monday = datetime.strptime(f'{year}-{calendar_week}-1', '%G-%V-%u') - timedelta(days=7)
+sunday = monday + timedelta(days=6) - timedelta(days=7)
 
 monday_str = monday.strftime('%d.%m.')
 sunday_str = sunday.strftime('%d.%m.%Y')

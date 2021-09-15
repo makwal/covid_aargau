@@ -112,7 +112,7 @@ df_wappen.set_index('Ort', inplace=True)
 df = pd.merge(df, df_wappen, left_index=True, right_index=True, how='left')
 df.reset_index(inplace=True)
 df.set_index('BFS-Nummer', inplace=True)
-
+df.rename(columns={'index':'gemeinde'}, inplace=True)
 
 # In[ ]:
 
@@ -149,7 +149,7 @@ year = date.isocalendar()[0]
 calendar_week = date.isocalendar()[1] - 1
 
 #Montag und Sonntag berechnen und in str umwandeln
-monday = datetime.strptime(f'{year}-{calendar_week}-1', '%G-%V-%u') - timedelta(days=7)
+monday = datetime.strptime(f'{year}-{calendar_week}-1', '%G-%V-%u')
 sunday = monday + timedelta(days=6)
 
 monday_str = monday.strftime('%d.%m.')

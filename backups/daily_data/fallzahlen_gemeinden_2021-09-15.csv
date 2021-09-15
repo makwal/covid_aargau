@@ -1,4 +1,4 @@
-BFS-Nummer,index,einwohner,fälle_total,letzte Woche,vorletzte Woche,fälle_pro_hundert,letzte_sieben_tage,kategorie_sieben_tage,Wappen
+BFS-Nummer,gemeinde,einwohner,fälle_total,letzte Woche,vorletzte Woche,fälle_pro_hundert,letzte_sieben_tage,kategorie_sieben_tage,Wappen
 4001.0,Aarau,21814.0,1715.0,40,41,7.861923535344275,40.0,3.0,http://i.imgur.com/JWqWyRS.png
 4271.0,Aarburg,8471.0,876.0,26,37,10.341163971195845,26.0,2.0,http://i.imgur.com/6Voq865.png
 4221.0,Abtwil,964.0,57.0,0-3,0-3,5.9128630705394185,0.0,0.0,http://i.imgur.com/quVNZ0U.png

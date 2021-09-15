@@ -113,7 +113,7 @@ df = pd.merge(df, df_wappen, left_index=True, right_index=True, how='left')
 df.reset_index(inplace=True)
 df.set_index('BFS-Nummer', inplace=True)
 df.rename(columns={'index':'gemeinde'}, inplace=True)
-
+df = df[df.index.notnull()].copy()
 # In[ ]:
 
 

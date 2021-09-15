@@ -114,6 +114,8 @@ df.reset_index(inplace=True)
 df.set_index('BFS-Nummer', inplace=True)
 df.rename(columns={'index':'gemeinde'}, inplace=True)
 df = df[df.index.notnull()].copy()
+df.index = df.index.astype(int)
+
 # In[ ]:
 
 

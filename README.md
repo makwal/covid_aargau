@@ -5,4 +5,4 @@ Visualisierungen der Daten:
 
 - <a href="https://www.aargauerzeitung.ch/ld.2090132">So entwickeln sich die Corona-Zahlen und der Impf-Fortschritt im Aargau</a>
 - <a href="https://www.solothurnerzeitung.ch/ld.2082953">So entwickeln sich die Corona-Zahlen und der Impf-Fortschritt im Kanton Solothurn</a>
-- so <a href="http://aargauerzeitung.ch/ld.1205558">Wie entwickeln sich die kantonalen und nationalen Zahlen?</a>
+- <a href="http://aargauerzeitung.ch/ld.1205558">Wie entwickeln sich die kantonalen und nationalen Zahlen?</a>

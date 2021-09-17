@@ -61,7 +61,7 @@ def vacc_daily_cantons(canton):
 # In[85]:
 
 
-cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR']
+cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR', 'CH']
 start_date = ''
 end_date = ''
 
@@ -84,7 +84,8 @@ cantons_dict = {
     'OW': '0pDI5',
     'UR': 'YDWRO',
     'SO': '5x9Kp',
-    'SO_long': 'ag74O'
+    'SO_long': 'ag74O',
+    'CH': 'roqDv'
 }
 
 

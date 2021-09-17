@@ -141,4 +141,5 @@ for canton, chart_id in cantons_dict.items():
     if canton == 'AG_long' or canton == 'SO_long':
         tick_string = ''
     chart_updater(chart_id, end_date, tick_string)
+    print(tick_string)
 

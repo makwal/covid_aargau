@@ -110,7 +110,7 @@ tick_string = ', '.join(ticks)
 # In[94]:
 
 
-note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft. Die Zahlen können von den Angaben des Kantons abweichen'''
+note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft'''
 
 def chart_updater(chart_id, end_date, tick_string):
 

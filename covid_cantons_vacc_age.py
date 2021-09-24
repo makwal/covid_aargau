@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[27]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ from datetime import timedelta
 
 # ### data import
 
-# In[ ]:
+# In[28]:
 
 
 #url BAG
@@ -25,7 +25,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[29]:
 
 
 r = requests.get(base_url)
@@ -37,14 +37,14 @@ df = pd.read_csv(url)
 
 # ### data preparation
 
-# In[ ]:
+# In[30]:
 
 
 df = df[df['type'] == 'COVID19AtLeastOneDosePersons'].copy()
 df = df[['date', 'geoRegion', 'altersklasse_covid19', 'per100PersonsTotal']].copy()
 
 
-# In[ ]:
+# In[31]:
 
 
 #format date from ISO week to regular date (monday per each week)
@@ -59,7 +59,11 @@ last_updated = last_updated.strftime('%d.%m.%Y')
 
 #formatting
 df['per100PersonsTotal'] = df['per100PersonsTotal'].round(1)
+
 df.reset_index(inplace=True, drop=True)
+#exclude age groups
+age_group_unwanted = ['12 - 15', '16 - 64', '65+']
+df = df[~df['altersklasse_covid19'].isin(age_group_unwanted)].copy()
 
 
 # In[ ]:
@@ -67,6 +71,7 @@ df.reset_index(inplace=True, drop=True)
 
 def geoRegion(canton):
     dfc = df[df['geoRegion'] == canton][['altersklasse_covid19', 'per100PersonsTotal']].copy()
+    
     #export to csv
     dfc.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}.csv', index=False)
 

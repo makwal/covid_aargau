@@ -1,20 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
 import requests
 from time import sleep
-from general_settings import backdate
-from datetime import timedelta
+from general_settings import backdate, datawrapper_api_key
+from datetime import datetime, timedelta
 
 
-# In[2]:
+# In[ ]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
+
+#url + credentials Datawrapper
+datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
+headers = {'Authorization': datawrapper_api_key}
 
 
 # In[ ]:
@@ -55,9 +59,24 @@ def age_dist_cantons(canton):
 # In[ ]:
 
 
-cantons = ["AG", "SO", "SG", "LU", "TG"]
+def chart_updater(chart_id):
 
-for canton in cantons:
+    url_publish = datawrapper_url + chart_id + '/publish'
+  
+    res_publish = requests.post(url_publish, headers=headers)
+
+
+# In[ ]:
+
+
+cantons = {"AG": "kOuHT", "SO": "r1M5h", "SG": "dKj8R", "LU": "IAlty", "TG": "3t0xX"}
+
+#create Boolean if datawrapper charts are to be updated
+update_day = datetime.today().day % 9 == 0
+
+for canton, chart_id in cantons.items():
     age_dist_cantons(canton)
+    if update_day:
+        chart_updater(chart_id)
     sleep(5)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[81]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 
-# In[82]:
+# In[2]:
 
 
 #url BAG
@@ -22,7 +22,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[83]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -32,7 +32,7 @@ url = files['csv']['vaccPersonsV2']
 df_import = pd.read_csv(url)
 
 
-# In[84]:
+# In[4]:
 
 
 def vacc_daily_cantons(canton):
@@ -54,11 +54,11 @@ def vacc_daily_cantons(canton):
     #export to csv
     df_short.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_short_{}.csv'.format(canton))
     df.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_{}.csv'.format(canton))
-    
+
     return start_date, end_date
 
 
-# In[85]:
+# In[5]:
 
 
 cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR', 'CH']
@@ -71,7 +71,7 @@ for canton in cantons:
 
 # **Datawrapper update**
 
-# In[86]:
+# In[6]:
 
 
 cantons_dict = {
@@ -91,7 +91,7 @@ cantons_dict = {
 
 # Create Ticks for Datawrapper
 
-# In[87]:
+# In[7]:
 
 
 ticks = []
@@ -107,10 +107,10 @@ ticks.append(end_date.strftime('%Y-%m-%d'))
 tick_string = ', '.join(ticks)
 
 
-# In[94]:
+# In[8]:
 
 
-note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft'''
+note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft. Die Zahlen können von den Angaben des Kantons abweichen'''
 
 def chart_updater(chart_id, end_date, tick_string):
 
@@ -134,12 +134,11 @@ def chart_updater(chart_id, end_date, tick_string):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[95]:
+# In[9]:
 
 
 for canton, chart_id in cantons_dict.items():
-    if canton == 'AG_long' or canton == 'SO_long':
-        tick_string = ''
     chart_updater(chart_id, end_date, tick_string)
-    print(tick_string)
+    if canton == 'AG_long' or canton == 'SO_long':
+        chart_updater(chart_id, end_date, tick_string='')
 

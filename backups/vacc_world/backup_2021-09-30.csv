@@ -24,6 +24,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :bt: Bhutan ^26.09.2021^,138.62,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :sm: San Marino ^27.09.2021^,138.49,"Pfizer/BioNTech, Sputnik V"
 :gb: Vereinigtes Königreich ^28.09.2021^,137.27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:nl: Niederlande ^27.09.2021^,137.08,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :nr: Nauru ^31.08.2021^,136.7,Oxford/AstraZeneca
 :fi: Finnland ^29.09.2021^,136.19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :se: Schweden ^29.09.2021^,135.14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -31,7 +32,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :my: Malaysia ^29.09.2021^,132.31,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :mn: Mongolei ^29.09.2021^,131.57,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :cy: Zypern ^29.09.2021^,130.75,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:nl: Niederlande ^26.09.2021^,130.03,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :jp: Japan ^29.09.2021^,129.9,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mu: Mauritius ^22.09.2021^,128.31,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
 :de: Deutschland ^28.09.2021^,128.04,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -168,8 +168,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :so: Somalia ^28.09.2021^,2.92,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :sy: Syrien ^13.09.2021^,2.92,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :sl: Sierra Leone ^27.09.2021^,2.85,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:ne: Niger ^28.08.2021^,2.47,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :lr: Liberia ^23.08.2021^,2.19,Oxford/AstraZeneca
+:ne: Niger ^22.09.2021^,2.04,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :ml: Mali ^27.09.2021^,1.94,Oxford/AstraZeneca
 :pg: Papua-Neuguinea ^28.09.2021^,1.81,Oxford/AstraZeneca
 :cm: Kamerun ^27.09.2021^,1.69,"Oxford/AstraZeneca, Sinopharm/Beijing"

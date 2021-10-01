@@ -7,7 +7,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :is: Island ^30.09.2021^,161.52,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :qa: Katar ^30.09.2021^,160.82,"Moderna, Pfizer/BioNTech"
 :mt: Malta ^27.09.2021^,159.08,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:sg: Singapur ^28.09.2021^,158.62,"Moderna, Pfizer/BioNTech, Sinovac"
+:sg: Singapur ^29.09.2021^,159.08,"Moderna, Pfizer/BioNTech, Sinovac"
 :pt: Portugal ^27.09.2021^,156.93,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :cn: Volksrepublik China ^30.09.2021^,153.12,"CanSino, Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac, ZF2001"
 :dk: Dänemark ^29.09.2021^,150.99,"Johnson&Johnson, Moderna, Pfizer/BioNTech"
@@ -53,15 +53,15 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sv: El Salvador ^30.09.2021^,116.36,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
 :ar: Argentinien ^30.09.2021^,113.39,"CanSino, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :fj: Fidschi ^28.09.2021^,112.66,Oxford/AstraZeneca
+:br: Brasilien ^30.09.2021^,110.95,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :cz: Tschechien ^30.09.2021^,110.1,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ma: Marokko ^28.09.2021^,110.06,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:br: Brasilien ^28.09.2021^,109.66,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
+:cr: Costa Rica ^27.09.2021^,108.9,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :do: Dominikanische Republik ^29.09.2021^,108.54,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
 :au: Australien ^30.09.2021^,107.61,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bn: Brunei ^28.09.2021^,107.45,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :nz: Neuseeland ^30.09.2021^,107.41,Pfizer/BioNTech
 :ee: Estland ^30.09.2021^,103.42,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:cr: Costa Rica ^20.09.2021^,102.71,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :si: Slowenien ^30.09.2021^,102.49,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :pl: Polen ^29.09.2021^,98.45,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :rs: Serbien ^29.09.2021^,95.19,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
@@ -112,6 +112,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :vn: Vietnam ^28.09.2021^,41.92,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :ph: Philippinen ^30.09.2021^,41.06,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :tj: Tadschikistan ^20.09.2021^,39.72,"Moderna, Oxford/AstraZeneca, Sinovac"
+:ba: Bosnien und Herzegowina ^29.09.2021^,38.06,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :km: Komoren ^22.09.2021^,37.92,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
 :gt: Guatemala ^29.09.2021^,37.83,"Moderna, Oxford/AstraZeneca"
 :st: São Tomé und Príncipe ^24.09.2021^,37.02,Oxford/AstraZeneca
@@ -120,7 +121,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :by: Belarus ^19.09.2021^,35.9,"Sinopharm/Beijing, Sputnik V"
 :zw: Simbabwe ^30.09.2021^,35.49,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :md: Moldau ^30.09.2021^,34.83,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:ba: Bosnien und Herzegowina ^07.09.2021^,32.49,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :dz: Algerien ^25.09.2021^,31.56,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :vc: St. Vincent und die Grenadinen ^29.09.2021^,30.63,Oxford/AstraZeneca
 :ki: Kiribati ^28.09.2021^,29.93,Oxford/AstraZeneca
@@ -128,7 +128,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :za: Südafrika ^30.09.2021^,29.16,"Johnson&Johnson, Pfizer/BioNTech"
 :bd: Bangladesch ^29.09.2021^,29.0,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :rw: Ruanda ^30.09.2021^,28.47,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:gq: Äquatorialguinea ^20.09.2021^,26.34,Sinopharm/Beijing
+:gq: Äquatorialguinea ^30.09.2021^,27.39,Sinopharm/Beijing
 :bw: Botswana ^30.09.2021^,26.26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :jm: Jamaika ^28.09.2021^,25.42,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mr: Mauretanien ^27.09.2021^,23.42,"Oxford/AstraZeneca, Sinopharm/Beijing"

@@ -32,7 +32,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mv: Malediven ^30.09.2021^,134.62,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :jp: Japan ^03.10.2021^,132.84,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mn: Mongolei ^03.10.2021^,131.63,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:cy: Zypern ^02.10.2021^,131.22,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:cy: Zypern ^02.10.2021^,130.04,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mu: Mauritius ^30.09.2021^,130.01,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
 :tr: Türkei ^03.10.2021^,129.74,"Pfizer/BioNTech, Sinovac"
 :de: Deutschland ^03.10.2021^,128.79,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -64,8 +64,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ee: Estland ^03.10.2021^,103.8,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :si: Slowenien ^03.10.2021^,102.8,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :pl: Polen ^03.10.2021^,98.89,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:rs: Serbien ^02.10.2021^,96.12,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :om: Oman ^28.09.2021^,94.71,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
+:rs: Serbien ^02.10.2021^,94.68,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :ag: Antigua und Barbuda ^28.09.2021^,94.52,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
 :tv: Tuvalu ^10.09.2021^,91.08,Oxford/AstraZeneca
 :kn: St. Kitts und Nevis ^01.10.2021^,89.75,"Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -180,8 +180,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ss: Südsudan ^01.10.2021^,0.95,Oxford/AstraZeneca
 :td: Tschad ^29.09.2021^,0.91,Sinopharm/Beijing
 :tm: Turkmenistan ^04.04.2021^,0.69,"EpiVacCorona, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
+:ht: Haiti ^01.10.2021^,0.61,"Johnson&Johnson, Oxford/AstraZeneca"
 :tz: Tansania ^11.09.2021^,0.57,Johnson&Johnson
-:ht: Haiti ^21.09.2021^,0.53,"Johnson&Johnson, Oxford/AstraZeneca"
 ":cd: Kongo, Demokratische Republik ^30.09.2021^",0.15,Oxford/AstraZeneca
 :hu: Ungarn ^30.09.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :kw: Kuwait ^14.08.2021^,,Pfizer/BioNTech

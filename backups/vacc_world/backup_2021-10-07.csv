@@ -127,7 +127,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :vc: St. Vincent und die Grenadinen ^02.10.2021^,30.9,Oxford/AstraZeneca
 :za: Südafrika ^06.10.2021^,30.83,"Johnson&Johnson, Pfizer/BioNTech"
 :ua: Ukraine ^06.10.2021^,30.6,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:rw: Ruanda ^01.10.2021^,28.66,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:rw: Ruanda ^05.10.2021^,28.79,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :gq: Äquatorialguinea ^30.09.2021^,27.39,Sinopharm/Beijing
 :jm: Jamaika ^06.10.2021^,26.96,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bw: Botswana ^30.09.2021^,26.26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
@@ -168,11 +168,11 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ng: Nigeria ^30.09.2021^,3.19,Oxford/AstraZeneca
 :so: Somalia ^29.09.2021^,3.03,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :sl: Sierra Leone ^29.09.2021^,2.9,"Oxford/AstraZeneca, Sinopharm/Beijing"
+:lr: Liberia ^23.08.2021^,2.19,Oxford/AstraZeneca
 :pg: Papua-Neuguinea ^05.10.2021^,2.14,Oxford/AstraZeneca
 :ne: Niger ^29.09.2021^,2.12,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :bj: Benin ^30.09.2021^,1.99,"Oxford/AstraZeneca, Sinovac"
 :ml: Mali ^01.10.2021^,1.98,Oxford/AstraZeneca
-:lr: Liberia ^06.10.2021^,1.81,Oxford/AstraZeneca
 :cm: Kamerun ^29.09.2021^,1.72,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :mg: Madagaskar ^20.09.2021^,1.34,Oxford/AstraZeneca
 :bf: Burkina Faso ^22.09.2021^,1.18,Oxford/AstraZeneca
@@ -180,7 +180,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ss: Südsudan ^01.10.2021^,0.95,Oxford/AstraZeneca
 :td: Tschad ^29.09.2021^,0.91,Sinopharm/Beijing
 :tz: Tansania ^03.10.2021^,0.91,Johnson&Johnson
-:tm: Turkmenistan ^28.02.2021^,0.85,"EpiVacCorona, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
+:tm: Turkmenistan ^04.04.2021^,0.69,"EpiVacCorona, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :ht: Haiti ^02.10.2021^,0.65,"Johnson&Johnson, Oxford/AstraZeneca"
 ":cd: Kongo, Demokratische Republik ^30.09.2021^",0.15,Oxford/AstraZeneca
 :hu: Ungarn ^06.10.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"

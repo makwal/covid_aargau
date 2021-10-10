@@ -147,7 +147,7 @@ data = [
     {'Indikator': 'R-Wert (Ø 7 Tage)', 'Aktuell': str(re_7d), '1. Eskalation': f'1.5 {re}', '2. Eskalation': f'1.5 {re}', '3. Eskalation (Lockdown)': f'1.5 {re}'},
     {'Indikator': 'Intensiv-Patienten mit Covid', 'Aktuell': str(anteil_covid_patienten) + '%', '1. Eskalation': f'40% {anteil1}', '2. Eskalation': f'50% {anteil2}', '3. Eskalation (Lockdown)': f'60% {anteil3}'},
     {'Indikator': 'Intensiv-Belegung', 'Aktuell': str(belegung_icu_betten) + '%', '1. Eskalation': f'95% {belegung1}', '2. Eskalation': f'100% {belegung2}', '3. Eskalation (Lockdown)': f'Intensiv-Zusatzbetten belegt  {belegung3}'},
-    {'Indikator': 'Operationen', 'Aktuell': '', '1. Eskalation': f'nicht dringl. OP verschoben {überschritten}', '2. Eskalation': f'dringl. und nicht dringl. OP verschoben {nicht_überschritten}', '3. Eskalation (Lockdown)': f'Notfall-OP gefährdet {nicht_überschritten}'}
+    {'Indikator': 'Operationen', 'Aktuell': '', '1. Eskalation': f'nicht dringl. OP verschoben {nicht_überschritten}', '2. Eskalation': f'dringl. und nicht dringl. OP verschoben {nicht_überschritten}', '3. Eskalation (Lockdown)': f'Notfall-OP gefährdet {nicht_überschritten}'}
 ]
 
 

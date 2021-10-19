@@ -47,7 +47,7 @@ df.set_index('date', inplace=True)
 df.rename(columns={'per100PersonsTotal': 'total_pop'}, inplace=True)
 
 #take last row for every type
-df = df.groupby('type').tail(1)
+df = df[df['age_group'] == 'total_population'].groupby('type').tail(1)
 last_updated = df.index[0].strftime('%d.%m.%Y')
 
 

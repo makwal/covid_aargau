@@ -42,6 +42,7 @@ latest = df['date'].max()
 df = df[df['date'] == latest].copy()
 
 df['date'] = df['date'].dt.strftime('%d.%m.%Y')
+df = df[df['age_group'] == 'total_population'].copy()
 df = df[(df['type'] == 'COVID19PartiallyVaccPersons') | (df['type'] == 'COVID19FullyVaccPersons')][['date', 'geoRegion', 'pop', 'per100PersonsTotal', 'type']].copy()
 
 

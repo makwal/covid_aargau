@@ -6,7 +6,7 @@
 
 # Grundsätzliches Vorgehen: Die Angaben, wie viele Personen pro Alterskategorie zu welchem Zeitpunkt (Kalenderwoche) vollständig, teilweise oder nicht geimpft sind, werden mit den Hospitalisationsdaten der jeweiligen Kalenderwochen zusammengefügt. Daraus kann hernach die Inzidenz für die Alterskategorie errechnet werden (Spitaleintritte pro 100k zweifach Geimpfte resp. teilw./nicht Geimpfte.
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -17,7 +17,7 @@ import numpy as np
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[ ]:
 
 
 #url BAG
@@ -28,161 +28,81 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
 response = r.json()
 files = response['sources']['individual']
+url = files['csv']['weekly']['byAge']['hospVaccPersons']
+df = pd.read_csv(url)
+df = df[df['geoRegion'] == 'CHFL'].copy()
 
 
-# **Liste der Altersklassen erstellen**
-
-# In[4]:
-
-
-url_alter_vacc = files['csv']['weeklyVacc']['byAge']['vaccPersonsV2']
-df_alter_vacc = pd.read_csv(url_alter_vacc)
-altersklassen_liste = df_alter_vacc['altersklasse_covid19'].unique()
-altersklassen_liste = altersklassen_liste[:-3]
-
-# In[5]:
+# In[ ]:
 
 
 gewünschte_daten = {
-                    'alle': altersklassen_liste,
-                    'unter 60 Jahren': altersklassen_liste[:6],
-                    'über 60 Jahren': altersklassen_liste[6:]
+                    'alle': ['all'],
+                    'unter 60 Jahren': ['0 - 9', '10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
+                    'über 60 Jahren': ['60 - 69', '70 - 79', '80+']
 }
 
 
-# **Impfdaten: Import der Zahlen der absolut Geimpften pro Kalenderwoche**
+# **Inzidenz-Berechnung**
 
-# In[6]:
+# In[ ]:
 
 
-def impf_main(altersklassen):
-    url_vacc = files['csv']['weeklyVacc']['byAge']['vaccPersonsV2']
-    dfvacc = pd.read_csv(url_vacc)
+def inzidenz_berechner(df, alter_key, altersklassen):
+    df = df[df['altersklasse_covid19'].isin(altersklassen)].copy()
 
-    #Auswahl der Altersklassen und wichtigsten Spalten
-    dfvacc = dfvacc[dfvacc['altersklasse_covid19'].isin(altersklassen)].copy()
-    dfvacc = dfvacc[dfvacc['geoRegion'] == 'CHFL'].copy()
-    dfvacc = dfvacc[['date', 'altersklasse_covid19', 'pop', 'sumTotal', 'type']].copy()
-    dfvacc.rename(columns={'sumTotal': 'totalVaccinated'}, inplace=True)
+    #Fully vaccinated
+    df['weight'] = df['inz_entries'] * df['pop']
+    group = df.groupby(['date', 'vaccination_status'])
+    df_fully = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'voll. geimpft'})
+    df_fully = df_fully[df_fully['vaccination_status'] == 'fully_vaccinated'][['date', 'voll. geimpft']].copy()
+    df_fully['voll. geimpft'] = df_fully['voll. geimpft'].round(1)
+
+    #latest value for Datawrapper
+    last_inz_double_shot = df_fully['voll. geimpft'].tail(1).values[0]
     
-    #Pro Impfstatus (vollst./teilweise/mind. 1x geimpft) eine Spalte. Werte = Anzahl geimpfter Personen pro Status
-    dfvacc = dfvacc.pivot(index=['date', 'altersklasse_covid19', 'pop'], columns='type', values='totalVaccinated')
-    dfvacc.reset_index(inplace=True)
-    
-    #Berechnung, wie viele Menschen doppelt geimpft sind resp. 1x oder ungeimpft.
-    dfvacc['double_shot'] = dfvacc['COVID19FullyVaccPersons']
-    dfvacc['single_no_shot'] = dfvacc['COVID19PartiallyVaccPersons'] + (dfvacc['pop'] - dfvacc['COVID19AtLeastOneDosePersons'])
-    dfvacc = dfvacc[['date', 'altersklasse_covid19', 'double_shot', 'single_no_shot']].copy()
-    
-    return dfvacc
+    #Not fully vaccinated
+    df_not_fully_raw = df[(df['vaccination_status'] == 'partially_vaccinated') | (df['vaccination_status'] == 'not_vaccinated')].copy()
+    df_not_fully_raw['weight'] = df_not_fully_raw['inz_entries'] * df_not_fully_raw['pop']
+    group2 = df_not_fully_raw.groupby(['date'])
+    df_not_fully = pd.DataFrame(group2['weight'].sum() / group2['pop'].sum()).reset_index().rename(columns={0: 'nicht voll. geimpft'})
+    df_not_fully['nicht voll. geimpft'] = df_not_fully['nicht voll. geimpft'].round(1)
 
-
-# **Hospitalisierungs-Daten**
-
-# Nun erfolgt Import und Bereitstellung der Hospitalisationsdaten. Es braucht zwei Importe: Einmal die Gesamtzahl Hospitalisierter (hosp) und einmal die geimpften Hospitalisierten (hospVaccPersons). Beide Datasets verfügen über einen Kalenderwochen-Intervall.
-
-# In[7]:
-
-
-def hosp_main(altersklassen):
-    
-    #Files, die einzulesen sind
-    file_list = ['hosp', 'hospVaccPersons']
-
-    #Liste, in der die Hospitalisationsdaten abgelegt werden, um danach gemergt zu werden.
-    dataframes = []
-    
-    #In dieser Funktion werden beide Files in Form gebracht und danach in der dataframes-Liste abgelegt.
-    def hospitalizer(file):
-        url = files['csv']['weekly']['byAge'][file]
-        df_hosp = pd.read_csv(url)
-        df_hosp = df_hosp[df_hosp['altersklasse_covid19'].isin(altersklassen)].copy()
-        df_hosp = df_hosp[df_hosp['geoRegion'] == 'CHFL'].copy()
-        try:
-            df_hosp = df_hosp[['altersklasse_covid19','datum', 'entries']].copy()
-        except:
-            df_hosp = df_hosp[['altersklasse_covid19','date', 'entries']].copy()
-
-        df_hosp.columns = ['altersklasse_covid19', 'date', file]
-        dataframes.append(df_hosp)
-        sleep(5)
         
-    for file in file_list:
-        hospitalizer(file)
-        
-    #Merge dataframes
-    df_hosp = pd.merge(dataframes[0], dataframes[1], left_on=['date', 'altersklasse_covid19'], right_on=['date', 'altersklasse_covid19'])
-
-    #Neue Spalte mit den Hospitalisierten, die nicht doppelt geimpft sind
-    df_hosp['hosp_single_no_vacc'] = df_hosp['hosp'] - df_hosp['hospVaccPersons']
+    #latest value for datawrapper
+    last_inz_single_no_shot = df_not_fully['nicht voll. geimpft'].tail(1).values[0]
     
-    return df_hosp
+    #Merge
+    df_hospvacc = pd.merge(df_fully, df_not_fully, left_on='date', right_on='date')
 
+    #Time formatting
+    df_hospvacc['date'] = df_hospvacc['date'].apply(lambda x: datetime.strptime(str(x) + '-1', "%G%V-%u") + timedelta(days=6))
 
-# **Inzindenz-Berechnung**
-
-# In[8]:
-
-
-def inzidenz_berechner(df):
-    #Datum-Formatierung: Aus Kalenderwoche mach Datum des jeweiligen Sonntags
-    df['date'] = df['date'].apply(lambda x: datetime.strptime(str(x) + '-1', "%G%V-%u") + timedelta(days=6))
-    
-    #Datum für Datawrapper
-    date = df['date'].tail(1).values[0]
-    
-    #Zusammenrechnen aller Altersgruppen (alle Spalten, sprich geimpfte Personen und Hospitalisierungen)
-    df = df.groupby('date').sum()
-    
-    #Inzidenzberechnung: Hospitalisierte geteilt durch (Nicht/teilw.-)Geimpfte * Hunderttausend
-    df['inz_hosp_single_no_vacc'] = (df['hosp_single_no_vacc'] / df['single_no_shot'] * 100000).round(1)
-    df['inz_hospVaccPersons'] = (df['hospVaccPersons'] / df['double_shot'] * 100000).round(1)
-    
-    #Die relevanten Spalten behalten
-    df = df[['inz_hosp_single_no_vacc', 'inz_hospVaccPersons']].copy()
-    df.columns = ['nicht/teilw. geimpft', 'vollständig geimpft']
-    
-    #Inzidenz für Datawrapper
-    last_inz_single_no_shot = df['nicht/teilw. geimpft'].tail(1).values[0]
-    last_inz_double_shot = df['vollständig geimpft'].tail(1).values[0]
-    
-    return df, date, last_inz_single_no_shot, last_inz_double_shot
-
-
-# **Export**
-
-# In[9]:
-
-
-def export(df_final, alter_key):
-    #export backup to csv
-    df_final.to_csv('/root/covid_aargau/backups/vacc_ch/hosp_vacc_{}_{}.csv'.format(alter_key, backdate(0)))
-    
-    #export to csv
-    df_final.to_csv('/root/covid_aargau/data/vaccination/hosp_vacc_{}.csv'.format(alter_key))
-
-
-# In[10]:
-
-
-def date_handler(date):
+    #Date for datawrapper
+    date = df_hospvacc['date'].tail(1).values[0]
     date = pd.to_datetime(str(date))
     monday = date - timedelta(days=6)
-    monday = monday.strftime('%d.%m')
+    monday = monday.strftime('%d.%m.')
     sunday = date.strftime('%d.%m.%Y')
+
+    #export backup to csv
+    df_hospvacc.to_csv('/root/covid_aargau/backups/vacc_ch/hosp_vacc_{}_{}.csv'.format(alter_key, backdate(0)))
+
+    #export to csv
+    df_hospvacc.to_csv('/root/covid_aargau/data/vaccination/hosp_vacc_{}.csv'.format(alter_key))
     
-    return monday, sunday
+    return last_inz_double_shot, last_inz_single_no_shot, monday, sunday
 
 
 # **Datawrapper-Update**
 
-# In[17]:
+# In[ ]:
 
 
 def chart_updater(chart_id, intro):
@@ -226,10 +146,10 @@ def chart_updater(chart_id, intro):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[18]:
+# In[ ]:
 
 
-def lesebeispiel(monday, sunday, last_inz_single_no_shot, last_inz_double_shot, alter_key):
+def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     if alter_key == 'alle':
         alter_key = ''
@@ -239,10 +159,10 @@ def lesebeispiel(monday, sunday, last_inz_single_no_shot, last_inz_double_shot, 
     return intro
 
 
-# In[19]:
+# In[ ]:
 
 
-def datawrapper_main(monday, sunday, last_inz_single_no_shot, last_inz_double_shot, alter_key):
+def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     chart_ids = {
     'alle': 'XnQjc',
@@ -250,42 +170,26 @@ def datawrapper_main(monday, sunday, last_inz_single_no_shot, last_inz_double_sh
     'über 60 Jahren': '6MWjR'
     }
     
-    intro = lesebeispiel(monday, sunday, last_inz_single_no_shot, last_inz_double_shot, alter_key)
-    
-    
+    intro = lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key)    
+        
     chart_updater(chart_ids[alter_key], intro)
 
 
 # **Haupt-Funktion**
 
-# In[20]:
+# In[ ]:
 
 
 def main_function(alter_key, altersklassen):
     
-    #Impfdaten
-    dfvacc = impf_main(altersklassen)
-    
-    #Hospitalisierungsdaten
-    df_hosp = hosp_main(altersklassen)
-    
-    #Merge von Impf- und Hospitalisierungsdaten
-    df = pd.merge(dfvacc, df_hosp, left_on=['date', 'altersklasse_covid19'], right_on=['date', 'altersklasse_covid19'], how='right')
-    
     #Inzidenz-Berechnung
-    df_final, date, last_inz_single_no_shot, last_inz_double_shot = inzidenz_berechner(df)
-    
-    #Export
-    export(df_final, alter_key)
-    
-    #Datum für Datawrapper formatieren
-    monday, sunday = date_handler(date)
+    last_inz_double_shot, last_inz_single_no_shot, monday, sunday = inzidenz_berechner(df, alter_key, altersklassen)
     
     #Datawrapper-Update
-    datawrapper_main(monday, sunday, last_inz_single_no_shot, last_inz_double_shot, alter_key)
+    datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key)
 
 
-# In[21]:
+# In[ ]:
 
 
 for alter_key, alter_value in gewünschte_daten.items():

@@ -92,10 +92,10 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     sunday = date.strftime('%d.%m.%Y')
 
     #export backup to csv
-    df_hospvacc.to_csv('/root/covid_aargau/backups/vacc_ch/hosp_vacc_{}_{}.csv'.format(alter_key, backdate(0)))
+    df_hospvacc.to_csv('/root/covid_aargau/backups/vacc_ch/hosp_vacc_{}_{}.csv'.format(alter_key, backdate(0)), index=False)
 
     #export to csv
-    df_hospvacc.to_csv('/root/covid_aargau/data/vaccination/hosp_vacc_{}.csv'.format(alter_key))
+    df_hospvacc.to_csv('/root/covid_aargau/data/vaccination/hosp_vacc_{}.csv'.format(alter_key), index=False)
     
     return last_inz_double_shot, last_inz_single_no_shot, monday, sunday
 

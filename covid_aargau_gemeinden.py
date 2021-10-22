@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[36]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,8 @@ from datetime import datetime, date, timedelta
 from general_settings import file_url, backdate, datawrapper_api_key
 from time import sleep
 
-# In[37]:
+
+# In[2]:
 
 
 #url + credentials Datawrapper
@@ -19,14 +20,14 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[38]:
+# In[3]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 df = pd.read_excel(file_url, sheet_name='2.1 Daten Gemeinden')
 
 
-# In[39]:
+# In[4]:
 
 
 df.columns = ['bezirk', 'gemeinde', 'einwohner', 'fälle_total', 'letzte Woche', 'vorletzte Woche']
@@ -35,9 +36,11 @@ df.set_index('gemeinde', inplace=True)
 del df['bezirk']
 
 
+# ## Interaktive Karte
+
 # **Berechnung Fälle pro Hundert Einwohner:innen**
 
-# In[40]:
+# In[5]:
 
 
 df['fälle_total'] = df['fälle_total'].replace('Keine Publikation', np.nan)
@@ -49,7 +52,7 @@ df['fälle_pro_hundert'] = (df['fälle_total'] / df['einwohner']) * 100
 
 # **Kategorisierung der aktuellen Fallzahlen**
 
-# In[41]:
+# In[6]:
 
 
 df['letzte_sieben_tage'] = df['letzte Woche']
@@ -74,7 +77,7 @@ df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
 # - 7-9 Fälle = 2
 # - mehr als 10 = 3
 
-# In[42]:
+# In[7]:
 
 
 def category_maker(elem):
@@ -96,25 +99,28 @@ df['kategorie_sieben_tage'] = df['letzte_sieben_tage'].apply(category_maker)
 
 # **Import Wappen + Merge**
 
-# In[32]:
+# In[9]:
 
 
 #home: '../Vorlagen/bfs-nummer_gemeinde_wappen_2020.csv'
-#Server: 'bfs-nummer_gemeinde_wappen_2020.csv'
+#Server: 'root/covid_aargau/bfs-nummer_gemeinde_wappen_2020.csv'
 df_wappen = pd.read_csv('/root/covid_aargau/bfs-nummer_gemeinde_wappen_2020.csv')
 df_wappen['Ort'] = df_wappen['Ort'].str.replace(' \(AG\)', '')
 df_wappen.set_index('Ort', inplace=True)
 
 
-# In[33]:
+# In[10]:
 
 
 df = pd.merge(df, df_wappen, left_index=True, right_index=True, how='left')
 df.reset_index(inplace=True)
 df.set_index('BFS-Nummer', inplace=True)
-df.rename(columns={'index':'gemeinde'}, inplace=True)
+
+#Rename 'Gemeinde'-column from 'index' to 'gemeinde', drop NaN rows and define bfs-index as int
+df.rename(columns={'index': 'gemeinde'}, inplace=True)
 df = df[df.index.notnull()].copy()
 df.index = df.index.astype(int)
+
 
 # In[ ]:
 
@@ -126,9 +132,40 @@ df.to_csv('/root/covid_aargau/backups/daily_data/fallzahlen_gemeinden_{}.csv'.fo
 df.to_csv('/root/covid_aargau/data/only_AG/fallzahlen_gemeinden.csv')
 
 
-# **Datawrapper-Update**
+# ## Tabelle
 
-# In[84]:
+# In[86]:
+
+
+df_tab = df.sort_values(by=['letzte_sieben_tage', 'gemeinde'], ascending=[False, True]).reset_index()
+tenth_value = df_tab.loc[9]['letzte_sieben_tage']
+
+
+# In[87]:
+
+
+if tenth_value <= 0:
+    tenth_value = 1
+else:
+    pass
+
+df_tab = df_tab[df_tab['letzte_sieben_tage'] >= tenth_value][['gemeinde', 'letzte Woche', 'vorletzte Woche']].copy()
+df_tab.columns = ['Gemeinde', 'Infektionen letzte Woche', 'Infektionen vorletzte Woche']
+
+
+# In[ ]:
+
+
+#make a backup export of the current data
+df_tab.to_csv('/root/covid_aargau/backups/daily_data/fallzahlen_gemeinden_tabelle_{}.csv'.format(backdate(0)), index=False)
+
+#export to csv
+df_tab.to_csv('/root/covid_aargau/data/only_AG/fallzahlen_gemeinden_tabelle.csv', index=False)
+
+
+# **Date**
+
+# In[69]:
 
 
 df_date = pd.read_excel(file_url, sheet_name='1. Covid-19-Daten')
@@ -141,7 +178,7 @@ date = date + timedelta(days=1)
 date_str = date.strftime('%d.%m.%Y')
 
 
-# In[85]:
+# In[70]:
 
 
 #Stand der Daten herausfinden. (Woche vom dd.MM. bis dd.MM.YYYY) Dazu brauche ich die Angaben Jahr und Kalenderwoche des akt. Datums
@@ -158,18 +195,38 @@ monday_str = monday.strftime('%d.%m.')
 sunday_str = sunday.strftime('%d.%m.%Y')
 
 
-# In[88]:
+# **Datawrapper-Update Karte**
+
+# In[107]:
 
 
-notes = f'Aus Datenschutzgründen weist der Kanton 0 bis 3 Neuinfektionen als eine Kategorie aus. Für Gemeinden mit weniger als 500 Einwohnern macht er keine Angaben.'
-intro = f'Neuinfektionen Woche vom {monday_str} bis {sunday_str}'
-chart_id = 'r1Mao'
+intro_map = f'Neuinfektionen Woche vom {monday_str} bis {sunday_str}'
+notes_map = f'Aus Datenschutzgründen weist der Kanton 0 bis 3 Neuinfektionen als eine Kategorie aus. Für Gemeinden mit weniger als 500 Einwohnern macht er keine Angaben.'
+
+notes_tab = 'Letzte Woche = {} bis {}'.format(monday_str, sunday_str)
 
 
-# In[87]:
+# In[108]:
 
 
-def chart_updater(chart_id, notes):
+data_dict = {
+    'karte': {
+        'chart_id': 'r1Mao',
+        'intro': intro_map,
+        'notes': notes_map 
+    },
+    'tabelle': {
+        'chart_id': '6OoHy',
+        'intro': '',
+        'notes': notes_tab
+    }
+}
+
+
+# In[112]:
+
+
+def chart_updater(chart_id, intro, notes):
 
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
@@ -189,5 +246,9 @@ def chart_updater(chart_id, notes):
     res_publish = requests.post(url_publish, headers=headers)
 
 #call function
-chart_updater(chart_id, notes)
+for chart_type, data in data_dict.items():
+    chart_id = data['chart_id']
+    intro = data['intro']
+    notes = data['notes']
+    chart_updater(chart_id, intro, notes)
 

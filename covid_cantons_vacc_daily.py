@@ -37,7 +37,7 @@ df_import = pd.read_csv(url)
 
 def vacc_daily_cantons(canton):
     #choose only canton and necessary columns
-    df = df_import[(df_import['geoRegion'] == canton) & (df_import['type'] == 'COVID19AtLeastOneDosePersons')].copy()
+    df = df_import[(df_import['geoRegion'] == canton) & (df_import['type'] == 'COVID19AtLeastOneDosePersons') & (df_import['age_group'] == 'total_population')].copy()
     df = df[['date', 'entries', 'mean7d']].copy()
 
     #formatting

@@ -44,7 +44,7 @@ files = response['sources']['individual']
 url_alter_vacc = files['csv']['weeklyVacc']['byAge']['vaccPersonsV2']
 df_alter_vacc = pd.read_csv(url_alter_vacc)
 altersklassen_liste = df_alter_vacc['altersklasse_covid19'].unique()
-
+altersklassen_liste = altersklassen_liste[:-3]
 
 # In[5]:
 

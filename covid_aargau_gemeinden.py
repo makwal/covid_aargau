@@ -185,7 +185,7 @@ date_str = date.strftime('%d.%m.%Y')
 year = date.isocalendar()[0]
 
 #Ich will letzte Kalenderwoche, nicht die aktuelle (darum -1)
-calendar_week = date.isocalendar()[1] - 1
+calendar_week = date.isocalendar()[1] - 2
 
 #Montag und Sonntag berechnen und in str umwandeln
 monday = datetime.strptime(f'{year}-{calendar_week}-1', '%G-%V-%u')

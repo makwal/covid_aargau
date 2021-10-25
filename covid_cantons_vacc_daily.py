@@ -45,9 +45,9 @@ def vacc_daily_cantons(canton):
     df.set_index('date', inplace=True)
     df.rename(columns={'mean7d': 'Erstimpfungen 7-Tages-Schnitt'}, inplace=True)
     
-    #only last eight weeks
+    #only last twelve  weeks
     end_date = df.index[-1]
-    start_date = end_date - timedelta(weeks=8)
+    start_date = end_date - timedelta(weeks=12)
 
     df_short = df[start_date:end_date].copy()
 

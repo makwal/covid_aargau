@@ -99,7 +99,7 @@ ticks.append(start_date.strftime('%Y-%m-%d'))
 
 between_date = start_date
 
-for i in range(7):
+for i in range(11):
     between_date = between_date + timedelta(days=7)
     ticks.append(between_date.strftime('%Y-%m-%d'))
 

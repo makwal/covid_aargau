@@ -17,8 +17,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :es: Spanien ^29.10.2021^,153.91,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 ":kr: Korea, Süd ^01.11.2021^",153.32,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :my: Malaysia ^01.11.2021^,153.11,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:gb: Vereinigtes Königreich ^31.10.2021^,152.21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :dk: Dänemark ^31.10.2021^,152.21,"Johnson&Johnson, Moderna, Pfizer/BioNTech"
+:gb: Vereinigtes Königreich ^31.10.2021^,152.21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :jp: Japan ^01.11.2021^,150.75,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :it: Italien ^01.11.2021^,148.93,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ie: Irland ^27.10.2021^,146.93,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -41,6 +41,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :de: Deutschland ^31.10.2021^,133.43,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :lk: Sri Lanka ^28.10.2021^,132.95,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :ad: Andorra ^03.10.2021^,132.76,"Oxford/AstraZeneca, Pfizer/BioNTech"
+:hu: Ungarn ^31.10.2021^,132.28,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :mn: Mongolei ^31.10.2021^,132.02,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :ar: Argentinien ^01.11.2021^,132.01,"CanSino, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :fj: Fidschi ^01.11.2021^,131.71,Oxford/AstraZeneca
@@ -184,6 +185,5 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ht: Haiti ^29.10.2021^,1.07,"Johnson&Johnson, Moderna"
 ":cd: Kongo, Demokratische Republik ^29.10.2021^",0.16,Oxford/AstraZeneca
 :bi: Burundi ^29.10.2021^,0.01,Sinopharm/Beijing
-:hu: Ungarn ^31.10.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :kw: Kuwait ^14.08.2021^,,Pfizer/BioNTech
 :la: Laos ^28.10.2021^,,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"

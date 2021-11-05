@@ -9,7 +9,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sg: Singapur ^27.10.2021^,171.19,"Moderna, Pfizer/BioNTech, Sinovac"
 :is: Island ^04.11.2021^,167.36,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :qa: Katar ^04.11.2021^,165.46,"Moderna, Pfizer/BioNTech"
-:kh: Kambodscha ^03.11.2021^,164.28,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
+:kh: Kambodscha ^04.11.2021^,164.7,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :pt: Portugal ^01.11.2021^,159.78,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bh: Bahrain ^04.11.2021^,159.57,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :cn: Volksrepublik China ^04.11.2021^,159.44,"CanSino, Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac, ZF2001"
@@ -47,7 +47,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mn: Mongolei ^31.10.2021^,132.02,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :fj: Fidschi ^01.11.2021^,131.71,Oxford/AstraZeneca
 :sa: Saudi-Arabien ^04.11.2021^,130.8,"Oxford/AstraZeneca, Pfizer/BioNTech"
-:br: Brasilien ^31.10.2021^,128.93,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
+:br: Brasilien ^04.11.2021^,129.85,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :at: Österreich ^03.11.2021^,128.31,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ma: Marokko ^02.11.2021^,128.18,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :cr: Costa Rica ^01.11.2021^,127.79,"Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -89,9 +89,9 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :kz: Kasachstan ^04.11.2021^,83.94,"QazVac, Sinopharm/Beijing, Sputnik V"
 :me: Montenegro ^04.11.2021^,80.35,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :gy: Guyana ^03.11.2021^,79.94,"Oxford/AstraZeneca, Sputnik V"
-:tn: Tunesien ^03.11.2021^,79.23,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
+:tn: Tunesien ^04.11.2021^,79.55,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :uz: Usbekistan ^03.11.2021^,78.76,"Moderna, Oxford/AstraZeneca, Sputnik V, ZF2001"
-:mk: Nordmazedonien ^03.11.2021^,77.83,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
+:mk: Nordmazedonien ^04.11.2021^,78.01,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :in: Indien ^04.11.2021^,77.3,"Covaxin, Oxford/AstraZeneca, Sputnik V"
 :sr: Suriname ^04.11.2021^,76.87,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :ru: Russland ^04.11.2021^,74.35,"EpiVacCorona, Sputnik V"
@@ -129,7 +129,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :zw: Simbabwe ^04.11.2021^,39.75,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ni: Nicaragua ^29.10.2021^,38.53,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik Light, Sputnik V"
 :md: Moldau ^04.11.2021^,38.24,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
-:za: Südafrika ^03.11.2021^,37.97,"Johnson&Johnson, Pfizer/BioNTech"
+:za: Südafrika ^04.11.2021^,37.97,"Johnson&Johnson, Pfizer/BioNTech"
 :mm: Myanmar ^31.10.2021^,37.04,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :mr: Mauretanien ^04.11.2021^,34.05,"Oxford/AstraZeneca, Sinopharm/Beijing"
 :vu: Vanuatu ^01.11.2021^,33.39,Oxford/AstraZeneca
@@ -163,9 +163,9 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :lr: Liberia ^02.11.2021^,8.47,Oxford/AstraZeneca
 :ug: Uganda ^04.11.2021^,7.65,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :sl: Sierra Leone ^04.11.2021^,7.59,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:mw: Malawi ^03.11.2021^,6.37,"Johnson&Johnson, Oxford/AstraZeneca"
+:mw: Malawi ^04.11.2021^,6.39,"Johnson&Johnson, Oxford/AstraZeneca"
 :sy: Syrien ^31.10.2021^,6.16,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik Light, Sputnik V"
-:et: Äthiopien ^03.11.2021^,4.19,Oxford/AstraZeneca
+:et: Äthiopien ^04.11.2021^,4.23,Oxford/AstraZeneca
 :so: Somalia ^03.11.2021^,4.17,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :ng: Nigeria ^04.11.2021^,4.16,Oxford/AstraZeneca
 :sd: Sudan ^20.10.2021^,3.7,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"

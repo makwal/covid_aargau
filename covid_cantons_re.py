@@ -55,7 +55,7 @@ def re_catcher(canton):
     date = date_latest.strftime('%d.%m.%Y')
 
     #export to csv
-    df_final.to_csv('/root/covid_aargau/data/only_AG/re_{}.csv'.format(canton))
+    df.to_csv('/root/covid_aargau/data/only_AG/re_{}.csv'.format(canton))
     
     return re_latest, date
 
@@ -90,9 +90,7 @@ def chart_updater(chart_id, intro, notes):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-    chart_updater(chart_id, intro, notes)
-
-
+    
 # **Main-Function**
 
 # In[ ]:

@@ -44,7 +44,7 @@ df['date'] = pd.to_datetime(df['datum_dboardformated'], format='%Y-%W-%w')
 df.loc[df['date'] <= pd.to_datetime('2020-06-07'), 'waveNum'] = '1. Welle'
 df.loc[df['date'] >= pd.to_datetime('2020-06-08'), 'waveNum'] = '2. Welle'
 df.loc[df['date'] >= pd.to_datetime('2021-03-01'), 'waveNum'] = '3. Welle'
-df.loc[df['date'] >= pd.to_datetime('2021-06-28'), 'waveNum'] = '4. Welle'
+df.loc[df['date'] >= pd.to_datetime('2021-06-28'), 'waveNum'] = 'ab 4. Welle'
 
 
 # Why started the 3. wave on march 1st? Until march 1st, the 7-day-average for deaths decreased for a long time (all the way down to 8.00), then it began to rise again.

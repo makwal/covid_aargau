@@ -1,9 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Impf-Fortschritt pro Kanton für Tabelle und einzelne stacked bar charts
+# # Impf-Fortschritt Schweiz, Kantone
 
-# In[8]:
+# generiert folgende Grafiken:
+# - Tabelle mit dem Impf-Fortschritt aller Kantone
+# - Einzel-Grafiken stacked bars Impf-Fortschritt pro Kanton
+# - Einzel-Grafiken stacked bars Impf-Fortschritt in der Schweiz
+
+# In[1]:
 
 
 import pandas as pd
@@ -15,7 +20,7 @@ from general_settings import backdate, datawrapper_api_key
 
 # ### data import
 
-# In[9]:
+# In[2]:
 
 
 #url BAG
@@ -26,7 +31,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[10]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -48,7 +53,7 @@ df = df[(df['type'] == 'COVID19PartiallyVaccPersons') | (df['type'] == 'COVID19F
 
 # ### Tabelle
 
-# In[11]:
+# In[4]:
 
 
 canton_list = df['geoRegion'].unique().tolist()
@@ -88,76 +93,4 @@ df_final.to_csv("/root/covid_aargau/backups/vacc_ch/backup_vacc_table_{}.csv".fo
 
 #export to csv
 df_final.to_csv("/root/covid_aargau/data/vaccination/vacc_table.csv", index=False)
-
-
-# ### Einzlne Bar Charts
-
-# In[17]:
-
-
-df_final_bar_charts = df_final.copy()
-df_final_bar_charts.rename(columns={'Kanton ^aktualisiert^': 'Kanton'}, inplace=True)
-del df_final_bar_charts['Bevölkerung']
-df_final_bar_charts['ungeimpft'] = 100 - df_final_bar_charts['zweifach Geimpfte'] - df_final_bar_charts['einfach Geimpfte']
-df_final_bar_charts['Kanton'] = df_final_bar_charts['Kanton'].str.split(' ').str[0]
-df_final_bar_charts.set_index('Kanton', inplace=True)
-
-
-# In[18]:
-
-
-cantons = {'SO': 'BPReI',
-           'LU': 'IfSDu',
-           'ZG': 'ssI2F',
-           'SZ': 'BwUOU',
-           'OW': 'EdT3V',
-           'NW': 'x4UdV',
-           'UR': 'JFFS3',
-          'SG': 'c5q2b',
-          'TG': 'SluZ7',
-          'AR': '6vyiL',
-          'AI': '6Mdpd'}
-
-
-# In[29]:
-
-
-for cantonskuerzel, chart_id in cantons.items():
-    df_canton = df_final_bar_charts.loc[[cantonskuerzel]]
-    df_canton.rename_axis(None, inplace=True)
-    df_canton.index = ['Impf-Fortschritt']
-    df_canton =  df_canton.round(1)
-    
-    zweifach_geimpft = df_canton['zweifach Geimpfte'].values[0].round(1)
-    einfach_geimpft = df_canton['einfach Geimpfte'].values[0].round(1)
-    ungeimpft = df_canton['ungeimpft'].values[0].round(1)
-    
-    
-    note = f'<span style="color:#07850d">{zweifach_geimpft} Prozent der Bevölkerung sind zweifach geimpft</span>, <span style="color:#51c14b">{einfach_geimpft} Prozent einfach</span> und <span style="color:#808080">{ungeimpft} Prozent ungeimpft</span>'
-    
-    def chart_updater(chart_id, date):
-
-        url_update = datawrapper_url + chart_id
-        url_publish = url_update + '/publish'
-
-        payload = {
-
-        'metadata': {'annotate': {'notes': f'{note}. Stand: {str(date)}.'}}
-
-        }
-
-        res_update = requests.patch(url_update, json=payload, headers=headers)
-
-        sleep(3)
-
-        res_publish = requests.post(url_publish, headers=headers)
-
-    #call function
-    chart_updater(chart_id, date)
-    
-    #make a backup export of the current data
-    df_canton.to_csv('/root/covid_aargau/backups/vacc_ch/backup_{}_{}.csv'.format(cantonskuerzel, backdate(0)))
-    
-    #export to csv
-    df_canton.to_csv('/root/covid_aargau/data/vaccination/vacc_{}.csv'.format(cantonskuerzel))
 

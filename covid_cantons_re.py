@@ -90,7 +90,6 @@ def chart_updater(chart_id, intro, notes):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-    
 # **Main-Function**
 
 # In[ ]:

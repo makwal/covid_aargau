@@ -75,16 +75,16 @@ for canton in cantons:
 
 
 cantons_dict = {
-    'AG': '7FzKa',
-    'AG_long': 'Sin8g',
+    'AG_short': '7FzKa',
+    'AG': 'Sin8g',
     'LU': 'nQAgJ',
     'ZG': 'w7E33',
     'SZ': 'CMDd4',
     'NW': 'kBCF9',
     'OW': '0pDI5',
     'UR': 'YDWRO',
-    'SO': '5x9Kp',
-    'SO_long': 'ag74O',
+    'SO_short': '5x9Kp',
+    'SO': 'ag74O',
     'CH': 'roqDv'
 }
 
@@ -139,6 +139,6 @@ def chart_updater(chart_id, end_date, tick_string):
 
 for canton, chart_id in cantons_dict.items():
     chart_updater(chart_id, end_date, tick_string)
-    if canton == 'AG_long' or canton == 'SO_long':
+    if canton != 'AG_short' or canton != 'SO_short':
         chart_updater(chart_id, end_date, tick_string='')
 

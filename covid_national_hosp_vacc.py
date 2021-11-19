@@ -41,7 +41,7 @@ df = df[df['date'] >= 202114].copy()
 
 
 gewünschte_daten = {
-                    '10-59 Jahre': ['10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
+                    '10-59 Jahren': ['10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
                     'über 60 Jahren': ['60 - 69', '70 - 79', '80+']
 }
 
@@ -137,7 +137,7 @@ def chart_updater(chart_id, intro):
 
 def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
         
-    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften {alter_key} hospitalisiert.'''
+    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften im Alter von {alter_key} hospitalisiert.'''
     
     return intro
 
@@ -148,7 +148,7 @@ def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, 
 def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     chart_ids = {
-    '10-59 Jahre': 'S0lQK',
+    '10-59 Jahren': 'S0lQK',
     'über 60 Jahren': '6MWjR'
     }
     

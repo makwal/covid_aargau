@@ -106,20 +106,15 @@ def chart_updater(chart_id, intro):
     
     message = '''Der Impfstatus ist nicht bei allen Spitaleintritten bekannt.                 Die Zahl der Impfdurchbrüche wird tendenziell unterschätzt.'''
     
-    intro_links = '''<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
+    intro_links = '''<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
 
-                <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
+                <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
                 <br>
                 <br>
                 '''
     
-    if chart_id == 'S0lQK':
-        intro = intro_links.format('75', '') + intro
-    elif chart_id == '6MWjR':
-        intro = intro_links.format('', '75') + intro
-    else:
-        intro = intro_links.format('', '') + intro
-
+    intro = intro_links + intro
+   
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
 

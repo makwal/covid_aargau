@@ -108,9 +108,7 @@ def chart_updater(chart_id, intro):
     
     message = f'''Der Impfstatus ist nur bei einem Teil der Spitaleintritte bekannt.                 Die Zahl der Impfdurchbrüche wird tendenziell unterschätzt.'''
     
-    intro_links = '''<a target="_self" href="https://datawrapper.dwcdn.net/XnQjc/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> ganze Bevölkerung</a> &nbsp;
-
-                <a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> unter 60-Jährige</a> &nbsp;
+    intro_links = ''' <a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> unter 60-Jährige</a> &nbsp;
 
                 <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
                 <br>
@@ -164,7 +162,6 @@ def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, 
 def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     chart_ids = {
-    'alle': 'XnQjc',
     'unter 60 Jahren': 'S0lQK',
     'über 60 Jahren': '6MWjR'
     }

@@ -4,9 +4,7 @@
 # Source for ISO datetime handling: https://docs.python.org/3/library/datetime.html
 # Look for %G, %V and %u
 
-# Grundsätzliches Vorgehen: Die Angaben, wie viele Personen pro Alterskategorie zu welchem Zeitpunkt (Kalenderwoche) vollständig, teilweise oder nicht geimpft sind, werden mit den Hospitalisationsdaten der jeweiligen Kalenderwochen zusammengefügt. Daraus kann hernach die Inzidenz für die Alterskategorie errechnet werden (Spitaleintritte pro 100k zweifach Geimpfte resp. teilw./nicht Geimpfte.
-
-# In[ ]:
+# In[44]:
 
 
 import pandas as pd
@@ -17,7 +15,7 @@ import numpy as np
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[ ]:
+# In[45]:
 
 
 #url BAG
@@ -28,7 +26,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[46]:
 
 
 r = requests.get(base_url)
@@ -39,18 +37,18 @@ df = pd.read_csv(url)
 df = df[df['geoRegion'] == 'CHFL'].copy()
 
 
-# In[ ]:
+# In[98]:
 
 
 gewünschte_daten = {
-                    'unter 60 Jahren': ['0 - 9', '10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
+                    '10-59 Jahre': ['10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
                     'über 60 Jahren': ['60 - 69', '70 - 79', '80+']
 }
 
 
 # **Inzidenz-Berechnung**
 
-# In[ ]:
+# In[107]:
 
 
 def inzidenz_berechner(df, alter_key, altersklassen):
@@ -101,28 +99,26 @@ def inzidenz_berechner(df, alter_key, altersklassen):
 
 # **Datawrapper-Update**
 
-# In[ ]:
+# In[1]:
 
 
 def chart_updater(chart_id, intro):
     
-    message = f'''Der Impfstatus ist nur bei einem Teil der Spitaleintritte bekannt.                 Die Zahl der Impfdurchbrüche wird tendenziell unterschätzt.'''
+    message = '''Der Impfstatus ist nicht bei allen Spitaleintritten bekannt.                 Die Zahl der Impfdurchbrüche wird tendenziell unterschätzt.'''
     
-    intro_links = ''' <a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> unter 60-Jährige</a> &nbsp;
+    intro_links = '''<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
 
                 <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595{}; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
                 <br>
                 <br>
                 '''
     
-    if chart_id == 'XnQjc':
-        intro = intro_links.format('75', '', '') + intro
-    elif chart_id == 'S0lQK':
-        intro = intro_links.format('', '75', '') + intro
+    if chart_id == 'S0lQK':
+        intro = intro_links.format('75', '') + intro
     elif chart_id == '6MWjR':
-        intro = intro_links.format('', '', '75') + intro
+        intro = intro_links.format('', '75') + intro
     else:
-        intro = intro_links.format('', '', '') + intro
+        intro = intro_links.format('', '') + intro
 
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
@@ -147,9 +143,6 @@ def chart_updater(chart_id, intro):
 
 
 def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
-    
-    if alter_key == 'alle':
-        alter_key = ''
         
     intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften {alter_key} hospitalisiert.'''
     
@@ -162,7 +155,7 @@ def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, 
 def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     chart_ids = {
-    'unter 60 Jahren': 'S0lQK',
+    '10-59 Jahre': 'S0lQK',
     'über 60 Jahren': '6MWjR'
     }
     

@@ -35,7 +35,7 @@ files = response['sources']['individual']
 url = files['csv']['weekly']['byAge']['hospVaccPersons']
 df = pd.read_csv(url)
 df = df[df['geoRegion'] == 'CHFL'].copy()
-
+df = df[df['date'] >= 202114].copy()
 
 # In[98]:
 
@@ -104,9 +104,8 @@ def inzidenz_berechner(df, alter_key, altersklassen):
 
 def chart_updater(chart_id, intro):
     
-    message = '''Der Impfstatus ist nicht bei allen Spitaleintritten bekannt.                 Die Zahl der Impfdurchbrüche wird tendenziell unterschätzt.'''
-    
-    intro_links = '''<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
+    intro_links = '''Wählen Sie eine Altersgruppe:<br><br>
+		<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
 
                 <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
                 <br>
@@ -121,7 +120,6 @@ def chart_updater(chart_id, intro):
     payload = {
 
     'metadata': {
-        'annotate': {'notes': message},
         'describe': {'intro': intro}
         }
 

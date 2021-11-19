@@ -43,7 +43,6 @@ df = df[df['geoRegion'] == 'CHFL'].copy()
 
 
 gewünschte_daten = {
-                    'alle': ['all'],
                     'unter 60 Jahren': ['0 - 9', '10 - 19', '20 - 29', '30 - 39', '40 - 49', '50 - 59'],
                     'über 60 Jahren': ['60 - 69', '70 - 79', '80+']
 }

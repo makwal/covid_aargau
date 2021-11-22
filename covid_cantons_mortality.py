@@ -59,7 +59,7 @@ def data_wrangler(df, canton, age):
     df = df[['endend', 'Todesfälle', 'untGrenze', 'obeGrenze']].copy()
     
     #export to csv
-    df.to_csv('/root/covid_aargau/data/only_AG/mortality_{}.csv'.format(canton))
+    df.to_csv('/root/covid_aargau/data/only_AG/mortality_{}_{}.csv'.format(canton, age), index=False)
     
     date_start = df[df['Todesfälle'].notna()]['endend'].head(1).values[0]
     date_end = df[df['Todesfälle'].notna()]['endend'].tail(1).values[0]

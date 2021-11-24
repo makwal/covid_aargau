@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[27]:
+# In[7]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ from datetime import timedelta
 
 # ### data import
 
-# In[28]:
+# In[8]:
 
 
 #url BAG
@@ -25,7 +25,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[29]:
+# In[9]:
 
 
 r = requests.get(base_url)
@@ -37,14 +37,15 @@ df = pd.read_csv(url)
 
 # ### data preparation
 
-# In[30]:
+# In[4]:
 
 
 df = df[df['type'] == 'COVID19AtLeastOneDosePersons'].copy()
 df = df[['date', 'geoRegion', 'altersklasse_covid19', 'per100PersonsTotal']].copy()
+#df = df[df['altersklasse_covid19'] == '12+'].copy()
 
 
-# In[31]:
+# In[5]:
 
 
 #format date from ISO week to regular date (monday per each week)
@@ -98,7 +99,11 @@ ids = {
     'SZ': 'xOo0R',
     'NW': 'cKJ93',
     'UR': 'CWd5i',
-    'CH': 'qZ7sS'
+    'CH': 'qZ7sS',
+    'SG': 'n3H3t',
+    'TG': 'yrGu3',
+    'AR': 'Zt9WY',
+    'AI': '9JTCx'
 }
 
 

@@ -128,6 +128,22 @@ cantons = {
     'UR': {
         'total_population': 'JFFS3',
         '12+': '5W5gv'
+    },
+    'SG': {
+        'total_population': 'c5q2b',
+        '12+': '5oahs'
+    },
+    'TG': {
+        'total_population': 'SluZ7',
+        '12+': 'p7kFi'
+    },
+    'AR': {
+        'total_population': '6vyiL',
+        '12+': 'z9fhg'
+    },
+    'AI': {
+        'total_population': '6Mdpd',
+        '12+': 'yAcQU'
     }
 }
 

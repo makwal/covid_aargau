@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[ ]:
+# In[2]:
 
 
 #url BfS
@@ -24,7 +24,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -51,7 +51,7 @@ df['AnzTF_HR'] = df['AnzTF_HR'].astype(float)
 df.rename(columns={'AnzTF_HR': 'Todesfälle'}, inplace=True)
 
 
-# In[ ]:
+# In[4]:
 
 
 def data_wrangler(df, canton, age):
@@ -59,21 +59,21 @@ def data_wrangler(df, canton, age):
     df = df[['endend', 'Todesfälle', 'untGrenze', 'obeGrenze']].copy()
     
     #export to csv
-    df.to_csv('/root/covid_aargau/data/only_AG/mortality_{}_{}.csv'.format(canton, age), index=False)
+    df.to_csv('/root/covid_aargau/data/death/mortality_{}_{}.csv'.format(canton, age), index=False)
 
     date_start = df[df['Todesfälle'].notna()]['endend'].head(1).values[0]
     date_end = df[df['Todesfälle'].notna()]['endend'].tail(1).values[0]
 
     date_start = pd.to_datetime(date_start).strftime('%d.%m.%Y')
     date_end = pd.to_datetime(date_end).strftime('%d.%m.%Y')
-    tick_string = date_start + ',' + date_end
+    tick_string = date_start + ', 2021-01-01, ' + date_end
     
     return date_end, tick_string
 
 
 # **Datawrapper-Update**
 
-# In[ ]:
+# In[5]:
 
 
 chart_ids = {
@@ -85,12 +85,21 @@ chart_ids = {
     'SO': {
         '0-64': 'dsH5c',
         '65+': '4QNFE'
+    },
+    'LU': {
+        '0-64': '02eSV',
+        '65+': 'gSU3d'
+    },
+    'SG':
+    {
+        '0-64': 'p8JFR',
+        '65+': '5CAmJ'
     }
 
 }
 
 
-# In[ ]:
+# In[6]:
 
 
 def chart_updater(chart_id, notes, tick_string):
@@ -112,7 +121,7 @@ def chart_updater(chart_id, notes, tick_string):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[ ]:
+# In[7]:
 
 
 def main_function(df, canton, age, chart_id):
@@ -123,17 +132,11 @@ def main_function(df, canton, age, chart_id):
     chart_updater(chart_id, notes, tick_string)
 
 
-# In[ ]:
+# In[8]:
 
 
 for canton, chart_info in chart_ids.items():
     for age, chart_id in chart_info.items():
         main_function(df, canton, age, chart_id)
         sleep(3)
-
-
-# In[ ]:
-
-
-
 

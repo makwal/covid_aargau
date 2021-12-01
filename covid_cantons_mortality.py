@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -13,18 +13,18 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[ ]:
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/19924898/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20324269/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -51,7 +51,7 @@ df['AnzTF_HR'] = df['AnzTF_HR'].astype(float)
 df.rename(columns={'AnzTF_HR': 'Todesfälle'}, inplace=True)
 
 
-# In[4]:
+# In[ ]:
 
 
 def data_wrangler(df, canton, age):
@@ -60,7 +60,7 @@ def data_wrangler(df, canton, age):
     
     #export to csv
     df.to_csv('/root/covid_aargau/data/only_AG/mortality_{}_{}.csv'.format(canton, age), index=False)
-    
+
     date_start = df[df['Todesfälle'].notna()]['endend'].head(1).values[0]
     date_end = df[df['Todesfälle'].notna()]['endend'].tail(1).values[0]
 
@@ -73,7 +73,7 @@ def data_wrangler(df, canton, age):
 
 # **Datawrapper-Update**
 
-# In[5]:
+# In[ ]:
 
 
 chart_ids = {
@@ -90,7 +90,7 @@ chart_ids = {
 }
 
 
-# In[6]:
+# In[ ]:
 
 
 def chart_updater(chart_id, notes, tick_string):
@@ -112,7 +112,7 @@ def chart_updater(chart_id, notes, tick_string):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[7]:
+# In[ ]:
 
 
 def main_function(df, canton, age, chart_id):
@@ -123,11 +123,17 @@ def main_function(df, canton, age, chart_id):
     chart_updater(chart_id, notes, tick_string)
 
 
-# In[8]:
+# In[ ]:
 
 
 for canton, chart_info in chart_ids.items():
     for age, chart_id in chart_info.items():
         main_function(df, canton, age, chart_id)
         sleep(3)
+
+
+# In[ ]:
+
+
+
 

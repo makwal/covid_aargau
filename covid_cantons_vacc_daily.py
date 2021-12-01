@@ -52,8 +52,8 @@ def vacc_daily_cantons(canton):
     df_short = df.loc[start_date:end_date].copy()
 
     #export to csv
-    #df_short.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_short_{}.csv'.format(canton))
-    #df.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_{}.csv'.format(canton))
+    df_short.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_short_{}.csv'.format(canton))
+    df.to_csv('/root/covid_aargau/data/vaccination/vacc_daily_{}.csv'.format(canton))
 
     return start_date, end_date
 

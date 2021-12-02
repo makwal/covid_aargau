@@ -15,8 +15,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :kh: Kambodscha ^01.12.2021^,169.8,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :dk: Dänemark ^30.11.2021^,169.09,"Johnson&Johnson, Moderna, Pfizer/BioNTech"
 :bh: Bahrain ^01.12.2021^,167.95,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
+":kr: Korea, Süd ^01.12.2021^",166.86,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ie: Irland ^01.12.2021^,166.59,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-":kr: Korea, Süd ^30.11.2021^",166.36,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :es: Spanien ^30.11.2021^,164.04,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :my: Malaysia ^30.11.2021^,163.04,"CanSino, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
 :it: Italien ^01.12.2021^,160.6,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -100,7 +100,6 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mk: Nordmazedonien ^22.11.2021^,80.46,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ph: Philippinen ^01.12.2021^,80.21,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :tl: Osttimor ^23.11.2021^,79.47,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
-:hn: Honduras ^29.11.2021^,79.11,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
 :la: Laos ^23.11.2021^,79.0,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik Light, Sputnik V"
 :ro: Rumänien ^30.11.2021^,78.04,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :dm: Dominica ^29.11.2021^,76.93,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
@@ -184,6 +183,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :td: Tschad ^27.11.2021^,1.53,Sinopharm/Beijing
 ":cd: Kongo, Demokratische Republik ^29.11.2021^",0.21,Oxford/AstraZeneca
 :bi: Burundi ^26.11.2021^,0.01,Sinopharm/Beijing
+:hn: Honduras ^30.11.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
 :hu: Ungarn ^01.12.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :lu: Luxemburg ^29.11.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :pt: Portugal ^01.12.2021^,,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"

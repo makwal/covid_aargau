@@ -87,7 +87,7 @@ def geoRegion(canton, vacc_type):
     example = f'Lesebeispiel: Von allen über 80-Jährigen haben {example_num} Prozent {which_vaccine} erhalten'
     
     #export to csv
-    #dfc.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv', index=False)
+    dfc.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv', index=False)
     
     return last_updated, example
 

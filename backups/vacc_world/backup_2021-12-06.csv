@@ -4,11 +4,11 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :ae: Vereinigte Arabische Emirate ^15.11.2021^,215.68,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V"
 :uy: Uruguay ^05.12.2021^,195.85,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :is: Island ^02.12.2021^,193.68,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:pt: Portugal ^05.12.2021^,188.91,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :mt: Malta ^04.12.2021^,188.23,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :sg: Singapur ^05.11.2021^,184.89,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :sc: Seychellen ^29.11.2021^,181.44,"Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
 :cn: Volksrepublik China ^05.12.2021^,176.78,"CanSino, Sinopharm/Beijing, Sinopharm/Wuhan, Sinovac, ZF2001"
+:pt: Portugal ^05.12.2021^,175.67,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :il: Israel ^05.12.2021^,174.94,"Moderna, Pfizer/BioNTech"
 :gb: Vereinigtes Königreich ^04.12.2021^,172.83,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :bn: Brunei ^05.12.2021^,171.24,"Oxford/AstraZeneca, Sinopharm/Beijing"
@@ -39,8 +39,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mu: Mauritius ^23.11.2021^,147.25,"Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing"
 :br: Brasilien ^05.12.2021^,147.02,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :nl: Niederlande ^01.12.2021^,143.79,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+:mv: Malediven ^04.12.2021^,142.72,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :gr: Griechenland ^05.12.2021^,142.6,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-:mv: Malediven ^02.12.2021^,142.46,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :tr: Türkei ^05.12.2021^,142.18,"Pfizer/BioNTech, Sinovac"
 :sv: El Salvador ^05.12.2021^,141.77,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
 :us: Vereinigte Staaten ^05.12.2021^,141.65,"Johnson&Johnson, Moderna, Pfizer/BioNTech"
@@ -63,11 +63,11 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :cz: Tschechien ^05.12.2021^,129.16,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :pa: Panama ^05.12.2021^,128.96,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :do: Dominikanische Republik ^04.12.2021^,126.59,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
+:ir: Iran ^05.12.2021^,126.47,"COVIran Barekat, Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing, Soberana02, Sputnik V"
 :mc: Monaco ^16.09.2021^,126.47,Pfizer/BioNTech
 :pe: Peru ^01.12.2021^,126.24,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :ws: Samoa ^30.11.2021^,124.28,Oxford/AstraZeneca
 :tm: Turkmenistan ^29.08.2021^,123.91,"EpiVacCorona, Oxford/AstraZeneca, Sinopharm/Beijing, Sputnik V"
-:ir: Iran ^28.11.2021^,123.23,"COVIran Barekat, Covaxin, Oxford/AstraZeneca, Sinopharm/Beijing, Soberana02, Sputnik V"
 :ag: Antigua und Barbuda ^26.11.2021^,119.15,"Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
 :lv: Lettland ^05.12.2021^,118.92,"Johnson&Johnson, Moderna, Pfizer/BioNTech"
 :rs: Serbien ^03.12.2021^,115.89,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
@@ -81,7 +81,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :mx: Mexiko ^05.12.2021^,103.15,"CanSino, Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :bz: Belize ^03.12.2021^,101.75,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :tv: Tuvalu ^22.10.2021^,101.58,Oxford/AstraZeneca
-:bb: Barbados ^03.12.2021^,101.43,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
+:bb: Barbados ^04.12.2021^,101.52,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :uz: Usbekistan ^02.12.2021^,100.73,"Moderna, Oxford/AstraZeneca, Sputnik V, ZF2001"
 :kn: St. Kitts und Nevis ^03.12.2021^,98.84,"Oxford/AstraZeneca, Pfizer/BioNTech"
 :cv: Kap Verde ^26.11.2021^,96.83,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
@@ -90,7 +90,7 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :in: Indien ^05.12.2021^,91.77,"Covaxin, Oxford/AstraZeneca, Sputnik V"
 :ve: Venezuela ^29.11.2021^,91.67,"Abdala, Sinopharm/Beijing, Sinovac, Sputnik V"
 :sk: Slowakei ^03.12.2021^,91.59,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sputnik V"
-:tn: Tunesien ^04.12.2021^,89.59,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
+:tn: Tunesien ^05.12.2021^,89.91,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ru: Russland ^05.12.2021^,89.53,"EpiVacCorona, Sputnik V"
 :kz: Kasachstan ^05.12.2021^,89.26,"QazVac, Sinopharm/Beijing, Sputnik V"
 :id: Indonesien ^04.12.2021^,87.36,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac"
@@ -126,11 +126,11 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :st: São Tomé und Príncipe ^26.11.2021^,54.33,Oxford/AstraZeneca
 :lb: Libanon ^05.12.2021^,54.07,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :mm: Myanmar ^27.11.2021^,51.27,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:vc: St. Vincent und die Grenadinen ^02.12.2021^,49.98,Oxford/AstraZeneca
+:vc: St. Vincent und die Grenadinen ^05.12.2021^,50.28,Oxford/AstraZeneca
 :bg: Bulgarien ^05.12.2021^,49.31,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 :ba: Bosnien und Herzegowina ^04.11.2021^,47.61,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac, Sputnik V"
 :zw: Simbabwe ^05.12.2021^,44.79,"Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
-:za: Südafrika ^04.12.2021^,43.84,"Johnson&Johnson, Pfizer/BioNTech"
+:za: Südafrika ^05.12.2021^,43.88,"Johnson&Johnson, Pfizer/BioNTech"
 :am: Armenien ^28.11.2021^,41.65,"Moderna, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik V"
 :vu: Vanuatu ^22.11.2021^,41.21,Oxford/AstraZeneca
 :md: Moldau ^04.12.2021^,40.87,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
@@ -149,8 +149,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :sz: Eswatini ^24.11.2021^,26.14,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech"
 :na: Namibia ^02.12.2021^,26.07,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
 :tg: Togo ^26.11.2021^,19.64,Oxford/AstraZeneca
+:gn: Guinea ^04.12.2021^,18.48,Sputnik V
 :gw: Guinea-Bissau ^28.11.2021^,18.28,"Oxford/AstraZeneca, Sinopharm/Beijing"
-:gn: Guinea ^28.11.2021^,18.22,Sputnik V
 :ci: Elfenbeinküste ^14.11.2021^,14.22,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V"
 :ke: Kenia ^05.12.2021^,13.79,"Oxford/AstraZeneca, Sputnik V"
 :af: Afghanistan ^27.11.2021^,13.13,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing"
@@ -164,9 +164,9 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :dj: Dschibuti ^02.12.2021^,10.42,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac, Sputnik V"
 :ug: Uganda ^15.11.2021^,10.08,"Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :cf: Zentralafrikanische Republik ^19.11.2021^,8.59,"Covaxin, Oxford/AstraZeneca"
-:et: Äthiopien ^04.12.2021^,8.48,Oxford/AstraZeneca
+:et: Äthiopien ^05.12.2021^,8.53,Oxford/AstraZeneca
 :sy: Syrien ^28.11.2021^,7.78,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac, Sputnik Light, Sputnik V"
-:mw: Malawi ^04.12.2021^,7.49,"Johnson&Johnson, Oxford/AstraZeneca"
+:mw: Malawi ^05.12.2021^,7.52,"Johnson&Johnson, Oxford/AstraZeneca"
 :zm: Sambia ^03.12.2021^,6.0,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing"
 :so: Somalia ^13.11.2021^,5.9,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing, Sinovac"
 :pg: Papua-Neuguinea ^30.11.2021^,5.12,Oxford/AstraZeneca
@@ -179,8 +179,8 @@ Land ^aktualisiert^,Impfungen pro 100 Menschen,Impfstoffe
 :bj: Benin ^19.11.2021^,3.08,"Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac"
 :ye: Jemen ^28.11.2021^,2.54,"Johnson&Johnson, Oxford/AstraZeneca, Sinovac"
 :mg: Madagaskar ^29.11.2021^,2.41,"Johnson&Johnson, Oxford/AstraZeneca, Sinopharm/Beijing"
+:tz: Tansania ^22.11.2021^,2.17,"Johnson&Johnson, Pfizer/BioNTech, Sinopharm/Beijing"
 :ss: Südsudan ^23.11.2021^,1.92,"Johnson&Johnson, Oxford/AstraZeneca"
-:tz: Tansania ^29.10.2021^,1.63,"Johnson&Johnson, Pfizer/BioNTech, Sinopharm/Beijing"
 :ht: Haiti ^19.11.2021^,1.6,"Johnson&Johnson, Moderna"
 :td: Tschad ^27.11.2021^,1.53,Sinopharm/Beijing
 ":cd: Kongo, Demokratische Republik ^29.11.2021^",0.21,Oxford/AstraZeneca

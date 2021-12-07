@@ -40,7 +40,7 @@ df = pd.read_csv(url)
 # In[4]:
 
 
-df = df[(df['type'] == 'COVID19AtLeastOneDosePersons') | (df['type'] == 'COVID19FirstBoosterPersons')].copy()
+df = df[(df['type'] == 'COVID19FullyVaccPersons') | (df['type'] == 'COVID19PartiallyVaccPersons') | (df['type'] == 'COVID19FirstBoosterPersons')].copy()
 df = df[['date', 'geoRegion', 'altersklasse_covid19', 'per100PersonsTotal', 'type']].copy()
 
 
@@ -59,36 +59,42 @@ df['per100PersonsTotal'] = df['per100PersonsTotal'].round(1)
 
 
 def geoRegion(canton, vacc_type):
-    dfc = df[(df['geoRegion'] == canton) & (df['type'] == vacc_type)].copy()
+    df_temp = df[df['geoRegion'] == canton].copy()
     
     #keep only latest date
-    latest = dfc['date'].max()
-    dfc = dfc[dfc['date'] == latest].copy()
+    latest = df_temp['date'].max()
+    df_temp = df_temp[df_temp['date'] == latest].copy()
     last_updated = latest + timedelta(days=6)
     last_updated = last_updated.strftime('%d.%m.%Y')
 
-    dfc.reset_index(inplace=True, drop=True)
+    df_temp.reset_index(inplace=True, drop=True)
     
     #exclude age groups
     age_group_unwanted = ['12 - 15', '16 - 64', '65+']
-    dfc = dfc[~dfc['altersklasse_covid19'].isin(age_group_unwanted)].copy()
+    df_temp = df_temp[~df_temp['altersklasse_covid19'].isin(age_group_unwanted)].copy()
     
-    dfc = dfc[['altersklasse_covid19', 'per100PersonsTotal']].copy()
+    df_temp = df_temp[['altersklasse_covid19', 'per100PersonsTotal', 'type']].copy()
     
-    example_num = dfc[dfc['altersklasse_covid19'] == '80+']['per100PersonsTotal'].tail(1).values[0]
+    #create Lesebeispiel for Datawrapper
+    if vacc_type == 'vollständig geimpft':
+        
+        example_num = df_temp[(df_temp['altersklasse_covid19'] == '80+') & (df_temp['type'] == 'COVID19FullyVaccPersons')]['per100PersonsTotal'].tail(1).values[0]
+        
+        example = f'Lesebeispiel: Von den über 80-Jährigen sind {example_num} Prozent vollständig geimpft'
     
-    which_vaccine = ''
-    
-    if vacc_type == 'COVID19AtLeastOneDosePersons':
-        which_vaccine = 'mindestens eine Impfung'
-    elif vacc_type == 'COVID19FirstBoosterPersons':
-        which_vaccine = 'eine Auffrischimpfung'
-    
-    example = f'Lesebeispiel: Von allen über 80-Jährigen haben {example_num} Prozent {which_vaccine} erhalten'
+    elif vacc_type == 'Booster-Impfung':
+        
+        example_num = df_temp[(df_temp['altersklasse_covid19'] == '80+') & (df_temp['type'] == 'COVID19FirstBoosterPersons')]['per100PersonsTotal'].tail(1).values[0]
+       
+        example = f'Lesebeispiel: Von den über 80-Jährigen haben {example_num} eine Auffrischimpfung erhalten'
+        
+    #Pivot df df so that it fits datawrapper
+    df_temp = df_temp.pivot(index='altersklasse_covid19', columns='type', values='per100PersonsTotal')
+    df_temp['fully+partiallyVacc'] = df_temp['COVID19FullyVaccPersons'] + df_temp['COVID19PartiallyVaccPersons']
     
     #export to csv
-    dfc.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv', index=False)
-    
+    #df_temp.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv')
+
     return last_updated, example
 
 
@@ -98,37 +104,37 @@ def geoRegion(canton, vacc_type):
 
 
 chart_ids = {
-    'COVID19AtLeastOneDosePersons':
+    'vollständig geimpft':
     {
-        'AG': 'FoMPZ',
-        'SO': 'DMhCM',
-        'LU': 'hdLPP',
-        'ZG': '1smMs',
-        'SZ': 'xOo0R',
-        'NW': 'cKJ93',
-        'OW': 'haoMI',
-        'UR': 'CWd5i',
-        'CH': 'qZ7sS',
-        'SG': 'n3H3t',
-        'TG': 'yrGu3',
-        'AR': 'Zt9WY',
-        'AI': '9JTCx'
+        'AG': 'LqrTl',
+        'SO': 'OkZZA',
+        'LU': '6Zz7Y',
+        'ZG': '2wxVl',
+        'SZ': 'Sd4u6',
+        'NW': '4u7ny',
+        'OW': 'N27FT',
+        'UR': 'C7YCl',
+        'CH': 'wR74S',
+        'SG': 'RaINy',
+        'TG': 'vTcsQ',
+        'AR': 'fDiOj',
+        'AI': '1upzr'
     },
-    'COVID19FirstBoosterPersons':
+    'Booster-Impfung':
     {
-        'AG': 'tJV6i',
-        'SO': 'UhZ9r',
-        'LU': 'rvs1R',
-        'ZG': 'peCJj',
-        'SZ': 'z7VGv',
-        'NW': 'bhNew',
-        'OW': 'T4jti',
-        'UR': 'OectS',
-        'CH': 'YbzKg',
-        'SG': 'khVQm',
-        'TG': 'YQyiL',
-        'AR': 'uGPnC',
-        'AI': 'PdHhh'
+        'AG': 'aGgoA',
+        'SO': 'xEYM4',
+        'LU': 'BwRer',
+        'ZG': 'aFFaj',
+        'SZ': 'mcWCv',
+        'NW': 'C7RzP',
+        'OW': 'cZAX3',
+        'UR': 'dyxXz',
+        'CH': 'CiWbp',
+        'SG': 'SFc97',
+        'TG': 'yXWjB',
+        'AR': '1Qf5V',
+        'AI': 'xEUrm'
     }
     
 }
@@ -169,4 +175,10 @@ def main_function(canton, vacc_type, chart_id):
 for vacc_type, values in chart_ids.items():
     for canton, chart_id in values.items():
         main_function(canton, vacc_type, chart_id)
+
+
+# In[ ]:
+
+
+
 

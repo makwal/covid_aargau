@@ -93,7 +93,7 @@ def geoRegion(canton, vacc_type):
     df_temp['fully+partiallyVacc'] = df_temp['COVID19FullyVaccPersons'] + df_temp['COVID19PartiallyVaccPersons']
     
     #export to csv
-    #df_temp.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv')
+    df_temp.to_csv(f'/root/covid_aargau/data/vaccination_age/vacc_age_{canton}_{vacc_type}.csv')
 
     return last_updated, example
 

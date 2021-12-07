@@ -86,7 +86,7 @@ def geoRegion(canton, vacc_type):
         
         example_num = df_temp[(df_temp['altersklasse_covid19'] == '80+') & (df_temp['type'] == 'COVID19FirstBoosterPersons')]['per100PersonsTotal'].tail(1).values[0]
        
-        example = f'Lesebeispiel: Von den über 80-Jährigen haben {example_num} eine Auffrischimpfung erhalten'
+        example = f'Lesebeispiel: Von den über 80-Jährigen haben {example_num} Prozent eine Auffrischimpfung erhalten'
         
     #Pivot df df so that it fits datawrapper
     df_temp = df_temp.pivot(index='altersklasse_covid19', columns='type', values='per100PersonsTotal')

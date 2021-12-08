@@ -31,15 +31,19 @@ files = response['sources']['individual']
 url = files['csv']['vaccPersonsV2']
 df_import = pd.read_csv(url)
 
+
+# In[4]:
+
+
 #choose only fully and partially vacc. people
-df = df_import[(df_import['type'] == 'COVID19FullyVaccPersons') | (df_import['type'] == 'COVID19PartiallyVaccPersons')].copy()
+df = df_import[(df_import['type'] == 'COVID19FullyVaccPersons') | (df_import['type'] == 'COVID19PartiallyVaccPersons') | (df_import['type'] == 'COVID19FirstBoosterPersons')].copy()
 
 #formatting
 df['date'] = pd.to_datetime(df['date'])
 df.set_index('date', inplace=True)
 
 
-# In[5]:
+# In[9]:
 
 
 #Function data_wrangler takes canton and age_group and exports the respective df
@@ -63,94 +67,103 @@ def data_wrangler(canton, age_group):
     df_temp.reset_index(inplace=True, drop=True)
     df_temp.set_index('Impf-Fortschritt', inplace=True)
 
-    df_temp.columns = ['vollständig geimpft', 'einfach geimpft']
-
     #calculate how many people are not vaccinated
-    df_temp['ungeimpft'] = 100 - df_temp['vollständig geimpft'] - df_temp['einfach geimpft']
+    df_temp['ungeimpft'] = 100 - df_temp['COVID19FullyVaccPersons'] - df_temp['COVID19PartiallyVaccPersons']
+    
+    #additional columns for datawrapper
+    df_temp['fully+partVacc'] = df_temp['COVID19FullyVaccPersons'] + df_temp['COVID19PartiallyVaccPersons']
+    df_temp['hundred'] = 100
 
     df_temp = df_temp.round(1)
     
     #export to csv
     df_temp.to_csv(f'/root/covid_aargau/data/vaccination/vacc_{canton}_{age_group}.csv')
-    
+
     #create note for datawrapper
-    fully_vacc = df_temp['vollständig geimpft'].values[0]
-    one_vacc = df_temp['einfach geimpft'].values[0]
-    no_vacc =df_temp['ungeimpft'].values[0]
+    fully_vacc = df_temp['COVID19FullyVaccPersons'].values[0]
+    one_vacc = df_temp['COVID19PartiallyVaccPersons'].values[0]
+    no_vacc = df_temp['ungeimpft'].values[0]
+    booster_vacc = df_temp['COVID19FirstBoosterPersons'].values[0]
     
     if age_group == 'total_population':
-        note = f'<span style="color:#07850d">{fully_vacc} Prozent der Bevölkerung sind vollständig geimpft</span>, <span style="color:#51c14b">{one_vacc} Prozent einfach</span> und <span style="color:#808080">{no_vacc} Prozent ungeimpft</span>'
+        note = f'<span style="color:#07850d">{fully_vacc} Prozent der Bevölkerung sind vollständig geimpft</span>, <span style="color:#51c14b">{one_vacc} Prozent einfach</span> und {no_vacc} Prozent ungeimpft. {booster_vacc} Prozent haben eine Booster-Impfung erhalten'
     elif age_group == '12+':
-        note = f'<span style="color:#07850d">{fully_vacc} Prozent der Bevölkerung ab 12 Jahren sind vollständig geimpft</span>, <span style="color:#51c14b">{one_vacc} Prozent einfach</span> und <span style="color:#808080">{no_vacc} Prozent ungeimpft</span>'
+        note = f'<span style="color:#07850d">{fully_vacc} Prozent der über 12-Jährigen sind vollständig geimpft</span>, <span style="color:#51c14b">{one_vacc} Prozent einfach</span> und {no_vacc} Prozent ungeimpft. {booster_vacc} Prozent haben eine Booster-Impfung erhalten'
     else:
         note = ''
     
     return last_updated, note
 
 
-# In[4]:
+# In[10]:
 
 
 #cantons and corresponding chart_ids
 cantons = {
     'CH': {
-        'total_population': '8hVAj',
-        '12+': 'ZszeT'
+        'total_population': 'VjNOG',
+        '12+': '7au6n'
     },
     'AG': {
-        'total_population': 'zpi9A',
-        '12+': '5NOAH'
+        'total_population': '1jg0c',
+        '12+': 'l7asf'
     },
     'SO': {
-        'total_population': 'BPReI',
-        '12+': 'djn1E'
+        'total_population': '8cf9Y',
+        '12+': 'TGNq1'
     },
     'LU': {
-        'total_population': 'IfSDu',
-        '12+': 'VeCLU'
+        'total_population': 'uveAp',
+        '12+': '6Fbgb'
     },
     'ZG': {
-        'total_population': 'ssI2F',
-        '12+': 'UajZ3'
+        'total_population': 'YB5z5',
+        '12+': '4uVNw'
     },
     'SZ': {
-        'total_population': 'BwUOU',
-        '12+': 'XVpHL'
+        'total_population': 'BcHEE',
+        '12+': 'Mofrn'
     },
     'OW': {
-        'total_population': 'EdT3V',
-        '12+': '8CI4X'
+        'total_population': 'oMcgD',
+        '12+': 'XfDWb'
     },
     'NW': {
-        'total_population': 'x4UdV',
-        '12+': 'tQIsb'
+        'total_population': '4drzM',
+        '12+': 'MsQkB'
     },
     'UR': {
-        'total_population': 'JFFS3',
-        '12+': '5W5gv'
+        'total_population': 'vhPsq',
+        '12+': 'TZXIe'
     },
     'SG': {
-        'total_population': 'c5q2b',
-        '12+': '5oahs'
+        'total_population': 'DKUsi',
+        '12+': 'QaS07'
     },
     'TG': {
-        'total_population': 'SluZ7',
-        '12+': 'p7kFi'
+        'total_population': 'PAaZS',
+        '12+': 'h5Z8F'
     },
     'AR': {
-        'total_population': '6vyiL',
-        '12+': 'z9fhg'
+        'total_population': 'DjA0L',
+        '12+': 'bMiw4'
     },
     'AI': {
-        'total_population': '6Mdpd',
-        '12+': 'yAcQU'
+        'total_population': 'R9fid',
+        '12+': '4eQDW'
+    },
+    'BS': {
+        'total_population': 'kZcSq'
+    },
+    'BL': {
+        'total_population': 'Y7K8E'
     }
 }
 
 
 # **Datawrapper-Update**
 
-# In[6]:
+# In[11]:
 
 
 def chart_updater(chart_id, note, last_updated):
@@ -171,7 +184,7 @@ def chart_updater(chart_id, note, last_updated):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[8]:
+# In[12]:
 
 
 #call function chart_updater for every canton and age_group

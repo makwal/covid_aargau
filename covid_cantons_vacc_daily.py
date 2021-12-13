@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 
-# In[4]:
+# In[2]:
 
 
 #url BAG
@@ -22,7 +22,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[5]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -32,7 +32,7 @@ url = files['csv']['vaccPersonsV2']
 df_import = pd.read_csv(url)
 
 
-# In[6]:
+# In[4]:
 
 
 def vacc_daily_cantons(canton):
@@ -58,7 +58,7 @@ def vacc_daily_cantons(canton):
     return start_date, end_date
 
 
-# In[7]:
+# In[5]:
 
 
 cantons = ['AG', 'SO', 'SG', 'AI', 'AR', 'TG', 'LU', 'ZG', 'SZ', 'OW', 'NW', 'UR', 'CH']
@@ -71,7 +71,7 @@ for canton in cantons:
 
 # **Datawrapper update**
 
-# In[8]:
+# In[6]:
 
 
 cantons_dict = {
@@ -92,7 +92,7 @@ cantons_dict = {
 
 # Create Ticks for Datawrapper
 
-# In[9]:
+# In[7]:
 
 
 ticks = []
@@ -108,12 +108,14 @@ ticks.append(end_date.strftime('%Y-%m-%d'))
 tick_string = ', '.join(ticks)
 
 
-# In[10]:
+# In[8]:
 
 
-note = '''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage). <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag. An Sonntagen wird weniger geimpft. Die Zahlen können von den Angaben des Kantons abweichen'''
-
-def chart_updater(chart_id, end_date, tick_string):
+def chart_updater(canton, chart_id, end_date, tick_string):
+    
+    canton_addon = ' Die Zahlen können von den Angaben des Kantons abweichen.'
+    
+    note = f'''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage).     <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag.     An Sonntagen wird weniger geimpft.{canton_addon if canton != 'CH' or canton != 'CH_short' else ''}'''
 
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
@@ -122,8 +124,9 @@ def chart_updater(chart_id, end_date, tick_string):
 
     payload = {
 
-    'metadata': {'annotate': {'notes': f'{note}. Letzter Datenstand: {date}'},
-                 'visualize': {'custom-ticks-x': tick_string}
+    'metadata': {
+                'visualize': {'custom-ticks-x': tick_string},
+                'annotate': {'notes': f'{note} Letzter Datenstand: {date}'}
                 }
 
     }
@@ -135,11 +138,11 @@ def chart_updater(chart_id, end_date, tick_string):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[11]:
+# In[10]:
 
 
 for canton, chart_id in cantons_dict.items():
-    chart_updater(chart_id, end_date, tick_string)
+    chart_updater(canton, chart_id, end_date, tick_string)
     if canton != 'AG_short' or canton != 'SO_short' or canton != 'CH_short':
-        chart_updater(chart_id, end_date, tick_string='')
+        chart_updater(canton, chart_id, end_date, tick_string='')
 

@@ -66,7 +66,7 @@ def data_wrangler(df, canton, age):
 
     date_start = pd.to_datetime(date_start).strftime('%d.%m.%Y')
     date_end = pd.to_datetime(date_end).strftime('%d.%m.%Y')
-    tick_string = date_start + ', 2021-01-01, ' + date_end
+    tick_string = date_start + ', 01.01.2021, ' + date_end
     
     return date_end, tick_string
 

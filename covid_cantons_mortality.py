@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[25]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[26]:
 
 
 #url BfS
@@ -24,7 +24,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[27]:
 
 
 r = requests.get(base_url)
@@ -51,7 +51,7 @@ df['AnzTF_HR'] = df['AnzTF_HR'].astype(float)
 df.rename(columns={'AnzTF_HR': 'Todesfälle'}, inplace=True)
 
 
-# In[4]:
+# In[28]:
 
 
 def data_wrangler(df, canton, age):
@@ -73,7 +73,7 @@ def data_wrangler(df, canton, age):
 
 # **Datawrapper-Update**
 
-# In[5]:
+# In[29]:
 
 
 chart_ids = {
@@ -99,7 +99,7 @@ chart_ids = {
 }
 
 
-# In[6]:
+# In[30]:
 
 
 def chart_updater(chart_id, notes, tick_string):
@@ -122,18 +122,20 @@ def chart_updater(chart_id, notes, tick_string):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[7]:
+# In[31]:
 
 
 def main_function(df, canton, age, chart_id):
     date_end, tick_string = data_wrangler(df, canton, age)
     
-    notes = f'<span style="color:#c71e1d">Todesfälle</span> für die letzten 40 Tage hochgerechnet. <span style="color:#989898">Graues Band:</span> Erwartbare Anzahl Todesfälle aufgrund der vorangegangenen Jahre. Stand der Daten: {date_end}'
+    updated = date.today().strftime('%d.%m.%Y')
+    
+    notes = f'<span style="color:#c71e1d">Todesfälle</span> für die letzten 40 Tage hochgerechnet. <span style="color:#989898">Graues Band:</span> Erwartbare Anzahl Todesfälle aufgrund der vorangegangenen Jahre. Aktualisiert: {updated}'
     
     chart_updater(chart_id, notes, tick_string)
 
 
-# In[8]:
+# In[ ]:
 
 
 for canton, chart_info in chart_ids.items():

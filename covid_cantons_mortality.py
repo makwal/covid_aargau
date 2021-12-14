@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[ ]:
+
+
+Get new url
+
+
 # In[1]:
 
 
@@ -17,7 +23,7 @@ from general_settings import backdate, datawrapper_api_key
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20484708/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20664214/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
@@ -109,8 +115,9 @@ def chart_updater(chart_id, notes, tick_string):
 
     payload = {
 
-    'metadata': {'annotate': {'notes': notes}},
-    'visualize': {'custom-ticks-x': tick_string}
+    'metadata': {'visualize': {'custom-ticks-x': tick_string},
+                'annotate': {'notes': notes}
+                }
 
     }
 

@@ -17,7 +17,7 @@ from general_settings import backdate, datawrapper_api_key
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20664214/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20824073/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
@@ -135,7 +135,7 @@ def main_function(df, canton, age, chart_id):
     chart_updater(chart_id, notes, tick_string)
 
 
-# In[ ]:
+# In[32]:
 
 
 for canton, chart_info in chart_ids.items():

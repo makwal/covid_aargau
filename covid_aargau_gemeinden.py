@@ -185,7 +185,7 @@ sunday_str = sunday.strftime('%d.%m.%Y')
 
 
 intro_map = f'Neuinfektionen Woche vom {monday_str} bis {sunday_str}'
-notes_map = f'Aus Datenschutzgründen weist der Kanton 0 bis 3 Neuinfektionen als eine Kategorie aus. Für Gemeinden mit weniger als 500 Einwohnern macht er keine Angaben.'
+notes_map = f'Für Gemeinden mit weniger als 500 Einwohnern macht der Kanton keine Angaben.'
 
 notes_tab = 'Letzte Woche = {} bis {}'.format(monday_str, sunday_str)
 

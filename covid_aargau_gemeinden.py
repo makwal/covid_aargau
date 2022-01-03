@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[22]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ from general_settings import file_url, backdate, datawrapper_api_key
 from time import sleep
 
 
-# In[2]:
+# In[23]:
 
 
 #url + credentials Datawrapper
@@ -20,14 +20,14 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[24]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 df = pd.read_excel(file_url, sheet_name='2.1 Daten Gemeinden')
 
 
-# In[4]:
+# In[25]:
 
 
 df.columns = ['bezirk', 'gemeinde', 'einwohner', 'fälle_total', 'letzte Woche', 'vorletzte Woche']
@@ -40,7 +40,7 @@ del df['bezirk']
 
 # **Berechnung Fälle pro Hundert Einwohner:innen**
 
-# In[5]:
+# In[26]:
 
 
 df['fälle_total'] = df['fälle_total'].replace('Keine Publikation', np.nan)
@@ -48,18 +48,6 @@ df['letzte Woche'] = df['letzte Woche'].replace('--', np.nan)
 df['vorletzte Woche'] = df['vorletzte Woche'].replace('--', np.nan)
 df['fälle_total'] = df['fälle_total'].astype(float)
 df['fälle_pro_hundert'] = (df['fälle_total'] / df['einwohner']) * 100
-
-
-# **Kategorisierung der aktuellen Fallzahlen**
-
-# In[6]:
-
-
-df['letzte_sieben_tage'] = df['letzte Woche']
-
-#Die Kategorie 0-3 wird zu 0, um Spalte als float behandeln zu können
-df['letzte_sieben_tage'] = df['letzte_sieben_tage'].replace('0-3', 0)
-df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
 
 
 # Funktion category_maker weist den Fallzahlen der letzten sieben Tage eine Kategorie zu:
@@ -77,11 +65,11 @@ df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
 # - 7-9 Fälle = 2
 # - mehr als 10 = 3
 
-# In[7]:
+# In[27]:
 
 
 def category_maker(elem):
-    if elem == 0:
+    if elem >= 0 and elem <=3:
         return 0
     elif elem >= 4 and elem <= 10:
         return 1
@@ -94,22 +82,22 @@ def category_maker(elem):
     else:
         return np.nan
 
-df['kategorie_sieben_tage'] = df['letzte_sieben_tage'].apply(category_maker)
+df['kategorie_sieben_tage'] = df['letzte Woche'].apply(category_maker)
 
 
 # **Import Wappen + Merge**
 
-# In[9]:
+# In[19]:
 
 
 #home: '../Vorlagen/bfs-nummer_gemeinde_wappen_2020.csv'
-#Server: 'root/covid_aargau/bfs-nummer_gemeinde_wappen_2020.csv'
+#Server: '/root/covid_aargau/bfs-nummer_gemeinde_wappen_2020.csv'
 df_wappen = pd.read_csv('/root/covid_aargau/bfs-nummer_gemeinde_wappen_2020.csv')
 df_wappen['Ort'] = df_wappen['Ort'].str.replace(' \(AG\)', '')
 df_wappen.set_index('Ort', inplace=True)
 
 
-# In[10]:
+# In[20]:
 
 
 df = pd.merge(df, df_wappen, left_index=True, right_index=True, how='left')
@@ -134,14 +122,14 @@ df.to_csv('/root/covid_aargau/data/only_AG/fallzahlen_gemeinden.csv')
 
 # ## Tabelle
 
-# In[86]:
+# In[ ]:
 
 
-df_tab = df.sort_values(by=['letzte_sieben_tage', 'gemeinde'], ascending=[False, True]).reset_index()
-tenth_value = df_tab.loc[9]['letzte_sieben_tage']
+df_tab = df.sort_values(by=['letzte Woche', 'gemeinde'], ascending=[False, True]).reset_index()
+tenth_value = df_tab.loc[9]['letzte Woche']
 
 
-# In[87]:
+# In[ ]:
 
 
 if tenth_value <= 0:
@@ -149,7 +137,7 @@ if tenth_value <= 0:
 else:
     pass
 
-df_tab = df_tab[df_tab['letzte_sieben_tage'] >= tenth_value][['gemeinde', 'letzte Woche', 'vorletzte Woche']].copy()
+df_tab = df_tab[df_tab['letzte Woche'] >= tenth_value][['gemeinde', 'letzte Woche', 'vorletzte Woche']].copy()
 df_tab.columns = ['Gemeinde', 'Infektionen letzte Woche', 'Infektionen vorletzte Woche']
 
 
@@ -165,7 +153,7 @@ df_tab.to_csv('/root/covid_aargau/data/only_AG/fallzahlen_gemeinden_tabelle.csv'
 
 # **Date**
 
-# In[69]:
+# In[ ]:
 
 
 df_date = pd.read_excel(file_url, sheet_name='1. Covid-19-Daten')
@@ -176,10 +164,6 @@ date = df_date['dates'][df_date['Unnamed: 1'].notnull()].tail(1).values[0]
 #date + 1 = heute (sobald die Zahlen aktualisiert sind)
 date = date + timedelta(days=1)
 date_str = date.strftime('%d.%m.%Y')
-
-
-# In[70]:
-
 
 #Stand der Daten herausfinden. (Woche vom dd.MM. bis dd.MM.YYYY) Dazu brauche ich die Angaben Jahr und Kalenderwoche des akt. Datums
 year = date.isocalendar()[0]
@@ -197,7 +181,7 @@ sunday_str = sunday.strftime('%d.%m.%Y')
 
 # **Datawrapper-Update Karte**
 
-# In[107]:
+# In[ ]:
 
 
 intro_map = f'Neuinfektionen Woche vom {monday_str} bis {sunday_str}'
@@ -206,7 +190,7 @@ notes_map = f'Aus Datenschutzgründen weist der Kanton 0 bis 3 Neuinfektionen al
 notes_tab = 'Letzte Woche = {} bis {}'.format(monday_str, sunday_str)
 
 
-# In[108]:
+# In[ ]:
 
 
 data_dict = {
@@ -223,7 +207,7 @@ data_dict = {
 }
 
 
-# In[112]:
+# In[ ]:
 
 
 def chart_updater(chart_id, intro, notes):

@@ -70,7 +70,7 @@ def geoRegion(canton, vacc_type):
     df_temp.reset_index(inplace=True, drop=True)
     
     #exclude age groups
-    age_group_unwanted = ['12 - 15', '16 - 64', '65+']
+    age_group_unwanted = ['5 - 11','12 - 15', '16 - 64', '65+']
     df_temp = df_temp[~df_temp['altersklasse_covid19'].isin(age_group_unwanted)].copy()
     
     df_temp = df_temp[['altersklasse_covid19', 'per100PersonsTotal', 'type']].copy()

@@ -1,8 +1,4 @@
 Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsstation,freie Intensivbetten
-2021-11-03,22,13.0,11.0
-2021-11-04,21,10.0,8.0
-2021-11-05,17,12.0,9.0
-2021-11-06,17,12.0,9.0
 2021-11-07,17,12.0,9.0
 2021-11-08,26,12.0,11.0
 2021-11-09,29,12.0,7.0
@@ -56,3 +52,5 @@ Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsst
 2021-12-27,70,35.0,4.0
 2021-12-28,73,31.0,2.0
 2021-12-29,82,31.0,3.0
+2021-12-30,82,31.0,4.0
+2021-12-31,82,31.0,4.0

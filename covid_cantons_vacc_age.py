@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[8]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ from datetime import timedelta
 
 # ### data import
 
-# In[2]:
+# In[9]:
 
 
 #url BAG
@@ -25,7 +25,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[10]:
 
 
 r = requests.get(base_url)
@@ -37,14 +37,14 @@ df = pd.read_csv(url)
 
 # ### data preparation
 
-# In[4]:
+# In[11]:
 
 
 df = df[(df['type'] == 'COVID19FullyVaccPersons') | (df['type'] == 'COVID19PartiallyVaccPersons') | (df['type'] == 'COVID19FirstBoosterPersons')].copy()
 df = df[['date', 'geoRegion', 'altersklasse_covid19', 'per100PersonsTotal', 'type']].copy()
 
 
-# In[5]:
+# In[12]:
 
 
 #format date from ISO week to regular date (monday per each week)
@@ -55,22 +55,21 @@ df['date'] = pd.to_datetime(df['date'], format='%Y%W-%w')
 df['per100PersonsTotal'] = df['per100PersonsTotal'].round(1)
 
 
-# In[6]:
+# In[9]:
 
 
 def geoRegion(canton, vacc_type):
     df_temp = df[df['geoRegion'] == canton].copy()
     
     #keep only latest date
-    latest = df_temp['date'].max()
-    df_temp = df_temp[df_temp['date'] == latest].copy()
-    last_updated = latest + timedelta(days=6)
+    last_updated = df_temp['date'].max()
+    df_temp = df_temp[df_temp['date'] == last_updated].copy()
     last_updated = last_updated.strftime('%d.%m.%Y')
 
     df_temp.reset_index(inplace=True, drop=True)
     
     #exclude age groups
-    age_group_unwanted = ['5 - 11','12 - 15', '16 - 64', '65+']
+    age_group_unwanted = ['5 - 11', '12 - 15', '16 - 64', '65+']
     df_temp = df_temp[~df_temp['altersklasse_covid19'].isin(age_group_unwanted)].copy()
     
     df_temp = df_temp[['altersklasse_covid19', 'per100PersonsTotal', 'type']].copy()
@@ -100,7 +99,7 @@ def geoRegion(canton, vacc_type):
 
 # ### Datawrapper update
 
-# In[7]:
+# In[12]:
 
 
 chart_ids = {
@@ -134,13 +133,15 @@ chart_ids = {
         'SG': 'SFc97',
         'TG': 'yXWjB',
         'AR': '1Qf5V',
-        'AI': 'xEUrm'
+        'AI': 'xEUrm',
+        'BS': 'qYgEU',
+        'BL': '3fZCJ'
     }
     
 }
 
 
-# In[8]:
+# In[13]:
 
 
 def chart_updater(chart_id, last_updated, example):
@@ -161,7 +162,7 @@ def chart_updater(chart_id, last_updated, example):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[9]:
+# In[14]:
 
 
 def main_function(canton, vacc_type, chart_id):
@@ -169,7 +170,7 @@ def main_function(canton, vacc_type, chart_id):
     chart_updater(chart_id, last_updated, example)
 
 
-# In[ ]:
+# In[15]:
 
 
 for vacc_type, values in chart_ids.items():

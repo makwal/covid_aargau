@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
+# In[ ]:
 
 
 import pandas as pd
@@ -13,24 +13,18 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[6]:
-
-
-#https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20824117/appendix
-
-
-# In[7]:
+# In[ ]:
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20884773/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20904133/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[8]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -66,7 +60,7 @@ def data_wrangler(df, canton, age):
     
     #export to csv
     df.to_csv('/root/covid_aargau/data/death/mortality_{}_{}.csv'.format(canton, age), index=False)
-    print(df)
+
     date_start = df[df['Todesfälle'].notna()]['endend'].head(1).values[0]
     date_end = df[df['Todesfälle'].notna()]['endend'].tail(1).values[0]
 

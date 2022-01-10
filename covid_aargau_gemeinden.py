@@ -40,7 +40,7 @@ del df['bezirk']
 
 # **Berechnung Fälle pro Hundert Einwohner:innen**
 
-# In[14]:
+# In[5]:
 
 
 df['fälle_total'] = df['fälle_total'].replace('Keine Publikation', np.nan)
@@ -52,14 +52,19 @@ df['fälle_pro_hundert'] = (df['fälle_total'] / df['einwohner']) * 100
 
 # **Kategorisierung der aktuellen Fallzahlen**
 
-# In[15]:
+# In[6]:
 
 
 df['letzte_sieben_tage'] = df['letzte Woche']
+df['vorletzte_sieben_tage'] = df['vorletzte Woche']
 
 #Die Kategorie 0-3 wird zu 0, um Spalte als float behandeln zu können
 df['letzte_sieben_tage'] = df['letzte_sieben_tage'].replace('0-3', 0)
 df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
+
+#Die Kategorie 0-3 wird zu 0, um Spalte als float behandeln zu können
+df['vorletzte_sieben_tage'] = df['letzte_sieben_tage'].replace('0-3', 0)
+df['vorletzte_sieben_tage'] = df['vorletzte_sieben_tage'].astype(float)
 
 
 # Funktion category_maker weist den Fallzahlen der letzten sieben Tage eine Kategorie zu:
@@ -77,7 +82,7 @@ df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
 # - 7-9 Fälle = 2
 # - mehr als 10 = 3
 
-# In[16]:
+# In[7]:
 
 
 def category_maker(elem):
@@ -99,7 +104,7 @@ df['kategorie_sieben_tage'] = df['letzte_sieben_tage'].apply(category_maker)
 
 # **Import Wappen + Merge**
 
-# In[23]:
+# In[ ]:
 
 
 #home: '../Vorlagen/bfs-nummer_gemeinde_wappen_2022.csv'
@@ -110,7 +115,7 @@ df_wappen['Ort'] = df_wappen['Ort'].str.replace(' \(AG\)', '')
 df_wappen.set_index('Ort', inplace=True)
 
 
-# In[26]:
+# In[ ]:
 
 
 df = pd.merge(df, df_wappen, left_index=True, right_index=True, how='left')

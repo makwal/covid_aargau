@@ -63,7 +63,7 @@ df['letzte_sieben_tage'] = df['letzte_sieben_tage'].replace('0-3', 0)
 df['letzte_sieben_tage'] = df['letzte_sieben_tage'].astype(float)
 
 #Die Kategorie 0-3 wird zu 0, um Spalte als float behandeln zu können
-df['vorletzte_sieben_tage'] = df['letzte_sieben_tage'].replace('0-3', 0)
+df['vorletzte_sieben_tage'] = df['vorletzte_sieben_tage'].replace('0-3', 0)
 df['vorletzte_sieben_tage'] = df['vorletzte_sieben_tage'].astype(float)
 
 

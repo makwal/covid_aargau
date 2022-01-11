@@ -38,7 +38,7 @@ df['Jahr'] = df['Jahr'].astype(int)
 df['Woche'] = df['Woche'].astype(int)
 df['endend'] = pd.to_datetime(df['endend'], format='%d.%m.%Y')
 
-df['AnzTF_HR'] = df['AnzTF_HR'].str.strip()
+#df['AnzTF_HR'] = df['AnzTF_HR'].str.strip()
 df['Kanton'] = df['Kanton'].str.strip()
 df['Alter'] = df['Alter'].str.strip()
 df['Diff'] = df['Diff'].str.strip()

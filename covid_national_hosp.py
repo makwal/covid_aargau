@@ -40,6 +40,12 @@ df = df[['date', 'Total_Covid19Patients', 'ICU_Covid19Patients']].reset_index(dr
 df.columns = ['Datum', 'Hospitalisierte', 'davon auf Intensivstation']
 
 
+# In[40]:
+
+
+last_updated = pd.to_datetime(df['Datum'].tail(1).values[0]).strftime('%d.%m.%Y')
+
+
 # In[25]:
 
 
@@ -48,4 +54,38 @@ df.to_csv('/root/covid_aargau/backups/hosp/covid_national_hosp.csv'.format(backd
 
 #export to csv
 df.to_csv('/root/covid_aargau/data/covid_national_hosp.csv', index=False)
+
+
+# **Datawrapper-Update**
+
+# In[42]:
+
+
+annotation = f'Wegen unterschiedlicher Meldezeiten können die hier dargestellten Daten von Zahlen anderer Quellen abweichen. Stand der Daten: {last_updated}.'
+
+chart_id = 'xxfm7'
+
+
+# In[46]:
+
+
+def chart_updater(chart_id, annotation):
+
+    url_update = datawrapper_url + chart_id
+    url_publish = url_update + '/publish'
+
+    payload = {
+
+    'metadata': {'annotate': {'notes': annotation}}
+
+    }
+
+    res_update = requests.patch(url_update, json=payload, headers=headers)
+
+    sleep(3)
+
+    res_publish = requests.post(url_publish, headers=headers)
+
+#call function
+chart_updater(chart_id, annotation)
 

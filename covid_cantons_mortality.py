@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[ ]:
 
 
 #url BfS
@@ -24,7 +24,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -59,11 +59,13 @@ def data_wrangler(df, canton, age):
     df = df[(df['Kanton'] == canton) & (df['Alter'] == age)].copy()
     df = df[['endend', 'Todesfälle', 'untGrenze', 'obeGrenze']].copy()
 
-    #export to csv
-    df.to_csv('/root/covid_aargau/data/death/mortality_{}_{}.csv'.format(canton, age), index=False)
-
     date_start = df[df['Todesfälle'].notna()]['endend'].head(1).values[0]
     date_end = df[df['Todesfälle'].notna()]['endend'].tail(1).values[0]
+    
+    df = df[df['endend'] <= pd.to_datetime(date_end)].copy()
+
+    #export to csv
+    df.to_csv('/root/covid_aargau/data/death/mortality_{}_{}.csv'.format(canton, age), index=False)
 
     date_start = pd.to_datetime(date_start).strftime('%d.%m.%Y')
     date_end = pd.to_datetime(date_end).strftime('%d.%m.%Y')
@@ -143,4 +145,10 @@ for canton, chart_info in chart_ids.items():
     for age, chart_id in chart_info.items():
         main_function(df, canton, age, chart_id)
         sleep(3)
+
+
+# In[ ]:
+
+
+
 

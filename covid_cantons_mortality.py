@@ -24,14 +24,15 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[9]:
+# In[3]:
 
 
 r = requests.get(base_url)
 df_import = pd.read_csv(io.StringIO(r.content.decode('latin')), delimiter=';')
 
 #get rid of general information
-df = df_import.loc[:5459].copy()
+len_df = len(df_import)-13
+df = df_import.loc[:len_df].copy()
 
 #formatting
 df['Jahr'] = df['Jahr'].astype(int)
@@ -57,7 +58,7 @@ df.rename(columns={'AnzTF_HR': 'Todesfälle'}, inplace=True)
 def data_wrangler(df, canton, age):
     df = df[(df['Kanton'] == canton) & (df['Alter'] == age)].copy()
     df = df[['endend', 'Todesfälle', 'untGrenze', 'obeGrenze']].copy()
-    
+
     #export to csv
     df.to_csv('/root/covid_aargau/data/death/mortality_{}_{}.csv'.format(canton, age), index=False)
 
@@ -67,7 +68,7 @@ def data_wrangler(df, canton, age):
     date_start = pd.to_datetime(date_start).strftime('%d.%m.%Y')
     date_end = pd.to_datetime(date_end).strftime('%d.%m.%Y')
     tick_string = date_start + ', 01.01.2021, ' + date_end
-    
+
     return date_end, tick_string
 
 
@@ -142,10 +143,4 @@ for canton, chart_info in chart_ids.items():
     for age, chart_id in chart_info.items():
         main_function(df, canton, age, chart_id)
         sleep(3)
-
-
-# In[ ]:
-
-
-
 

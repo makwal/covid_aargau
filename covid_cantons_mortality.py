@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -13,18 +13,18 @@ from datetime import date, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[ ]:
+# In[2]:
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/20904462/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/21107890/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[9]:
 
 
 r = requests.get(base_url)
@@ -38,7 +38,7 @@ df['Jahr'] = df['Jahr'].astype(int)
 df['Woche'] = df['Woche'].astype(int)
 df['endend'] = pd.to_datetime(df['endend'], format='%d.%m.%Y')
 
-#df['AnzTF_HR'] = df['AnzTF_HR'].str.strip()
+df['AnzTF_HR'] = df['AnzTF_HR'].str.strip()
 df['Kanton'] = df['Kanton'].str.strip()
 df['Alter'] = df['Alter'].str.strip()
 df['Diff'] = df['Diff'].str.strip()

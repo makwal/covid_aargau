@@ -108,7 +108,7 @@ def chart_updater(chart_id, max_cases, intro):
             'columns': {
                 'woche1': {
                     'sparkline': {
-                        'rangeMax': max_cases
+                        'rangeMax': str(max_cases)
                     }
                 }
             }

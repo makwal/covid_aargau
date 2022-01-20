@@ -157,7 +157,7 @@ def chart_updater(chart_id, intro):
 
 def lesebeispiel(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key):
         
-    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften im Alter von {alter_key} hospitalisiert.'''
+    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften ohne Booster im Alter von {alter_key} hospitalisiert.'''
     
     return intro
 
@@ -188,7 +188,7 @@ def main_function(alter_key, altersklassen):
     last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, monday, sunday = inzidenz_berechner(df, alter_key, altersklassen)
     
     #Datawrapper-Update
-    #datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)
+    datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)
 
 
 # In[ ]:

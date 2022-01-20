@@ -64,6 +64,7 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     df_fully_booster = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'geboostert'})
     df_fully_booster = df_fully_booster[df_fully_booster['vaccination_status'] == 'fully_vaccinated_first_booster'][['date', 'geboostert']].copy()
     df_fully_booster['geboostert'] = df_fully_booster['geboostert'].round(1)
+    df_fully_booster = df_fully_booster[df_fully_booster['date'] >= 202148].copy()
 
     #latest value for Datawrapper
     last_inz_booster = df_fully_booster['geboostert'].tail(1).values[0]

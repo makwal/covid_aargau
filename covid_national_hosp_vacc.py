@@ -81,11 +81,11 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     df_not_fully_raw = df[(df['vaccination_status'] == 'partially_vaccinated') | (df['vaccination_status'] == 'not_vaccinated')].copy()
     df_not_fully_raw['weight'] = df_not_fully_raw['inz_entries'] * df_not_fully_raw['pop']
     group2 = df_not_fully_raw.groupby(['date'])
-    df_not_fully = pd.DataFrame(group2['weight'].sum() / group2['pop'].sum()).reset_index().rename(columns={0: 'nicht voll. geimpft'})
-    df_not_fully['nicht voll. geimpft'] = df_not_fully['nicht voll. geimpft'].round(1)
+    df_not_fully = pd.DataFrame(group2['weight'].sum() / group2['pop'].sum()).reset_index().rename(columns={0: 'nicht vollst. geimpft'})
+    df_not_fully['nicht vollst. geimpft'] = df_not_fully['nicht vollst. geimpft'].round(1)
         
     #latest value for datawrapper
-    last_inz_single_no_shot = df_not_fully['nicht voll. geimpft'].tail(1).values[0]
+    last_inz_single_no_shot = df_not_fully['nicht vollst. geimpft'].tail(1).values[0]
     
     #Merge
     #df_hospvacc = pd.merge(df_fully_booster, df_fully, df_not_fully, left_on='date', right_on='date')

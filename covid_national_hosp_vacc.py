@@ -64,7 +64,6 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     df_fully_booster = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'geboostert'})
     df_fully_booster = df_fully_booster[df_fully_booster['vaccination_status'] == 'fully_vaccinated_first_booster'][['date', 'geboostert']].copy()
     df_fully_booster['geboostert'] = df_fully_booster['geboostert'].round(1)
-    df_fully_booster = df_fully_booster[df_fully_booster['date'] >= 202148].copy()
 
     #latest value for Datawrapper
     last_inz_booster = df_fully_booster['geboostert'].tail(1).values[0]
@@ -88,10 +87,14 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     last_inz_single_no_shot = df_not_fully['nicht vollst. geimpft'].tail(1).values[0]
     
     #Merge
-    #df_hospvacc = pd.merge(df_fully_booster, df_fully, df_not_fully, left_on='date', right_on='date')
     dfs = [df_fully_booster, df_fully, df_not_fully]
     df_hospvacc = reduce(lambda left,right: pd.merge(left,right,on='date'), dfs)
-
+    
+    #Booster: np.nan for values before start of booster campain
+    df_hospvacc.loc[df_hospvacc['date'] < 202148, 'geboostert'] = np.nan
+    
+    #keep only data from July on
+    df_hospvacc = df_hospvacc[df_hospvacc['date'] >= 202126].copy()
 
     #Time formatting
     df_hospvacc['date'] = df_hospvacc['date'].apply(lambda x: datetime.strptime(str(x) + '-1', "%G%V-%u") + timedelta(days=6))
@@ -101,7 +104,7 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     date = pd.to_datetime(str(date))
     monday = date - timedelta(days=6)
     monday = monday.strftime('%d.%m.')
-    sunday = date.strftime('%d.%m.%Y')
+    sunday = date.strftime('%d.%m.%Y')    
 
     #export backup to csv
     df_hospvacc.to_csv('/root/covid_aargau/backups/vacc_ch/hosp_vacc_{}_{}.csv'.format(alter_key, backdate(0)), index=False)
@@ -185,7 +188,7 @@ def main_function(alter_key, altersklassen):
     last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, monday, sunday = inzidenz_berechner(df, alter_key, altersklassen)
     
     #Datawrapper-Update
-    datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)
+    #datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)
 
 
 # In[ ]:
@@ -194,4 +197,10 @@ def main_function(alter_key, altersklassen):
 for alter_key, alter_value in gewünschte_daten.items():
     main_function(alter_key, alter_value)
     sleep(5)
+
+
+# In[ ]:
+
+
+
 

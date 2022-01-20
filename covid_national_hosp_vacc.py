@@ -157,7 +157,7 @@ def chart_updater(chart_id, intro):
 
 def lesebeispiel(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key):
         
-    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften ohne Booster im Alter von {alter_key} hospitalisiert.'''
+    intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 vollst. Geimpften ohne Booster im Alter von {alter_key} hospitalisiert.'''
     
     return intro
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from general_settings import backdate, datawrapper_api_key
 from datetime import datetime, timedelta
 
 
-# In[2]:
+# In[ ]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
@@ -21,7 +21,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[3]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -31,14 +31,14 @@ url = files['csv']['weekly']['byAge']['cases']
 df_import = pd.read_csv(url)
 
 
-# In[4]:
+# In[ ]:
 
 
 #calculate cases per 1000 people
 df_import['Fälle pro 1000 Personen'] = df_import['entries'] / df_import['pop'] * 1000
 
 
-# In[5]:
+# In[ ]:
 
 
 def data_wrangler(df_import, canton):
@@ -63,12 +63,15 @@ def data_wrangler(df_import, canton):
     
     df.rename_axis('Altersgruppen', inplace=True)
     
+    #get highest num of cases in all age groups for datawrapper chart purposes
+    max_cases = df['Fälle'].max()
+    
     df.to_csv(f'/root/covid_aargau/data/age/age_cases_{canton}.csv')
     
-    return end_date
+    return end_date, max_cases
 
 
-# In[6]:
+# In[ ]:
 
 
 cantons = {
@@ -90,10 +93,10 @@ cantons = {
 
 # **Datawrapper-Update**
 
-# In[7]:
+# In[ ]:
 
 
-def chart_updater(chart_id, intro):
+def chart_updater(chart_id, max_cases, intro):
     
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
@@ -101,6 +104,15 @@ def chart_updater(chart_id, intro):
     payload = {
 
     'metadata': {
+        'visualize': {
+            'columns': {
+                'woche1': {
+                    'sparkline': {
+                        'rangeMax': max_cases
+                    }
+                }
+            }
+        },
         'describe': {'intro': intro}
         }
 
@@ -113,11 +125,11 @@ def chart_updater(chart_id, intro):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[8]:
+# In[ ]:
 
 
 def main_function(df_import, canton, chart_id):
-    end_date = data_wrangler(df_import, canton)
+    end_date, max_cases = data_wrangler(df_import, canton)
     
     end_date = pd.to_datetime(end_date)
     start_date = end_date - timedelta(days=6)
@@ -127,7 +139,7 @@ def main_function(df_import, canton, chart_id):
     
     intro = f'Anzahl Fälle in der Woche vom {start_date} bis {end_date}.'
     
-    chart_updater(chart_id, intro)
+    chart_updater(chart_id, max_cases, intro)
 
 
 # In[ ]:
@@ -136,4 +148,10 @@ def main_function(df_import, canton, chart_id):
 for canton, chart_id in cantons.items():
     main_function(df_import, canton, chart_id)
     sleep(2)
+
+
+# In[ ]:
+
+
+
 

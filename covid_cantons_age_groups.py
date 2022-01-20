@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from general_settings import backdate, datawrapper_api_key
 from datetime import datetime, timedelta
 
 
-# In[ ]:
+# In[2]:
 
 
 base_url = "https://www.covid19.admin.ch/api/data/context"
@@ -21,7 +21,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -31,14 +31,14 @@ url = files['csv']['weekly']['byAge']['cases']
 df_import = pd.read_csv(url)
 
 
-# In[ ]:
+# In[4]:
 
 
 #calculate cases per 1000 people
 df_import['Fälle pro 1000 Personen'] = df_import['entries'] / df_import['pop'] * 1000
 
 
-# In[ ]:
+# In[5]:
 
 
 def data_wrangler(df_import, canton):
@@ -71,7 +71,7 @@ def data_wrangler(df_import, canton):
     return end_date, max_cases
 
 
-# In[ ]:
+# In[6]:
 
 
 cantons = {
@@ -93,7 +93,7 @@ cantons = {
 
 # **Datawrapper-Update**
 
-# In[ ]:
+# In[7]:
 
 
 def chart_updater(chart_id, max_cases, intro):
@@ -125,7 +125,7 @@ def chart_updater(chart_id, max_cases, intro):
     res_publish = requests.post(url_publish, headers=headers)
 
 
-# In[ ]:
+# In[8]:
 
 
 def main_function(df_import, canton, chart_id):
@@ -142,16 +142,10 @@ def main_function(df_import, canton, chart_id):
     chart_updater(chart_id, max_cases, intro)
 
 
-# In[ ]:
+# In[9]:
 
 
 for canton, chart_id in cantons.items():
     main_function(df_import, canton, chart_id)
     sleep(2)
-
-
-# In[ ]:
-
-
-
 

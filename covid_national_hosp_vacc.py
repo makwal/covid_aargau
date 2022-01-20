@@ -4,7 +4,7 @@
 # Source for ISO datetime handling: https://docs.python.org/3/library/datetime.html
 # Look for %G, %V and %u
 
-# In[44]:
+# In[ ]:
 
 
 import pandas as pd
@@ -12,10 +12,11 @@ import requests
 from time import sleep
 from datetime import datetime, timedelta
 import numpy as np
+from functools import reduce
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[45]:
+# In[ ]:
 
 
 #url BAG
@@ -26,7 +27,7 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[46]:
+# In[ ]:
 
 
 r = requests.get(base_url)
@@ -35,9 +36,12 @@ files = response['sources']['individual']
 url = files['csv']['weekly']['byAge']['hospVaccPersons']
 df = pd.read_csv(url)
 df = df[df['geoRegion'] == 'CHFL'].copy()
+
+#choose only timeframe starting in april
 df = df[df['date'] >= 202114].copy()
 
-# In[98]:
+
+# In[ ]:
 
 
 gewünschte_daten = {
@@ -48,21 +52,29 @@ gewünschte_daten = {
 
 # **Inzidenz-Berechnung**
 
-# In[107]:
+# In[ ]:
 
 
 def inzidenz_berechner(df, alter_key, altersklassen):
     df = df[df['altersklasse_covid19'].isin(altersklassen)].copy()
 
-    #Fully vaccinated
+    #Fully vaccinated - first booster
     df['weight'] = df['inz_entries'] * df['pop']
     group = df.groupby(['date', 'vaccination_status'])
-    df_fully = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'voll. geimpft'})
-    df_fully = df_fully[df_fully['vaccination_status'] == 'fully_vaccinated'][['date', 'voll. geimpft']].copy()
-    df_fully['voll. geimpft'] = df_fully['voll. geimpft'].round(1)
+    df_fully_booster = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'geboostert'})
+    df_fully_booster = df_fully_booster[df_fully_booster['vaccination_status'] == 'fully_vaccinated_first_booster'][['date', 'geboostert']].copy()
+    df_fully_booster['geboostert'] = df_fully_booster['geboostert'].round(1)
 
     #latest value for Datawrapper
-    last_inz_double_shot = df_fully['voll. geimpft'].tail(1).values[0]
+    last_inz_booster = df_fully_booster['geboostert'].tail(1).values[0]
+    
+    #Fully vaccinated - no booster
+    df_fully = pd.DataFrame(group['weight'].sum() / group['pop'].sum()).reset_index().rename(columns={0: 'vollst. geimpft'})
+    df_fully = df_fully[df_fully['vaccination_status'] == 'fully_vaccinated_no_booster'][['date', 'vollst. geimpft']].copy()
+    df_fully['vollst. geimpft'] = df_fully['vollst. geimpft'].round(1)
+
+    #latest value for Datawrapper
+    last_inz_double_shot = df_fully['vollst. geimpft'].tail(1).values[0]
     
     #Not fully vaccinated
     df_not_fully_raw = df[(df['vaccination_status'] == 'partially_vaccinated') | (df['vaccination_status'] == 'not_vaccinated')].copy()
@@ -70,13 +82,15 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     group2 = df_not_fully_raw.groupby(['date'])
     df_not_fully = pd.DataFrame(group2['weight'].sum() / group2['pop'].sum()).reset_index().rename(columns={0: 'nicht voll. geimpft'})
     df_not_fully['nicht voll. geimpft'] = df_not_fully['nicht voll. geimpft'].round(1)
-
         
     #latest value for datawrapper
     last_inz_single_no_shot = df_not_fully['nicht voll. geimpft'].tail(1).values[0]
     
     #Merge
-    df_hospvacc = pd.merge(df_fully, df_not_fully, left_on='date', right_on='date')
+    #df_hospvacc = pd.merge(df_fully_booster, df_fully, df_not_fully, left_on='date', right_on='date')
+    dfs = [df_fully_booster, df_fully, df_not_fully]
+    df_hospvacc = reduce(lambda left,right: pd.merge(left,right,on='date'), dfs)
+
 
     #Time formatting
     df_hospvacc['date'] = df_hospvacc['date'].apply(lambda x: datetime.strptime(str(x) + '-1', "%G%V-%u") + timedelta(days=6))
@@ -94,18 +108,20 @@ def inzidenz_berechner(df, alter_key, altersklassen):
     #export to csv
     df_hospvacc.to_csv('/root/covid_aargau/data/vaccination/hosp_vacc_{}.csv'.format(alter_key), index=False)
     
-    return last_inz_double_shot, last_inz_single_no_shot, monday, sunday
+    return last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, monday, sunday
 
 
 # **Datawrapper-Update**
 
-# In[1]:
+# In[ ]:
 
 
 def chart_updater(chart_id, intro):
     
+
     intro_links = '''Wählen Sie eine Altersgruppe:<br><br>
-		<a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
+    
+    <a target="_self" href="https://datawrapper.dwcdn.net/S0lQK/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> 10-59 Jahre</a> &nbsp;
 
                 <a target="_self" href="https://datawrapper.dwcdn.net/6MWjR/4/" style="background:#003595; padding:1px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;"> über 60-Jährige</a> &nbsp;
                 <br>
@@ -113,7 +129,7 @@ def chart_updater(chart_id, intro):
                 '''
     
     intro = intro_links + intro
-   
+
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'
 
@@ -135,7 +151,7 @@ def chart_updater(chart_id, intro):
 # In[ ]:
 
 
-def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
+def lesebeispiel(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key):
         
     intro = f'''Lesebeispiel: In der Woche vom {monday} bis {sunday}                 wurden {last_inz_single_no_shot} von 100\'000 Teil- oder Nichtgeimpften                 und {last_inz_double_shot} von 100\'000 Geimpften im Alter von {alter_key} hospitalisiert.'''
     
@@ -145,14 +161,14 @@ def lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, 
 # In[ ]:
 
 
-def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key):
+def datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key):
     
     chart_ids = {
     '10-59 Jahren': 'S0lQK',
     'über 60 Jahren': '6MWjR'
     }
     
-    intro = lesebeispiel(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key)    
+    intro = lesebeispiel(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)    
         
     chart_updater(chart_ids[alter_key], intro)
 
@@ -165,10 +181,10 @@ def datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_sh
 def main_function(alter_key, altersklassen):
     
     #Inzidenz-Berechnung
-    last_inz_double_shot, last_inz_single_no_shot, monday, sunday = inzidenz_berechner(df, alter_key, altersklassen)
+    last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, monday, sunday = inzidenz_berechner(df, alter_key, altersklassen)
     
     #Datawrapper-Update
-    datawrapper_main(monday, sunday, last_inz_double_shot, last_inz_single_no_shot, alter_key)
+    datawrapper_main(monday, sunday, last_inz_booster, last_inz_double_shot, last_inz_single_no_shot, alter_key)
 
 
 # In[ ]:

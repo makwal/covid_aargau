@@ -137,7 +137,7 @@ def main_function(df_import, canton, chart_id):
     end_date = end_date.strftime('%d.%m.%Y')
     start_date = start_date.strftime('%d.%m.')
     
-    intro = f'Anzahl Fälle in der Woche vom {start_date} bis {end_date}.'
+    intro = f'Anzahl Fälle pro 1000 Personen in der Woche vom {start_date} bis {end_date}.'
     
     chart_updater(chart_id, max_cases, intro)
 

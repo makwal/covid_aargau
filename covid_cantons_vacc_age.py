@@ -133,9 +133,7 @@ chart_ids = {
         'SG': 'SFc97',
         'TG': 'yXWjB',
         'AR': '1Qf5V',
-        'AI': 'xEUrm',
-        'BS': 'qYgEU',
-        'BL': '3fZCJ'
+        'AI': 'xEUrm'
     }
     
 }

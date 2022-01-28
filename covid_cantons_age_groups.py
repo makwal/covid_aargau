@@ -51,20 +51,20 @@ def data_wrangler(df_import, canton):
     
     df = df[(df['datum'] >= start_date) & (df['datum'] <= end_date)].copy()
     
-    df = df[['datum', 'altersklasse_covid19', 'entries']].copy()
+    df = df[['datum', 'altersklasse_covid19', 'Fälle pro 1000 Personen']].copy()
     
-    df = df.pivot(index='altersklasse_covid19', columns='datum', values='entries')
+    df = df.pivot(index='altersklasse_covid19', columns='datum', values='Fälle pro 1000 Personen')
     
     df.columns = ['woche1', 'woche2', 'woche3', 'woche4', 'woche5', 'woche6', 'woche7', 'woche8']
     
-    df['Fälle'] = df['woche8']
+    df['Fälle pro 1000 Personen'] = df['woche8']
     
-    df = df[['Fälle', 'woche1', 'woche2', 'woche3', 'woche4', 'woche5', 'woche6', 'woche7', 'woche8']].copy()
+    df = df[['Fälle pro 1000 Personen', 'woche1', 'woche2', 'woche3', 'woche4', 'woche5', 'woche6', 'woche7', 'woche8']].copy()
     
     df.rename_axis('Altersgruppen', inplace=True)
     
     #get highest num of cases in all age groups for datawrapper chart purposes
-    max_cases = df['Fälle'].max()
+    max_cases = df['Fälle pro 1000 Personen'].max()
     
     df.to_csv(f'/root/covid_aargau/data/age/age_cases_{canton}.csv')
     

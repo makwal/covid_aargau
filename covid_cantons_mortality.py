@@ -17,7 +17,7 @@ from general_settings import backdate, datawrapper_api_key
 
 
 #url BfS
-base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/21107890/master'
+base_url = 'https://www.experimental.bfs.admin.ch/bfsstatic/dam/assets/21244838/master'
 
 #url + credentials Datawrapper
 datawrapper_url = 'https://api.datawrapper.de/v3/charts/'

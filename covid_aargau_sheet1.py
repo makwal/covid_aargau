@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[49]:
+# In[ ]:
 
 
 import pandas as pd
@@ -13,14 +13,14 @@ from time import sleep
 
 # # latest daily numbers
 
-# In[50]:
+# In[ ]:
 
 
 #read xlsx-file from Aargauer Kantonswebsite, cleaning
 df = pd.read_excel(file_url, sheet_name="1. Covid-19-Daten")
 
 
-# In[51]:
+# In[ ]:
 
 
 #renaming, choosing headers
@@ -29,14 +29,14 @@ df.iloc[1,20] = "neue_todesfälle"
 df.iloc[1,21] = "todesfälle_gesamt"
 
 
-# In[52]:
+# In[ ]:
 
 
 df.columns = df.iloc[1]
 df = df.drop([0,1], axis=0).reset_index()
 
 
-# In[53]:
+# In[ ]:
 
 
 #choose relevant columns
@@ -45,7 +45,7 @@ df = df[df.date != "Summe"].copy()
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
 
-# In[54]:
+# In[ ]:
 
 
 df["date"] = pd.to_datetime(df.date).dt.normalize()
@@ -55,7 +55,7 @@ df["3_d_rolling"] = df["Neue Fälle"].rolling(3).sum()
 df["3_d_rolling_deaths"] = df["neue_todesfälle"].rolling(3).sum()
 
 
-# In[55]:
+# In[ ]:
 
 
 #take relevant columns to new dataframe
@@ -102,8 +102,15 @@ s_final['7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)'] = rolling7
 
 #get numbers from same day one week earlier
 timestamp_prev_week = s_final["date"] - timedelta(days=7)
+timestamp_prev_week_mean7d = s_final["date"] - timedelta(days=10)
 timestamp_prev_week = pd.to_datetime(timestamp_prev_week)
-df_prev_week = df_cases[df_cases["date"] == timestamp_prev_week]
+timestamp_prev_week_mean7d = pd.to_datetime(timestamp_prev_week_mean7d)
+
+#mean7d must be 10 days earlier (due to time lag in canton's data)
+df_prev_week = df_cases[df_cases["date"] == timestamp_prev_week].copy()
+df_prev_week_mean7d = df_cases[df_cases["date"] == timestamp_prev_week_mean7d].copy()
+mean7d_prev_week = df_prev_week_mean7d['7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)'].values[0]
+df_prev_week['7-Tages-Durchschnitt neue Fälle (+/- 3 Tage)'] = mean7d_prev_week
 
 #concat Series and DataFrame
 df_s_final = pd.DataFrame(s_final).T
@@ -131,10 +138,6 @@ df_final.loc[df_final["weekday"] == 6, "Todesfälle neu"] = df_final["3_d_rollin
 
 #get rid of weekday and 3_d_rolling
 df_final = df_final.drop(columns=["weekday", "3_d_rolling", "3_d_rolling_deaths"])
-
-#formatting
-#df_final["Fälle neu"] = df_final["Fälle neu"].astype(int)
-#df_final["Fälle total"] = df_final["Fälle total"].astype(int)
 
 
 # In[ ]:
@@ -254,12 +257,6 @@ df_final4.loc[df_final4["vor einer Woche"] < 0, "+/- in %"] = np.nan
 # In[ ]:
 
 
-df_final4
-
-
-# In[ ]:
-
-
 #make a backup export of the current data
 df_final4.to_csv("/root/covid_aargau/backups/daily_data/backup_{}.csv".format(backdate(0)))
 
@@ -269,7 +266,7 @@ df_final4.to_csv("/root/covid_aargau/data/only_AG/daily_data.csv")
 
 # # daily new cases as line graph
 
-# In[68]:
+# In[ ]:
 
 
 df_dailys = df_cases.copy()
@@ -279,14 +276,14 @@ df_dailys3.columns = ["date", "Neue Fälle", "7-Tages-Durchschnitt"]
 df_dailys3.reset_index(drop=True, inplace=True)
 
 
-# In[57]:
+# In[ ]:
 
 
 #add a baseline (for visualization purposes in Datawrapper)
 df_dailys3["baseline"] = 0
 
 
-# In[69]:
+# In[ ]:
 
 
 #Letzte acht Wochen
@@ -325,7 +322,7 @@ df_dailys_short.to_csv("/root/covid_aargau/data/only_AG/daily_over_time_short.cs
 
 # # hospital numbers
 
-# In[45]:
+# In[ ]:
 
 
 df_hosp = df[["date", "Bestätigte Fälle Bettenstation (ohne IPS/IMC)", "Bestätigte Fälle IPS/IMC", "Restkapazität Betten IPS"]].copy()
@@ -333,7 +330,7 @@ df_hosp.set_index("date", inplace=True)
 df_hosp.reset_index(inplace=True)
 
 
-# In[46]:
+# In[ ]:
 
 
 #if Monday (weekday == 0), take Friday as latest values
@@ -343,17 +340,17 @@ else:
     df_hosp2 = df_hosp[df_hosp["date"] < backdate(0)]
 
 
-# In[47]:
+# In[ ]:
 
 
 df_hosp2 = df_hosp2.fillna(method='ffill')
 df_hosp2.columns = ["Datum",
                     "Patienten ohne Intensivpflege",
                      "Patienten auf Intensiv- oder Überwachungsstation",
-                     "freie Intensivbetten"]
+                     "freie Beatmungsplätze"]
 
 
-# In[48]:
+# In[ ]:
 
 
 #Letzte acht Wochen

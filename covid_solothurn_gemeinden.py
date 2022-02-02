@@ -23,18 +23,42 @@ headers = {'Authorization': datawrapper_api_key}
 # In[ ]:
 
 
-file_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_02022022.csv'
+file_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_{}.csv'
+
+
+# In[ ]:
+
+
+def request(date):
+    r = requests.get(file_url.format(date))
+    return r
+
+
+# In[ ]:
+
+
+today = datetime.now()
+
+for i in range(7):
+    current_date = (today - timedelta(i)).strftime('%d%m%Y')
+    
+    response = request(current_date)
+    if response.status_code != 200:
+        sleep(5)
+        pass
+    else:
+        correct_url = file_url.format(current_date)
+        break
 
 
 # In[ ]:
 
 
 #read csv-file from Excel-file
-df = pd.read_csv(file_url, delimiter=';', encoding='latin')
+df = pd.read_csv(correct_url, delimiter=';', encoding='latin')
 
 #save last updated time
 last_updated = df['Unnamed: 2'].loc[0]
-#last_updated = last_updated.strftime('%d.%m.%Y')
 
 #keep all columns for now, but only relevant rows
 df = df.iloc[5:, :].copy()

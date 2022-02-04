@@ -1,5 +1,4 @@
 Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsstation,freie Beatmungsplätze
-2021-12-08,102,25.0,5.0
 2021-12-09,100,24.0,9.0
 2021-12-10,94,26.0,9.0
 2021-12-11,94,26.0,9.0
@@ -56,3 +55,4 @@ Datum,Patienten ohne Intensivpflege,Patienten auf Intensiv- oder Überwachungsst
 2022-01-31,116,15.0,9.0
 2022-02-01,116,15.0,10.0
 2022-02-02,109,13.0,12.0
+2022-02-03,89,11.0,10.0

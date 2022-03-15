@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ from general_settings import file_url, backdate, datawrapper_api_key
 from time import sleep
 
 
-# In[ ]:
+# In[2]:
 
 
 #url + credentials Datawrapper
@@ -20,13 +20,13 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[3]:
 
 
 file_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_{}.csv'
 
 
-# In[ ]:
+# In[4]:
 
 
 def request(date):
@@ -34,7 +34,7 @@ def request(date):
     return r
 
 
-# In[ ]:
+# In[5]:
 
 
 today = datetime.now()
@@ -51,7 +51,7 @@ for i in range(7):
         break
 
 
-# In[ ]:
+# In[10]:
 
 
 #read csv-file from Excel-file
@@ -74,6 +74,7 @@ df['Bezirk'] = df['Bezirk'].ffill()
 df = df[df['Gemeinde'].notna()].copy()
 df = df[df['Gemeinde'] != 'Keine Angabe'].copy()
 df = df[df['Gemeinde'] != 'Übrige Gemeinden'].copy()
+df = df[df['Einwohner'].notna()].copy()
 
 #Rename Gemeinde in order to merge with wappen
 df['Gemeinde'] = df['Gemeinde'].str.replace(' SO', '')
@@ -83,7 +84,7 @@ df['Total Fälle'] = df['Total Fälle'].str.replace('\'', '')
 df['Einwohner'] = df['Einwohner'].str.replace('\'', '')
 
 
-# In[ ]:
+# In[13]:
 
 
 df['Total Fälle'] = df['Total Fälle'].astype(int)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ import numpy as np
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[ ]:
+# In[2]:
 
 
 #url BAG
@@ -25,7 +25,7 @@ headers = {'Authorization': datawrapper_api_key}
 
 # **Hosp data**
 
-# In[ ]:
+# In[3]:
 
 
 r = requests.get(base_url)
@@ -34,27 +34,27 @@ files = response['sources']['individual']
 url = files['csv']['daily']['hospCapacity']
 
 
-# In[ ]:
+# In[4]:
 
 
 df_import = pd.read_csv(url)
 
 
-# In[ ]:
+# In[5]:
 
 
 df_hosp = df_import[df_import['geoRegion'] == 'AG'].copy()
 df_hosp = df_hosp[['date', 'ICU_AllPatients', 'ICU_Covid19Patients', 'ICU_Capacity']].copy()
 
 
-# In[ ]:
+# In[6]:
 
 
 df_hosp['anteil_covid_patienten'] = round((df_hosp['ICU_Covid19Patients'] / df_hosp['ICU_AllPatients'])  *100, 1)
 df_hosp['belegung_icu_betten'] = round((df_hosp['ICU_AllPatients'] / df_hosp['ICU_Capacity']) * 100, 1)
 
 
-# In[ ]:
+# In[7]:
 
 
 anteil_covid_patienten = df_hosp['anteil_covid_patienten'].tail(1).values[0]
@@ -65,7 +65,7 @@ hosp_datum = pd.to_datetime(df_hosp['date'].tail(1).values[0]).strftime('%d.%m.%
 
 # **Re data**
 
-# In[ ]:
+# In[8]:
 
 
 re_url = files['csv']['daily']['re']
@@ -79,7 +79,7 @@ re_7d = df_re['median_R_mean_mean7d'].tail(1).values[0]
 
 # **Check if surpassed**
 
-# In[ ]:
+# In[9]:
 
 
 #decide if goal is met or not
@@ -139,7 +139,7 @@ else:
     re = ''
 
 
-# In[ ]:
+# In[10]:
 
 
 #prepare data for dataframe
@@ -147,11 +147,11 @@ data = [
     {'Indikator': 'R-Wert (Ø 7 Tage)', 'Aktuell': str(re_7d), '1. Eskalation': f'1.5 {re}', '2. Eskalation': f'1.5 {re}', '3. Eskalation (Lockdown)': f'1.5 {re}'},
     {'Indikator': 'Intensiv-Patienten mit Covid', 'Aktuell': str(anteil_covid_patienten) + '%', '1. Eskalation': f'40% {anteil1}', '2. Eskalation': f'50% {anteil2}', '3. Eskalation (Lockdown)': f'60% {anteil3}'},
     {'Indikator': 'Intensiv-Belegung', 'Aktuell': str(belegung_icu_betten) + '%', '1. Eskalation': f'95% {belegung1}', '2. Eskalation': f'100% {belegung2}', '3. Eskalation (Lockdown)': f'Intensiv-Zusatzbetten belegt  {belegung3}'},
-    {'Indikator': 'Operationen', 'Aktuell': 'Spitäler verschieben nicht dringl. OP', '1. Eskalation': f'nicht dringl. OP verschoben {überschritten}', '2. Eskalation': f'dringl. und nicht dringl. OP verschoben {nicht_überschritten}', '3. Eskalation (Lockdown)': f'Notfall-OP gefährdet {nicht_überschritten}'}
+    {'Indikator': 'Operationen', 'Aktuell': '-', '1. Eskalation': f'nicht dringl. OP verschoben {nicht_überschritten}', '2. Eskalation': f'dringl. und nicht dringl. OP verschoben {nicht_überschritten}', '3. Eskalation (Lockdown)': f'Notfall-OP gefährdet {nicht_überschritten}'}
 ]
 
 
-# In[ ]:
+# In[11]:
 
 
 #final dataframe

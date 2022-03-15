@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[23]:
+# In[9]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ from general_settings import file_url, backdate, datawrapper_api_key
 from time import sleep
 
 
-# In[24]:
+# In[10]:
 
 
 #url + credentials Datawrapper
@@ -20,19 +20,13 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[25]:
+# In[11]:
 
 
 file_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_{}.csv'
 
 
-# In[26]:
-
-
-file_url_temp = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_1203_14032022.csv'
-
-
-# In[27]:
+# In[12]:
 
 
 def request(date):
@@ -40,7 +34,7 @@ def request(date):
     return r
 
 
-# In[28]:
+# In[13]:
 
 
 today = datetime.now()
@@ -57,11 +51,11 @@ for i in range(7):
         break
 
 
-# In[29]:
+# In[14]:
 
 
 #read csv-file from Excel-file
-df = pd.read_csv(file_url_temp, delimiter=';', encoding='latin')
+df = pd.read_csv(correct_url, delimiter=';', encoding='latin')
 
 #save last updated time
 last_updated = df['Unnamed: 2'].loc[0]
@@ -90,7 +84,7 @@ df['Total Fälle'] = df['Total Fälle'].str.replace('\'', '')
 df['Einwohner'] = df['Einwohner'].str.replace('\'', '')
 
 
-# In[30]:
+# In[15]:
 
 
 df['Total Fälle'] = df['Total Fälle'].astype(int)
@@ -98,7 +92,7 @@ df['Fälle neu'] = df['Fälle neu'].astype(int)
 df['Einwohner'] = df['Einwohner'].astype(int)
 
 
-# In[31]:
+# In[16]:
 
 
 #calculate incidence
@@ -138,13 +132,13 @@ df.to_csv('/root/covid_aargau/data/only_AG/fallzahlen_gemeinden_SO.csv', index=F
 
 # **Chart update**
 
-# In[ ]:
+# In[7]:
 
 
 chart_id = 'flsCx'
 
 
-# In[ ]:
+# In[8]:
 
 
 def chart_updater(chart_id, last_updated):

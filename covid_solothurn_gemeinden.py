@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ from general_settings import file_url, backdate, datawrapper_api_key
 from time import sleep
 
 
-# In[ ]:
+# In[2]:
 
 
 #url + credentials Datawrapper
@@ -20,13 +20,13 @@ datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
 headers = {'Authorization': datawrapper_api_key}
 
 
-# In[ ]:
+# In[3]:
 
 
 file_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_{}.csv'
 
 
-# In[ ]:
+# In[4]:
 
 
 def request(date):
@@ -34,34 +34,45 @@ def request(date):
     return r
 
 
-# In[ ]:
+# In[5]:
+
+
+def url_maker(today):
+    for i in range(7):
+        current_date = (today - timedelta(i)).strftime('%d%m%Y')
+
+        response = request(current_date)
+        if response.status_code != 200:
+            sleep(3)
+            pass
+        else:
+            correct_url = file_url.format(current_date)
+            break
+            
+    return correct_url
+
+
+# In[8]:
 
 
 today = datetime.now()
 
-for i in range(7):
-    current_date = (today - timedelta(i)).strftime('%d%m%Y')
-    
-    response = request(current_date)
-    if response.status_code != 200:
-        sleep(5)
-        pass
+if date.weekday(today) == 0:
+    monday_url = file_url.format((today - timedelta(2)).strftime('%d%m') + '_' + today.strftime('%d%m%Y'))
+    res = requests.get(monday_url)
+    if res.status_code != 200:
+        correct_url = url_maker(today)
     else:
-        correct_url = file_url.format(current_date)
-        break
-
-
-# In[ ]:
-
-
-temp_url = 'https://corona.so.ch/fileadmin/corona/Bevoelkerung/Daten/Zahlen_nach_Gemeinden_/Zahlen_Gemeinden_1903_21032022.csv'
+        correct_url = monday_url    
+else:
+    correct_url = url_maker(today)
 
 
 # In[ ]:
 
 
 #read csv-file from Excel-file
-df = pd.read_csv(temp_url, delimiter=';', encoding='latin')
+df = pd.read_csv(correct_url, delimiter=';', encoding='latin')
 
 #save last updated time
 last_updated = df['Unnamed: 2'].loc[0]

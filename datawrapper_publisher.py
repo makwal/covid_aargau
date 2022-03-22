@@ -24,16 +24,12 @@ headers = {'Authorization': datawrapper_api_key}
 
 
 chart_ids = {
-    'AG daily': 'dAo3T',
     'AG cases short': '1zRdb',
     'AG cases long': 'OqLEv',
     'AG hosp short': 'zgWTi',
     'AG hosp long': '7kR7N',
-    'AG infection venues': 'Xzk0f',
     'SO daily': 'vp5VA',
-    'SO cases': 'LX6pQ',
-    'BS daily': 'oXWtD',
-    'BL daily': 'puWef'
+    'SO cases': 'LX6pQ'
 }
 
 

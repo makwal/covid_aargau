@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -108,7 +108,8 @@ def main_function(canton, chart_id):
 
 chart_ids = {
     'AG': 't6Kz2',
-    'SO': 'iP0C2'
+    'SO': 'iP0C2',
+    'CH': '41xQK'
 }
 
 

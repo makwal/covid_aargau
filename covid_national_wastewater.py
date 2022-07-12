@@ -137,7 +137,7 @@ chart_id = 'abYKl'
 # In[32]:
 
 
-annotation = f'Graue Stationen: Für diese Anlagen liegen für die letzten zwei Wochen keine Daten vor. Aktualisiert am {latest_date}.'
+annotation = f'Ausgegraute Stationen: Für diese Anlagen liegen für die letzten zwei Wochen keine Daten vor. Aktualisiert am {latest_date}.'
 
 
 # In[34]:

@@ -115,7 +115,7 @@ def chart_updater(canton, chart_id, end_date, tick_string):
     
     canton_addon = ' Die Zahlen können von den Angaben des Kantons abweichen.'
     
-    note = f'''<span style="color:#003595">Blaue Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage).     <span style="color:#989898">Graue Balken</span>: Anzahl Impfungen pro Tag.     An Sonntagen wird weniger geimpft.{canton_addon if canton != 'CH' or canton != 'CH_short' else ''}'''
+    note = f'''<span style="color:#059183">Linie</span>: 7-Tage-Durchschnitt der Impfungen (+/- 3 Tage).     <span style="color:#05918380">Balken</span>: Anzahl Impfungen pro Tag.     An Sonntagen wird weniger geimpft.{canton_addon if canton != 'CH' or canton != 'CH_short' else ''}'''
 
     url_update = datawrapper_url + chart_id
     url_publish = url_update + '/publish'

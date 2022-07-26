@@ -123,7 +123,7 @@ chart_id = 'B21dS'
 # In[ ]:
 
 
-annotation = f'Aktualisiert am {latest_date}.'
+annotation = f'Aktualisiert am {latest_date}. Die Zahlen der letzten Woche sind mit Vorsicht zu geniessen. Nachmeldungen können das Bild verändern.'
 
 
 # In[ ]:
@@ -287,7 +287,7 @@ chart_id = 'FpGzL'
 # In[ ]:
 
 
-annotation = f'Aktualisiert am {latest_date}.'
+annotation = f'Aktualisiert am {latest_date}. Die Zahlen der letzten Woche sind mit Vorsicht zu geniessen. Nachmeldungen können das Bild verändern.'
 
 
 # In[ ]:

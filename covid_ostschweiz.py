@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[76]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[77]:
 
 
 #url BAG
@@ -158,7 +158,7 @@ chart_updater(chart_id, annotation)
 
 # ### Fälle
 
-# In[41]:
+# In[78]:
 
 
 r = requests.get(base_url)
@@ -167,40 +167,46 @@ files = response['sources']['individual']
 url = files['csv']['daily']['cases']
 
 
-# In[42]:
+# In[79]:
 
 
 df = pd.read_csv(url)
 
 
-# In[44]:
+# In[82]:
 
 
-df_ch = df[df['geoRegion'] == 'CH'].copy()
+df_ch = df[df['geoRegion'] == 'CH'].iloc[:-1,:].copy()
 
 
-# In[45]:
+# In[84]:
 
 
 df_ch['entries-7dmean-berechnet'] = df_ch['entries'].fillna(0).rolling(7,center=True).mean()
 
 
-# In[46]:
+# In[85]:
 
 
 auswahl = ['AR','AI','SG','TG']
 
 
-# In[47]:
+# In[86]:
 
 
 df_kantone = df[df['geoRegion'].isin(auswahl)]
 
 
-# In[48]:
+# In[87]:
 
 
 df_ost = df_kantone.groupby('datum').sum()
+
+
+# In[89]:
+
+
+df_ost = df_ost.iloc[:-1,:]
 
 
 # In[49]:

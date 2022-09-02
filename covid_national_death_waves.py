@@ -73,7 +73,7 @@ df_final.drop(['Unbekannt'], inplace=True)
 
 
 #make a backup export of the current data
-df_final.to_csv('/root/covid_aargau/backups/death/backup_death_CH_waves_{}.csv'.format(backdate(0)))
+#df_final.to_csv('/root/covid_aargau/backups/death/backup_death_CH_waves_{}.csv'.format(backdate(0)))
 
 #export to csv
 df_final.to_csv('/root/covid_aargau/data/death/death_CH_waves.csv')

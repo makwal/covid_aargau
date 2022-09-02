@@ -86,7 +86,7 @@ df_final.columns = [date_current_values, "vor einer Woche"]
 
 
 #make a backup export of the current data
-df_final.to_csv("/root/covid_aargau/backups/daily_data_SO/backup_{}.csv".format(backdate(0)))
+#df_final.to_csv("/root/covid_aargau/backups/daily_data_SO/backup_{}.csv".format(backdate(0)))
 
 #export to csv
 df_final.to_csv("/root/covid_aargau/data/only_AG/daily_data_SO.csv")

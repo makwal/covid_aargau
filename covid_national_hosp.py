@@ -50,7 +50,7 @@ last_updated = pd.to_datetime(df['Datum'].tail(1).values[0]).strftime('%d.%m.%Y'
 
 
 #make a backup export of the current data
-df.to_csv('/root/covid_aargau/backups/hosp/covid_national_hosp.csv'.format(backdate(0)), index=False)
+#df.to_csv('/root/covid_aargau/backups/hosp/covid_national_hosp.csv'.format(backdate(0)), index=False)
 
 #export to csv
 df.to_csv('/root/covid_aargau/data/covid_national_hosp.csv', index=False)

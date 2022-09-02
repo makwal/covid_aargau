@@ -89,7 +89,7 @@ df_final.sort_values(by='zweifach Geimpfte', ascending=False, inplace=True)
 
 
 #make a backup export of the current data
-df_final.to_csv("/root/covid_aargau/backups/vacc_ch/backup_vacc_table_{}.csv".format(backdate(0)), index=False)
+#df_final.to_csv("/root/covid_aargau/backups/vacc_ch/backup_vacc_table_{}.csv".format(backdate(0)), index=False)
 
 #export to csv
 df_final.to_csv("/root/covid_aargau/data/vaccination/vacc_table.csv", index=False)

@@ -55,18 +55,12 @@ data_version_curr = res['dataVersion']
 
 # **Aktuelle Datenversion in separatem File speichern**
 
-# Wir holen die aktuelle Version des Versionen-Files, falls es existiert, sonst erstellen wir es.
+# Wir holen die aktuelle Version des Versionen-Files.
 
 # In[5]:
 
 
-exists = os.path.exists('version_history.csv')
-
-if exists:
-    df_versions = pd.read_csv('version_history.csv')
-else:
-    df_versions = pd.DataFrame(columns=['date', 'data_version'])
-    df_versions.to_csv('version_history.csv', index=False)
+df_versions = pd.read_csv('version_history.csv')
 
 
 # Wir holen die Angaben der Vorwoche.
@@ -300,13 +294,21 @@ cantons = {
 }
 
 
+# Falls die aktuellste Versionennummer und das Datum noch nicht in der Versions-History sind, werden die Funktionen ausgeführt.
+
 # In[15]:
 
 
-for canton, chart_id in cantons.items():
-    df_canton = dataframe_maker(canton)
-    
-    data_uploader(chart_id, df_canton)
-    
-    chart_updater(chart_id)
+cond1 = source_date_reg not in df_versions['date'].unique()
+cond2 = data_version_curr not in df_versions['data_version'].unique()
+
+if cond1 and cond2:
+    for canton, chart_id in cantons.items():
+        df_canton = dataframe_maker(canton)
+
+        data_uploader(chart_id, df_canton)
+
+        chart_updater(chart_id)
+else:
+    print('Die Grafiken sind auf dem aktuellsten Stand.')
 

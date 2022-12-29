@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[52]:
 
 
 import os
@@ -17,9 +17,30 @@ locale.setlocale(locale.LC_TIME, 'de_CH.UTF-8')
 pd.set_option('display.max_columns', None)
 
 
+# In[53]:
+
+
+def execution_from(ven):
+    
+    exec_dict = {
+        'h': str(''),
+        's': '/root/covid_aargau/'
+    }
+    
+    return exec_dict[ven]
+
+
+# **Hier Pfad an Umgebung anpassen!**
+
+# In[54]:
+
+
+executed_from = execution_from('s')
+
+
 # **Basis-Informationen**
 
-# In[2]:
+# In[55]:
 
 
 base_url = 'https://www.covid19.admin.ch/api/data/context'
@@ -31,7 +52,7 @@ headers = {'Authorization': datawrapper_api_key}
 
 # **API-Zugriff für Metadaten**
 
-# In[3]:
+# In[56]:
 
 
 res = requests.get(base_url)
@@ -41,7 +62,7 @@ res = res.json()
 
 # Datumsangaben in allen Formaten abspeichern, die in diesem File gebraucht werden.
 
-# In[4]:
+# In[57]:
 
 
 source_date = pd.to_datetime(res['sourceDate'])
@@ -57,15 +78,15 @@ data_version_curr = res['dataVersion']
 
 # Wir holen die aktuelle Version des Versionen-Files.
 
-# In[5]:
+# In[58]:
 
 
-df_versions = pd.read_csv('/root/covid_aargau/version_history.csv')
+df_versions = pd.read_csv(executed_from + 'version_history.csv')
 
 
 # Wir holen die Angaben der Vorwoche.
 
-# In[6]:
+# In[32]:
 
 
 data_version_prev = df_versions.tail(1)['data_version'].values[0]
@@ -75,7 +96,7 @@ source_date_reg_prev = df_versions.tail(1)['date'].values[0]
 
 # **Datenbezug**
 
-# In[7]:
+# In[33]:
 
 
 start_url = 'https://www.covid19.admin.ch/api/data/'
@@ -87,7 +108,7 @@ death_url = '/sources/COVID19Death_geoRegion.csv'
 
 # Mit dieser Funktion werden die benötigten urls gebildet.
 
-# In[8]:
+# In[34]:
 
 
 def url_maker(version, data_type):
@@ -96,7 +117,7 @@ def url_maker(version, data_type):
 
 # Mit dieser Funktion werden die aktuellen Daten sowie jene der Vorwoche abgeholt und die Differenz gebildet.
 
-# In[9]:
+# In[35]:
 
 
 def data_handler(data_type):
@@ -131,7 +152,7 @@ def data_handler(data_type):
 
 # In dieser Funktion werden die Daten zu einem Dataframe zusammengesetzt.
 
-# In[10]:
+# In[36]:
 
 
 def dataframe_maker(canton):
@@ -191,7 +212,7 @@ def dataframe_maker(canton):
 
 # Daten in die Grafik laden
 
-# In[11]:
+# In[37]:
 
 
 def data_uploader(chart_id, df_func):
@@ -227,13 +248,13 @@ def data_uploader(chart_id, df_func):
 
 # Grafik updaten
 
-# In[ ]:
+# In[38]:
 
 
 note = f'''Bei Spitaleintritten und Todesfällen ist Covid nicht in allen Fällen die Hauptursache. Aktualisiert am {source_date_normal}.'''
 
 
-# In[12]:
+# In[39]:
 
 
 def chart_updater(chart_id):
@@ -258,7 +279,7 @@ def chart_updater(chart_id):
 
 # **Skript starten**
 
-# In[13]:
+# In[40]:
 
 
 cantons = {
@@ -280,7 +301,7 @@ cantons = {
 
 # Falls die aktuellste Versionennummer und das Datum noch nicht in der Versions-History sind, werden die Funktionen ausgeführt.
 
-# In[ ]:
+# In[41]:
 
 
 cond1 = source_date_reg not in df_versions['date'].unique()
@@ -299,7 +320,7 @@ else:
 
 # Wenn die aktuelle Datenversionsnummer **nicht** im bestehenden File vorkommt, schreiben wir sie dazu, sonst nicht.
 
-# In[ ]:
+# In[42]:
 
 
 metadata_dict = {'date': source_date_reg, 'data_version': data_version_curr}
@@ -311,10 +332,10 @@ if data_version_curr not in df_versions['data_version'].unique():
     df_versions.reset_index(inplace=True, drop=True)
     
     #Backup
-    df_versions.to_csv(f'/root/covid_aargau/Versionbackups/version_history_{backdate(0)}.csv', index=False)
+    df_versions.to_csv(f'{executed_from}Versionbackups/version_history_{backdate(0)}.csv', index=False)
     
     #Export
-    df_versions.to_csv('/root/covid_aargau/version_history.csv', index=False)
+    df_versions.to_csv(executed_from + 'version_history.csv', index=False)
 else:
     pass
 

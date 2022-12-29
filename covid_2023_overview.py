@@ -60,7 +60,7 @@ data_version_curr = res['dataVersion']
 # In[5]:
 
 
-df_versions = pd.read_csv('version_history.csv')
+df_versions = pd.read_csv('/root/covid_aargau/version_history.csv')
 
 
 # Wir holen die Angaben der Vorwoche.
@@ -227,6 +227,12 @@ def data_uploader(chart_id, df_func):
 
 # Grafik updaten
 
+# In[ ]:
+
+
+note = f'''Bei Spitaleintritten und Todesfällen ist Covid nicht in allen Fällen die Hauptursache. Aktualisiert am {source_date_normal}.'''
+
+
 # In[12]:
 
 
@@ -238,7 +244,7 @@ def chart_updater(chart_id):
     payload = {
 
     'metadata': {
-        'annotate': {'notes': f'Aktualisiert am {source_date_normal}.'}
+        'annotate': {'notes': note}
         }
 
     }
@@ -305,10 +311,10 @@ if data_version_curr not in df_versions['data_version'].unique():
     df_versions.reset_index(inplace=True, drop=True)
     
     #Backup
-    df_versions.to_csv(f'Versionbackups/version_history_{backdate(0)}.csv', index=False)
+    df_versions.to_csv(f'/root/covid_aargau/Versionbackups/version_history_{backdate(0)}.csv', index=False)
     
     #Export
-    df_versions.to_csv('version_history.csv', index=False)
+    df_versions.to_csv('/root/covid_aargau/version_history.csv', index=False)
 else:
     pass
 

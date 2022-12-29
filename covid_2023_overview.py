@@ -73,31 +73,9 @@ data_version_prev = df_versions.tail(1)['data_version'].values[0]
 source_date_reg_prev = df_versions.tail(1)['date'].values[0]
 
 
-# Wenn die aktuelle Datenversionsnummer **nicht** im bestehenden File vorkommt, schreiben wir sie dazu, sonst nicht.
-
-# In[7]:
-
-
-metadata_dict = {'date': source_date_reg, 'data_version': data_version_curr}
-
-if data_version_curr not in df_versions['data_version'].unique():
-    df_meta = pd.DataFrame(data=metadata_dict, index=[999])
-    
-    df_versions = pd.concat([df_versions, df_meta])
-    df_versions.reset_index(inplace=True, drop=True)
-    
-    #Backup
-    df_versions.to_csv(f'Versionbackups/version_history_{backdate(0)}.csv', index=False)
-    
-    #Export
-    df_versions.to_csv('version_history.csv', index=False)
-else:
-    pass
-
-
 # **Datenbezug**
 
-# In[8]:
+# In[7]:
 
 
 start_url = 'https://www.covid19.admin.ch/api/data/'
@@ -109,7 +87,7 @@ death_url = '/sources/COVID19Death_geoRegion.csv'
 
 # Mit dieser Funktion werden die benötigten urls gebildet.
 
-# In[9]:
+# In[8]:
 
 
 def url_maker(version, data_type):
@@ -118,7 +96,7 @@ def url_maker(version, data_type):
 
 # Mit dieser Funktion werden die aktuellen Daten sowie jene der Vorwoche abgeholt und die Differenz gebildet.
 
-# In[10]:
+# In[9]:
 
 
 def data_handler(data_type):
@@ -153,7 +131,7 @@ def data_handler(data_type):
 
 # In dieser Funktion werden die Daten zu einem Dataframe zusammengesetzt.
 
-# In[11]:
+# In[10]:
 
 
 def dataframe_maker(canton):
@@ -213,7 +191,7 @@ def dataframe_maker(canton):
 
 # Daten in die Grafik laden
 
-# In[12]:
+# In[11]:
 
 
 def data_uploader(chart_id, df_func):
@@ -249,7 +227,7 @@ def data_uploader(chart_id, df_func):
 
 # Grafik updaten
 
-# In[13]:
+# In[12]:
 
 
 def chart_updater(chart_id):
@@ -274,7 +252,7 @@ def chart_updater(chart_id):
 
 # **Skript starten**
 
-# In[14]:
+# In[13]:
 
 
 cantons = {
@@ -296,7 +274,7 @@ cantons = {
 
 # Falls die aktuellste Versionennummer und das Datum noch nicht in der Versions-History sind, werden die Funktionen ausgeführt.
 
-# In[15]:
+# In[ ]:
 
 
 cond1 = source_date_reg not in df_versions['date'].unique()
@@ -311,4 +289,26 @@ if cond1 and cond2:
         chart_updater(chart_id)
 else:
     print('Die Grafiken sind auf dem aktuellsten Stand.')
+
+
+# Wenn die aktuelle Datenversionsnummer **nicht** im bestehenden File vorkommt, schreiben wir sie dazu, sonst nicht.
+
+# In[ ]:
+
+
+metadata_dict = {'date': source_date_reg, 'data_version': data_version_curr}
+
+if data_version_curr not in df_versions['data_version'].unique():
+    df_meta = pd.DataFrame(data=metadata_dict, index=[999])
+    
+    df_versions = pd.concat([df_versions, df_meta])
+    df_versions.reset_index(inplace=True, drop=True)
+    
+    #Backup
+    df_versions.to_csv(f'Versionbackups/version_history_{backdate(0)}.csv', index=False)
+    
+    #Export
+    df_versions.to_csv('version_history.csv', index=False)
+else:
+    pass
 

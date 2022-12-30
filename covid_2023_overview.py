@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[52]:
+# In[1]:
 
 
 import os
@@ -11,13 +11,14 @@ from time import sleep
 from general_settings import backdate, datawrapper_api_key
 from datetime import date, datetime, timedelta
 import numpy as np
+import dw
 import locale
 locale.setlocale(locale.LC_TIME, 'de_CH.UTF-8')
 
 pd.set_option('display.max_columns', None)
 
 
-# In[53]:
+# In[2]:
 
 
 def execution_from(ven):
@@ -30,9 +31,9 @@ def execution_from(ven):
     return exec_dict[ven]
 
 
-# **Hier Pfad an Umgebung anpassen!**
+# **<font color='red'>Hier Pfad an Umgebung anpassen!</font>**
 
-# In[54]:
+# In[3]:
 
 
 executed_from = execution_from('s')
@@ -40,7 +41,7 @@ executed_from = execution_from('s')
 
 # **Basis-Informationen**
 
-# In[55]:
+# In[4]:
 
 
 base_url = 'https://www.covid19.admin.ch/api/data/context'
@@ -52,7 +53,7 @@ headers = {'Authorization': datawrapper_api_key}
 
 # **API-Zugriff für Metadaten**
 
-# In[56]:
+# In[5]:
 
 
 res = requests.get(base_url)
@@ -62,7 +63,7 @@ res = res.json()
 
 # Datumsangaben in allen Formaten abspeichern, die in diesem File gebraucht werden.
 
-# In[57]:
+# In[6]:
 
 
 source_date = pd.to_datetime(res['sourceDate'])
@@ -78,7 +79,7 @@ data_version_curr = res['dataVersion']
 
 # Wir holen die aktuelle Version des Versionen-Files.
 
-# In[58]:
+# In[7]:
 
 
 df_versions = pd.read_csv(executed_from + 'version_history.csv')
@@ -86,7 +87,7 @@ df_versions = pd.read_csv(executed_from + 'version_history.csv')
 
 # Wir holen die Angaben der Vorwoche.
 
-# In[32]:
+# In[8]:
 
 
 data_version_prev = df_versions.tail(1)['data_version'].values[0]
@@ -96,7 +97,7 @@ source_date_reg_prev = df_versions.tail(1)['date'].values[0]
 
 # **Datenbezug**
 
-# In[33]:
+# In[9]:
 
 
 start_url = 'https://www.covid19.admin.ch/api/data/'
@@ -108,7 +109,7 @@ death_url = '/sources/COVID19Death_geoRegion.csv'
 
 # Mit dieser Funktion werden die benötigten urls gebildet.
 
-# In[34]:
+# In[10]:
 
 
 def url_maker(version, data_type):
@@ -117,7 +118,7 @@ def url_maker(version, data_type):
 
 # Mit dieser Funktion werden die aktuellen Daten sowie jene der Vorwoche abgeholt und die Differenz gebildet.
 
-# In[35]:
+# In[11]:
 
 
 def data_handler(data_type):
@@ -152,7 +153,7 @@ def data_handler(data_type):
 
 # In dieser Funktion werden die Daten zu einem Dataframe zusammengesetzt.
 
-# In[36]:
+# In[12]:
 
 
 def dataframe_maker(canton):
@@ -205,64 +206,21 @@ def dataframe_maker(canton):
 
     df_data = pd.DataFrame(data=data_final)
     
+    df_data.set_index('Was', inplace=True)
+    
     return df_data
 
 
 # **Datawrapper-Update**
 
-# Daten in die Grafik laden
-
-# In[37]:
-
-
-def data_uploader(chart_id, df_func):
-    dw_upload_url = datawrapper_url + chart_id +'/data'
-
-    datawrapper_headers = {
-        'Accept': '*/*',
-        'Content-Type': 'text/csv',
-        'Authorization': headers['Authorization']
-    }
-    
-    #data is being transformed to a csv
-    data = df_func.to_csv(encoding='utf-8', index=False)
-
-    response = requests.put(dw_upload_url, data=data.encode('utf-8'), headers=datawrapper_headers)
-
-    status_code = response.status_code
-    if status_code > 204:
-        print(chart_id + ': ' + str(status_code))
-    
-    sleep(3)
-    
-    url_update = datawrapper_url + chart_id
-    url_publish = url_update + '/publish'
-
-    res_publish = requests.post(url_publish, headers=datawrapper_headers)
-    
-    status_code2 = res_publish.status_code
-    
-    if status_code2 > 204:
-        print(chart_id + ': ' + str(status_code2))
-
-
 # Grafik updaten
 
-# In[38]:
+# In[13]:
 
 
 note = f'''Bei Spitaleintritten und Todesfällen ist Covid nicht in allen Fällen die Hauptursache. Aktualisiert am {source_date_normal}.'''
 
-
-# In[39]:
-
-
-def chart_updater(chart_id):
-    
-    url_update = datawrapper_url + chart_id
-    url_publish = url_update + '/publish'
-
-    payload = {
+payload = {
 
     'metadata': {
         'annotate': {'notes': note}
@@ -270,16 +228,10 @@ def chart_updater(chart_id):
 
     }
 
-    res_update = requests.patch(url_update, json=payload, headers=headers)
-
-    sleep(3)
-
-    res_publish = requests.post(url_publish, headers=headers)
-
 
 # **Skript starten**
 
-# In[40]:
+# In[14]:
 
 
 cantons = {
@@ -301,7 +253,7 @@ cantons = {
 
 # Falls die aktuellste Versionennummer und das Datum noch nicht in der Versions-History sind, werden die Funktionen ausgeführt.
 
-# In[41]:
+# In[15]:
 
 
 cond1 = source_date_reg not in df_versions['date'].unique()
@@ -311,16 +263,16 @@ if cond1 and cond2:
     for canton, chart_id in cantons.items():
         df_canton = dataframe_maker(canton)
 
-        data_uploader(chart_id, df_canton)
+        dw.data_uploader(chart_id=chart_id, df=df_canton)
 
-        chart_updater(chart_id)
+        dw.chart_updater(chart_id, payload=payload)
 else:
     print('Die Grafiken sind auf dem aktuellsten Stand.')
 
 
 # Wenn die aktuelle Datenversionsnummer **nicht** im bestehenden File vorkommt, schreiben wir sie dazu, sonst nicht.
 
-# In[42]:
+# In[16]:
 
 
 metadata_dict = {'date': source_date_reg, 'data_version': data_version_curr}

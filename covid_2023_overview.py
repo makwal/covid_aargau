@@ -8,8 +8,7 @@ import os
 import requests
 import pandas as pd
 from time import sleep
-from general_settings import backdate, datawrapper_api_key
-from datetime import date, datetime, timedelta
+from general_settings import backdate
 import numpy as np
 import dw
 import locale
@@ -45,10 +44,6 @@ executed_from = execution_from('s')
 
 
 base_url = 'https://www.covid19.admin.ch/api/data/context'
-
-#url + credentials Datawrapper
-datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
-headers = {'Authorization': datawrapper_api_key}
 
 
 # **API-Zugriff für Metadaten**

@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[8]:
 
 
-import os
 import requests
 import pandas as pd
-from time import sleep
-from general_settings import backdate, datawrapper_api_key
-from datetime import date, datetime, timedelta
-import numpy as np
 import dw
 import locale
 locale.setlocale(locale.LC_TIME, 'de_CH.UTF-8')
@@ -20,19 +15,15 @@ pd.set_option('display.max_columns', None)
 
 # **Basis-Informationen**
 
-# In[2]:
+# In[9]:
 
 
 base_url = 'https://www.covid19.admin.ch/api/data/context'
 
-#url + credentials Datawrapper
-datawrapper_url = 'https://api.datawrapper.de/v3/charts/'
-headers = {'Authorization': datawrapper_api_key}
-
 
 # **Datenbezug**
 
-# In[3]:
+# In[10]:
 
 
 res = requests.get(base_url)
@@ -46,7 +37,7 @@ file_url = res['sources']['individual']['csv']['weekly']['default']['test']
 df_import = pd.read_csv(file_url)
 
 
-# In[4]:
+# In[11]:
 
 
 def data_handler(canton):
@@ -63,7 +54,7 @@ def data_handler(canton):
 
 # **Datawrapper-Update**
 
-# In[5]:
+# In[12]:
 
 
 cantons = {
@@ -75,7 +66,7 @@ cantons = {
 
 # Grafik updaten
 
-# In[6]:
+# In[13]:
 
 
 payload = {
@@ -87,7 +78,7 @@ payload = {
 }
 
 
-# In[7]:
+# In[14]:
 
 
 for canton, chart_id in cantons.items():

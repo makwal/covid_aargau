@@ -11,6 +11,7 @@ from time import sleep
 from general_settings import backdate, datawrapper_api_key
 from datetime import date, datetime, timedelta
 import numpy as np
+import dw
 import locale
 locale.setlocale(locale.LC_TIME, 'de_CH.UTF-8')
 
@@ -55,73 +56,14 @@ def data_handler(canton):
     
     df = df[['date', 'anteil_pos']].copy()
     
+    df.set_index('date', inplace=True)
+    
     return df, last_updated
 
 
 # **Datawrapper-Update**
 
-# Daten in die Grafik laden.
-
 # In[5]:
-
-
-def data_uploader(chart_id, df_func):
-    dw_upload_url = datawrapper_url + chart_id +'/data'
-
-    datawrapper_headers = {
-        'Accept': '*/*',
-        'Content-Type': 'text/csv',
-        'Authorization': headers['Authorization']
-    }
-    
-    #data is being transformed to a csv
-    data = df_func.to_csv(encoding='utf-8', index=False)
-
-    response = requests.put(dw_upload_url, data=data.encode('utf-8'), headers=datawrapper_headers)
-
-    status_code = response.status_code
-    if status_code > 204:
-        print(chart_id + ': ' + str(status_code))
-    
-    sleep(3)
-    
-    url_update = datawrapper_url + chart_id
-    url_publish = url_update + '/publish'
-
-    res_publish = requests.post(url_publish, headers=datawrapper_headers)
-    
-    status_code2 = res_publish.status_code
-    
-    if status_code2 > 204:
-        print(chart_id + ': ' + str(status_code2))
-
-
-# Grafik updaten
-
-# In[6]:
-
-
-def chart_updater(chart_id, last_updated):
-    
-    url_update = datawrapper_url + chart_id
-    url_publish = url_update + '/publish'
-
-    payload = {
-
-    'metadata': {
-        'annotate': {'notes': f'Aktualisiert am: {last_updated}.'}
-        }
-
-    }
-
-    res_update = requests.patch(url_update, json=payload, headers=headers)
-
-    sleep(3)
-
-    res_publish = requests.post(url_publish, headers=headers)
-
-
-# In[7]:
 
 
 cantons = {
@@ -131,14 +73,28 @@ cantons = {
 }
 
 
-# In[8]:
+# Grafik updaten
+
+# In[6]:
+
+
+payload = {
+
+'metadata': {
+    'annotate': {'notes': f'Aktualisiert am {last_updated}.'}
+    }
+
+}
+
+
+# In[7]:
 
 
 for canton, chart_id in cantons.items():
     
     df_canton, last_updated = data_handler(canton)
     
-    data_uploader(chart_id, df_canton)
+    dw.data_uploader(chart_id=chart_id, df=df_canton)
     
-    chart_updater(chart_id, last_updated)
+    dw.chart_updater(chart_id=chart_id, payload=payload)
 

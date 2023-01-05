@@ -65,7 +65,7 @@ source_date = pd.to_datetime(res['sourceDate'])
 
 source_date_short = source_date.strftime('%d.%m.')
 source_date_reg = source_date.strftime('%Y-%m-%d')
-source_date_normal = source_date.strftime('%d. %B %Y')
+source_date_normal = source_date.strftime('%-d. %B %Y')
 
 data_version_curr = res['dataVersion']
 

@@ -30,7 +30,7 @@ res = requests.get(base_url)
 
 res = res.json()
 
-last_updated = pd.to_datetime(res['sourceDate']).strftime('%d. %B %Y')
+last_updated = pd.to_datetime(res['sourceDate']).strftime('%-d. %B %Y')
 
 
 # In[4]:

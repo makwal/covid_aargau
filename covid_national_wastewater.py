@@ -125,7 +125,7 @@ df_final.to_csv('/root/covid_aargau/data/wastewater/wastewater.csv')
 
 latest_date = df['date'].max()
 latest_date = latest_date + timedelta(days=1)
-latest_date = latest_date.strftime('%d.%m.%Y')
+latest_date = latest_date.strftime('%-d. %B %Y')
 
 
 # In[31]:

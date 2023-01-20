@@ -9,7 +9,8 @@ import requests
 from time import sleep
 from datetime import datetime, timedelta
 from general_settings import backdate, datawrapper_api_key
-
+import locale
+locale.setlocale(locale.LC_TIME, 'de_CH.UTF-8')
 
 # In[2]:
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[127]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from general_settings import backdate, datawrapper_api_key
 
 
-# In[2]:
+# In[128]:
 
 
 #url BAG
@@ -24,7 +24,7 @@ headers = {'Authorization': datawrapper_api_key}
 
 # ### Positivitätsrate
 
-# In[92]:
+# In[164]:
 
 
 r = requests.get(base_url)
@@ -33,61 +33,67 @@ files = response['sources']['individual']
 url = files['csv']['weekly']['default']['test']
 
 
-# In[93]:
+# In[165]:
 
 
 df = pd.read_csv(url, low_memory=False)
 
 
-# In[94]:
+# In[166]:
+
+
+df['datum'] = df['datum'].astype(str).str[:4] + '/' + df['datum'].astype(str).str[4:]
+
+
+# In[167]:
 
 
 df_ch = df[df['geoRegion'] == 'CH'].copy()
 
 
-# In[95]:
+# In[168]:
 
 
 df_ch['anteil_pos_berechnet'] = df_ch['entries_pos']/df_ch['entries'] * 100
 
 
-# In[96]:
+# In[169]:
 
 
 auswahl = ['AR','AI','SG','TG']
 
 
-# In[97]:
+# In[170]:
 
 
 df_kantone = df[df['geoRegion'].isin(auswahl)].copy()
 
 
-# In[98]:
+# In[171]:
 
 
 df_ost = df_kantone.groupby('datum').sum()
 
 
-# In[99]:
+# In[172]:
 
 
 df_ost['anteil_pos_berechnet'] = df_ost['entries_pos']/df_ost['entries'] * 100
 
 
-# In[104]:
+# In[173]:
 
 
 df_combined = pd.concat([df_ost[['anteil_pos_berechnet']], df_ch.set_index('datum')[['anteil_pos_berechnet']]],axis=1)
 
 
-# In[107]:
+# In[174]:
 
 
 df_combined = df_combined.iloc[13:,:].copy()
 
 
-# In[108]:
+# In[175]:
 
 
 df_combined.columns = ['Ostschweiz','Schweiz']
@@ -100,26 +106,26 @@ df_combined.columns = ['Ostschweiz','Schweiz']
 df_combined.to_csv('/root/covid_aargau/data/ostschweiz/och_positivity.csv')
 
 
-# In[54]:
+# In[177]:
 
 
 latest_date = datetime.today()
 latest_date = latest_date.strftime('%d.%m.%Y')
 
 
-# In[ ]:
+# In[178]:
 
 
-chart_id = 'B21dS'
+chart_id = 'FpGzL'
 
 
-# In[ ]:
+# In[179]:
 
 
 annotation = f'Aktualisiert am {latest_date} mit Zahlen der Vorwoche. Die aktuellsten Zahlen sind mit Vorsicht zu geniessen. Nachmeldungen können das Bild verändern.'
 
 
-# In[ ]:
+# In[181]:
 
 
 def chart_updater(chart_id, annotation):
@@ -164,6 +170,12 @@ url = files['csv']['weekly']['default']['cases']
 
 
 df = pd.read_csv(url)
+
+
+# In[ ]:
+
+
+df['datum'] = df['datum'].astype(str).str[:4] + '/' + df['datum'].astype(str).str[4:]
 
 
 # In[112]:
@@ -261,7 +273,7 @@ latest_date = latest_date.strftime('%d.%m.%Y')
 # In[ ]:
 
 
-chart_id = 'FpGzL'
+chart_id = 'B21dS'
 
 
 # In[ ]:

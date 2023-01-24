@@ -143,7 +143,8 @@ def dataframe_maker(canton):
         curr = int(curr)
         
         diff = df_temp.tail(1)['entries_diff_abs'].values[0]
-        diff = int(diff)
+        
+	diff = int(diff)
         
         prev = curr - diff
         prev = int(prev)

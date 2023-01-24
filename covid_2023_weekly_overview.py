@@ -101,7 +101,7 @@ if data_version_curr not in df_versions['data_version'].unique():
 # In[9]:
 
 
-types = ['cases', 'hosp', 'death']
+types = ['cases', 'hosp']
 type_url = res['sources']['individual']['csv']['weekly']['default']
 
 
@@ -120,9 +120,9 @@ def dataframe_maker(canton):
     iso_week_prev = int(df_date['datum_dboardformated'].values[-2].split('-')[1])
     
     if canton == 'CHFL':
-        header_intro = '**Letzte Meldungen des BAG ^für die letzten zwei Kalenderwochen^**'
+        header_intro = '**Meldungen des BAG ^für die letzten zwei Kalenderwochen^**'
     else:
-        header_intro = f'**Letzte Meldungen des BAG für {canton} ^für die letzten zwei Kalenderwochen^**'
+        header_intro = f'**Meldungen des BAG für {canton} ^für die letzten zwei Kalenderwochen^**'
 
     header_row = {
                 'Was': header_intro,
@@ -141,13 +141,11 @@ def dataframe_maker(canton):
 
         curr = df_temp.tail(1)['entries'].values[0]
         curr = int(curr)
-        
-        diff = df_temp.tail(1)['entries_diff_abs'].values[0]
-        
-	diff = int(diff)
-        
-        prev = curr - diff
+
+        prev = df_temp.tail(2)['entries'].values[0]
         prev = int(prev)
+
+        diff = curr - prev
         
         if prev > 0:
             diff_pct = diff / prev * 100
@@ -168,8 +166,6 @@ def dataframe_maker(canton):
             type_final = 'Neuinfektionen'
         elif t == 'hosp':
             type_final = 'Spitaleintritte'
-        elif t == 'death':
-            type_final = 'Todesfälle'
 
         template_row = {
             'Was': type_final,
@@ -194,7 +190,7 @@ def dataframe_maker(canton):
 # In[11]:
 
 
-note = f'''Bei Spitaleintritten und Todesfällen ist Covid nicht in allen Fällen die Hauptursache. Aktualisiert am {source_date_normal}.'''
+note = f'''Das BAG meldet Todesfälle aus Datenschutzgründen nur noch auf Ebene Schweiz. Bei Spitaleintritten ist Covid nicht in allen Fällen die Hauptursache. Aktualisiert am {source_date_normal}.'''
 
 payload = {
 

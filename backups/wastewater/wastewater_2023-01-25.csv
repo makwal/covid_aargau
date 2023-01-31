@@ -1,5 +1,5 @@
 ,name,date,vl_percentile_mean7d,vl_percentile_mean7d_diff_pp,max_date,vl_percentile_mean7d_diff_pp_show
-0,Liechtenstein,,,,2022-03-07,
+0,Liechtenstein,2023-01-11,9.6,3.5,2022-03-07,3.5
 1,Buholz (Real),,,,2022-02-26,
 2,Rontal,,,,2022-07-01,
 3,Altdorf,,,,2022-03-02,
@@ -12,7 +12,7 @@
 10,Engelberg,,,,2022-07-06,
 11,Stans (Rotzwinkel),,,,2022-07-10,
 12,Meilen (Rorguet),,,,2022-03-21,
-13,Glarnerland,,,,2022-04-07,
+13,Glarnerland,2023-01-11,14.0,-8.8,2022-04-07,8.8
 14,Cham (Schoenau),,,,2022-07-13,
 15,Illnau-Effretikon,2023-01-18,6.5,-8.6,2022-03-17,8.6
 16,Dübendorf (Ika Neugut),,,,2022-12-19,
@@ -20,7 +20,7 @@
 18,Affoltern am Albis,,,,2022-03-10,
 19,Vuippens (Ais),,,,2022-03-05,
 20,Fribourg (Aele),2023-01-18,2.4,-2.9,2022-02-10,2.9
-21,Winterthur,,,,2022-07-15,
+21,Winterthur,2023-01-15,8.8,-19.1,2022-07-15,19.1
 22,Dietikon (Limeco),2023-01-18,5.1,-59.8,2022-07-11,59.8
 23,Winznau (Zv Olten),,,,2022-03-07,
 24,Zuchwil (Soloth.-Emme),2023-01-18,1.8,0.3,2022-03-07,0.3
@@ -48,12 +48,12 @@
 46,Wil,,,,2022-03-07,
 47,Region Bern,2023-01-17,3.7,-2.9,2022-02-10,2.9
 48,Poschiavo (Li Geri),,,,2022-11-05,
-49,Schluein (Gruob),,,,2022-03-31,
+49,Schluein (Gruob),2023-01-11,12.3,-50.6,2022-03-31,50.6
 50,Worblental,,,,2022-03-06,
 51,Cazis (Waldau),,,,2022-04-07,
 52,Scuol (Sot Ruinas),,,,2022-07-02,
-53,S-chanf (Oberengadin),,,,2022-12-31,
-54,Davos (Gadenstatt),,,,2022-02-26,
+53,S-chanf (Oberengadin),2023-01-11,56.4,-34.8,2022-12-31,34.8
+54,Davos (Gadenstatt),2023-01-11,15.9,-18.8,2022-02-26,18.8
 55,Klosters (Gulfia),,,,2022-12-22,
 56,Chur,2023-01-19,3.9,-2.2,2022-03-12,2.2
 57,Arosa,,,,2022-04-09,

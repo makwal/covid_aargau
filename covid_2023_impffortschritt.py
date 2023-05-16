@@ -16,8 +16,6 @@ pd.set_option('display.max_columns', None)
 # **Basis-Informationen**
 
 # In[2]:
-
-
 base_url = 'https://www.covid19.admin.ch/api/data/context'
 
 
